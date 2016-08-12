@@ -8,29 +8,38 @@
 
 <title>
   
-    day day up
+    Yii2学习笔记『一』
   
 </title>
 
-<meta name="description" content="记得两年前用Hexo成功搭建了一个github pages，一篇文都没发，迅速夭折……
-现在重新弄起来，目前还不能正确预览，deploy没有任何反应，404ing，头疼ing。
-对自己写技术文这件事半点信心都没有，平时只是在evernote记录一些可随手翻阅的东西，也许可以尝试把这些东西整理出来，并丰富一下它们。
-好兴奋，第二天又查了一下资料，果然是配置文件写错了，忘了从哪里粘贴过来的，那接下来翻">
+<meta name="description" content="为了避免在别人说『PHP是世界上最好的语言』的时候插不上话，于是学起了PHP~自从两年多前告别Java之后，再次接触后端语言，感觉很新鲜。ps虽然PHP在大多数工程师眼里算不得什么后端语言（啊？什么？我还做过Java……惊恐脸(´･_･`)
+
+目录
+
+Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境
+安装Composer
+通过 Composer 安装Yii">
 <meta property="og:type" content="article">
-<meta property="og:title" content="day day up">
-<meta property="og:url" content="http://yoursite.com/2016/08/10/day-day-up/index.html">
+<meta property="og:title" content="Yii2学习笔记『一』">
+<meta property="og:url" content="http://yoursite.com/2016/08/12/yii-study-01/index.html">
 <meta property="og:site_name" content="letica's blog">
-<meta property="og:description" content="记得两年前用Hexo成功搭建了一个github pages，一篇文都没发，迅速夭折……
-现在重新弄起来，目前还不能正确预览，deploy没有任何反应，404ing，头疼ing。
-对自己写技术文这件事半点信心都没有，平时只是在evernote记录一些可随手翻阅的东西，也许可以尝试把这些东西整理出来，并丰富一下它们。
-好兴奋，第二天又查了一下资料，果然是配置文件写错了，忘了从哪里粘贴过来的，那接下来翻">
-<meta property="og:updated_time" content="2016-08-12T04:49:58.000Z">
+<meta property="og:description" content="为了避免在别人说『PHP是世界上最好的语言』的时候插不上话，于是学起了PHP~自从两年多前告别Java之后，再次接触后端语言，感觉很新鲜。ps虽然PHP在大多数工程师眼里算不得什么后端语言（啊？什么？我还做过Java……惊恐脸(´･_･`)
+
+目录
+
+Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境
+安装Composer
+通过 Composer 安装Yii">
+<meta property="og:updated_time" content="2016-08-12T10:22:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="day day up">
-<meta name="twitter:description" content="记得两年前用Hexo成功搭建了一个github pages，一篇文都没发，迅速夭折……
-现在重新弄起来，目前还不能正确预览，deploy没有任何反应，404ing，头疼ing。
-对自己写技术文这件事半点信心都没有，平时只是在evernote记录一些可随手翻阅的东西，也许可以尝试把这些东西整理出来，并丰富一下它们。
-好兴奋，第二天又查了一下资料，果然是配置文件写错了，忘了从哪里粘贴过来的，那接下来翻">
+<meta name="twitter:title" content="Yii2学习笔记『一』">
+<meta name="twitter:description" content="为了避免在别人说『PHP是世界上最好的语言』的时候插不上话，于是学起了PHP~自从两年多前告别Java之后，再次接触后端语言，感觉很新鲜。ps虽然PHP在大多数工程师眼里算不得什么后端语言（啊？什么？我还做过Java……惊恐脸(´･_･`)
+
+目录
+
+Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境
+安装Composer
+通过 Composer 安装Yii">
 
 
   <link rel="alternative" href="/atom.xml" title="letica&#39;s blog" type="application/atom+xml">
@@ -172,37 +181,77 @@
       
         <div style="max-width: 1000px">
       
-          <article id="post-day-day-up" class="article article-type-post">
+          <article id="post-yii-study-01" class="article article-type-post">
   
     <h1 class="article-header">
-      day day up
+      Yii2学习笔记『一』
     </h1>
   
   
 
   <div class="article-info">
     <span class="article-date">
-  2016-08-10
+  2016-08-12
 </span>
 
     
 	<span class="article-category tagcloud">
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/碎碎念/">碎碎念</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PHP/">PHP</a></li></ul>
 	</span>
 
 
     
 	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/journal/">journal</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yii2/">yii2</a></li></ul>
 	</span>
 
 
   </div>
   <div class="article-entry">
-    <p>记得两年前用Hexo成功搭建了一个github pages，一篇文都没发，迅速夭折……</p>
-<p>现在重新弄起来，目前还不能正确预览，deploy没有任何反应，404ing，头疼ing。</p>
-<p>对自己写技术文这件事半点信心都没有，平时只是在evernote记录一些可随手翻阅的东西，也许可以尝试把这些东西整理出来，并丰富一下它们。</p>
-<p>好兴奋，第二天又查了一下资料，果然是配置文件写错了，忘了从哪里粘贴过来的，那接下来翻译下搭建这个blog参照的文章吧，start~go~</p>
+    <p>为了避免在别人说『PHP是世界上最好的语言』的时候插不上话，于是学起了PHP~<br>自从两年多前告别Java之后，再次接触后端语言，感觉很新鲜。ps虽然PHP在大多数工程师眼里算不得什么后端语言（啊？什么？我还做过Java……惊恐脸(´･_･`)</p>
+<blockquote>
+<p>目录</p>
+<ol>
+<li>Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境</li>
+<li>安装Composer</li>
+<li>通过 Composer 安装Yii</li>
+</ol>
+</blockquote>
+<a id="more"></a>
+<hr>
+<ol>
+<li><p>Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境<br> <a href="http://tabalt.net/blog/install-nginx-mysql-php-fpm-by-brew-on-mac/" target="_blank" rel="external">参考文档</a></p>
+</li>
+<li><p>安装Composer</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ curl -s http://getcomposer.org/installer | php</div><div class="line">$ mv composer.phar /usr/local/bin/composer</div><div class="line">$ composer self-update</div></pre></td></tr></table></figure>
+<ol>
+<li>通过 Composer 安装Yii</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 安装 Composer asset plugin,它是通过 Composer 管理 bower 和 npm 包所必须的,此命令全局生效,一劳永逸。</div><div class="line">$ composer global require &quot;fxp/composer-asset-plugin:~1.1.1&quot;</div><div class="line"></div><div class="line"># 将 Yii 安装在名为 basic 的目录中,你也可以随便选择其他名称。(一般是在workspace目录下执行，basic 为你的项目名称，如果是第一次安装，过程会灰常慢，耐心~ 实在不行的话可以找其他方式，比如镜像or归档文件)</div><div class="line">$ composer create-project --prefer-dist yiisoft/yii2-app-basic basic</div></pre></td></tr></table></figure>
+<ul>
+<li>第一个命令刚开始写的版本不对，报下面的错，供参考<blockquote>
+<p>Your requirements could not be resolved to an installable set of packages.<br>Problem 1</p>
+<ul>
+<li>Installation request for fxp/composer-asset-plugin 1.0.0 -&gt; satisfiable by fxp/composer-asset-plugin[v1.0.0].</li>
+<li>fxp/composer-asset-plugin v1.0.0 requires composer-plugin-api 1.0.0 -&gt; no matching package found.<br>Potential causes:</li>
+<li>A typo in the package name</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>The package is not available in a stable-enough version according to your minimum-stability setting<br>see <a href="https://getcomposer.org/doc/04-schema.md#minimum-stability" target="_blank" rel="external">https://getcomposer.org/doc/04-schema.md#minimum-stability</a> for more details.<br>Read <a href="https://getcomposer.org/doc/articles/troubleshooting.md" target="_blank" rel="external">https://getcomposer.org/doc/articles/troubleshooting.md</a> for further common problems.<br>Installation failed, reverting ./composer.json to its original content.<br>&gt;</li>
+</ul>
+<ul>
+<li>推荐使用的 nginx 配置<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    charset utf-8;</div><div class="line">    client_max_body_size 128M;</div><div class="line">    </div><div class="line">    listen 80; ## 监听 ipv4 上的 80 端口</div><div class="line">    # listen [::]:80 default_server ipv6only=on; ## 监听 ipv6 上的 80 端口</div><div class="line">    </div><div class="line">    server_name mysite.local; </div><div class="line">    root /path/to/basic/web; </div><div class="line">    index index.php;</div><div class="line">    </div><div class="line">    access_log /path/to/basic/log/access.log main; </div><div class="line">    error_log /path/to/basic/log/error.log;</div><div class="line">    </div><div class="line">    location / &#123;</div><div class="line">        # 如果找不到真实存在的文件,把请求分发至 index.php </div><div class="line">        try_files $uri $uri/ /index.php?$args;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    # 若取消下面这段的注释,可避免 Yii 接管不存在文件的处理过程(404) </div><div class="line">    #location ~ \.(js|css|png|jpg|gif|swf|ico|pdf|mov|fla|zip|rar)$ &#123;</div><div class="line">    #   try_files $uri =404;</div><div class="line">    #&#125;</div><div class="line">    #error_page 404 /404.html;</div><div class="line">    </div><div class="line">    location ~ \.php$ &#123;</div><div class="line">        include fastcgi.conf;</div><div class="line">        fastcgi_pass 127.0.0.1:9000; </div><div class="line">        #fastcgi_pass unix:/var/run/php5-fpm.sock; </div><div class="line">        try_files $uri =404;</div><div class="line">    &#125;</div><div class="line">    location ~ /\.(ht|svn|git) &#123; </div><div class="line">        deny all;</div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>使用该配置时,你还应该在 php.ini 文件中设置 cgi.fix_pathinfo=0 ,能避免掉很多不必要的 stat() 系 统调用。<br>还要注意当运行一个 HTTPS 服务器时,需要添加 fastcgi_param HTTPS on; 一行,这样 Yii 才能正确 地判断连接是否安全。</p>
+</blockquote>
+<p><em>截至到这里，如果你的 nginx server 也配置好了，就可以访问刚才创建好的项目了，你将会看到 Yii 的欢迎界面，Congratulations!</em></p>
 
   </div>
   <footer class="article-footer">
