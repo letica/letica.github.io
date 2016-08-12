@@ -47,7 +47,7 @@ nav:
 # refer to http://duoshuo.com
 # If you use disqus then you should set disqus_shortname in your site config and disable duoshuo here.
 # You also need to set 'comments' to true in the front-matter
-#duoshuo: sprabbit
+# duoshuo: letica
 
 # jiathis share id
 # refer to http://jiathis.com
@@ -61,7 +61,7 @@ fb_app_id:
 
 # analytics ids
 google_analytics:
-baidu_statistics:
+baidu_statistics: 3c28f55ed3a230f5dc516bd83e9901c1
 
 # default creative commons
 # There are 6 kinds of combination and place 'none' to disable.

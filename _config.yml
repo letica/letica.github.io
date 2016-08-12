@@ -66,9 +66,14 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: chan
 
+# comments
+# duoshuo_shortname: letica.github.io
+disqus_shortname: letica
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
-type: git
-repo: https://github.com/letica/letica.github.io.git
-branch: master
-message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
+deploy:
+  type: git
+  repo: https://github.com/letica/letica.github.io.git
+  branch: master
+  message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
