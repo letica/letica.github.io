@@ -8,26 +8,35 @@
 
 <title>
   
-    Yii2学习笔记『二』
+    Yii2学习笔记『二』Hello world
   
 </title>
 
-<meta name="description" content="标签： yii2 PHP
+<meta name="description" content="目录
 
-目录">
+Yii应用的结构
+Hello world！
+一个更复杂的应用：表单">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Yii2学习笔记『二』">
+<meta property="og:title" content="Yii2学习笔记『二』Hello world">
 <meta property="og:url" content="http://yoursite.com/2016/08/12/yii-study-02/index.html">
 <meta property="og:site_name" content="letica's blog">
-<meta property="og:description" content="标签： yii2 PHP
+<meta property="og:description" content="目录
 
-目录">
-<meta property="og:updated_time" content="2016-08-12T10:58:32.000Z">
+Yii应用的结构
+Hello world！
+一个更复杂的应用：表单">
+<meta property="og:image" content="http://yoursite.com/img/8c1e501d04f6fac2c45c6526e.png">
+<meta property="og:image" content="http://yoursite.com/img/1ebd064b0c29334994ba9e7a8.png">
+<meta property="og:updated_time" content="2016-08-15T16:02:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yii2学习笔记『二』">
-<meta name="twitter:description" content="标签： yii2 PHP
+<meta name="twitter:title" content="Yii2学习笔记『二』Hello world">
+<meta name="twitter:description" content="目录
 
-目录">
+Yii应用的结构
+Hello world！
+一个更复杂的应用：表单">
+<meta name="twitter:image" content="http://yoursite.com/img/8c1e501d04f6fac2c45c6526e.png">
 
 
   <link rel="alternative" href="/atom.xml" title="letica&#39;s blog" type="application/atom+xml">
@@ -172,7 +181,7 @@
           <article id="post-yii-study-02" class="article article-type-post">
   
     <h1 class="article-header">
-      Yii2学习笔记『二』
+      Yii2学习笔记『二』Hello world
     </h1>
   
   
@@ -196,15 +205,82 @@
 
   </div>
   <div class="article-entry">
-    <p>标签： yii2 PHP</p>
-<blockquote>
+    <blockquote>
 <p>目录</p>
 <ol>
-<li></li>
+<li>Yii应用的结构</li>
+<li>Hello world！</li>
+<li>一个更复杂的应用：表单</li>
 </ol>
 </blockquote>
 <a id="more"></a>
 <hr>
+<h3 id="1-Yii应用的结构"><a href="#1-Yii应用的结构" class="headerlink" title="1. Yii应用的结构"></a>1. Yii应用的结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">basic/              应用根目录</div><div class="line">    composer.json   Composer 配置文件, 描述包信息</div><div class="line">    config/         包含应用配置及其它配置</div><div class="line">        console.php     控制台应用配置信息</div><div class="line">        web.php         Web 应用配置信息</div><div class="line">    commands/       包含控制台命令类</div><div class="line">    controllers/    包含控制器类</div><div class="line">    models/         包含模型类</div><div class="line">    runtime/        包含 Yii 在运行时生成的文件,例如日志和缓存文件</div><div class="line">    vendor/         包含已经安装的 Composer 包,包括 Yii 框架自身</div><div class="line">    views/          包含视图文件</div><div class="line">    yii             Yii 控制台命令执行脚本</div><div class="line">    </div><div class="line">    web/            Web 应用根目录,包含 Web 入口文件</div><div class="line">        assets/         包含 Yii 发布的资源文件(javascript 和 css)</div><div class="line">        index.php       应用入口文件</div></pre></td></tr></table></figure>
+<p>根据目录结构可以看出，Yii实现了 MVC 设计模式。一般来说，应用中的文件被分为两类，basic/web 下的和其它。前者可直接通过HTTP访问，后者不能也不应该被直接访问。</p>
+<ul>
+<li><p>一个应用的静态结构<br><img src="/img/8c1e501d04f6fac2c45c6526e.png" alt="应用的静态结构"></p>
+<p>每个应用都有一个入口脚本web/index.php，这是整个应用中唯一可以访问的php脚本。过程如下：入口脚本接受一个web请求并创建应用实例去处理它，应用在它的组件辅助下解析请求，并分派请求至MVC单元，视图使用小部件去创建复杂和动态的用户界面。</p>
+</li>
+<li><p>应用处理请求的生命周期<br><img src="/img/1ebd064b0c29334994ba9e7a8.png" alt="应用处理请求的生命周期"></p>
+<ol>
+<li>用户向入口脚本 web/index.php 发起请求。</li>
+<li>入口脚本加载应用配置并创建一个应用实例去处理请求。</li>
+<li>应用通过请求组件解析请求的路由。</li>
+<li>应用创建一个控制器实例去处理请求。</li>
+<li>控制器创建一个操作实例并针对操作执行过滤器。</li>
+<li>如果任何一个过滤器返回失败,则操作退出。</li>
+<li>如果所有过滤器都通过，操作将被执行。</li>
+<li>操作会加载一个数据模型，或许是来自数据库。</li>
+<li>操作会渲染一个视图，把数据模型提供给它。</li>
+<li>渲染结果返回给响应组件。</li>
+<li>响应组件发送渲染结果给用户浏览器。</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="2-Hello-world！"><a href="#2-Hello-world！" class="headerlink" title="2. Hello world！"></a>2. Hello world！</h3><p>按照惯例来写一个Hello world。</p>
+<h4 id="第一步，创建操作（controller）"><a href="#第一步，创建操作（controller）" class="headerlink" title="- 第一步，创建操作（controller）"></a>- 第一步，创建操作（controller）</h4><blockquote>
+<p>操作是用户可以直接访问并执行的对象，操作被组织在控制器中，一个操作的执行结果就是最终用户收到的响应内容。</p>
+</blockquote>
+<p>简单起见，我们在 <strong>controllers/SiteController.php</strong> 里创建，在class里添加如下的方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public function actionSay($message = &apos;Hello&apos;)</div><div class="line">&#123;</div><div class="line">    return $this-&gt;render(&apos;say&apos;, [&apos;message&apos; =&gt; $message]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>操作ID / action-name： <strong>say</strong></li>
+<li>方法名 / actionActionName： <strong>actionSay</strong></li>
+<li>路由： site/say</li>
+</ul>
+<h4 id="第二步，创建视图（view）"><a href="#第二步，创建视图（view）" class="headerlink" title="- 第二步，创建视图（view）"></a>- 第二步，创建视图（view）</h4><p>视图是你用来生成响应内容的脚本，say 视图应该存为 <strong>views/site/say.php</strong> 文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">use yii\helpers\Html;</div><div class="line">?&gt;</div><div class="line"></div><div class="line">&lt;?= Html::encode($message) ?&gt;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>当一个操作中调用了 <strong>[[yii\web\Controller::render()|render()]]</strong> 方法时，它将会按 <strong>views/控制器ID/视图名.php</strong> 路径加载 PHP 文件。</p>
+</blockquote>
+<h4 id="第三步，访问页面"><a href="#第三步，访问页面" class="headerlink" title="- 第三步，访问页面"></a>- 第三步，访问页面</h4><p><a href="http://localhost:8080/index.php?r=site/say&amp;message=Hello+World" target="_blank" rel="external">http://localhost:8080/index.php?r=site/say&amp;message=Hello+World</a><br>当当当~，通过这个链接访问页面就可以看到我们刚刚创建的Hello World了！</p>
+<p>参数解释：</p>
+<ul>
+<li><strong>r</strong> 代表 <strong>路由</strong>，它是整个应用级的，指向特定操作的独立ID，格式是 <strong>控制器ID/操作ID</strong>，通过路由即可判断出请求由哪个控制器来处理，具体工作由哪个方法来执行。</li>
+<li><strong>message</strong> 作为参数传入 <strong>actionSay()</strong> 方法，省略时按形参处的默认值处理。</li>
+</ul>
+<hr>
+<h3 id="3-一个更复杂的应用：表单"><a href="#3-一个更复杂的应用：表单" class="headerlink" title="3. 一个更复杂的应用：表单"></a>3. 一个更复杂的应用：表单</h3><h4 id="第一步，创建模型（model）"><a href="#第一步，创建模型（model）" class="headerlink" title="- 第一步，创建模型（model）"></a>- 第一步，创建模型（model）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">namespace app\models;</div><div class="line"></div><div class="line">use Yii;</div><div class="line">use yii\base\Model;</div><div class="line"></div><div class="line">/**</div><div class="line"> * EntryForm is the model behind the entry form.</div><div class="line"> */</div><div class="line">class EntryForm extends Model</div><div class="line">&#123;</div><div class="line">    public $name;</div><div class="line">    public $email;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * @return array the validation rules.</div><div class="line">     */</div><div class="line">    public function rules()</div><div class="line">    &#123;</div><div class="line">        return [</div><div class="line">            // name, email are required</div><div class="line">            [[&apos;name&apos;, &apos;email&apos;], &apos;required&apos;],</div><div class="line">            // email has to be a valid email address</div><div class="line">            [&apos;email&apos;, &apos;email&apos;],</div><div class="line">        ];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>解释：</p>
+<ul>
+<li><strong>yii\base\Model</strong> 是Yii提供的一个模型基类，通常用来标识数据，且与数据表无关。如与数据表有关联，推荐使用 <strong>yii\db\ActiveRecord</strong>，该类继承自 yii\base\Model，增加了数据库处理。</li>
+<li><strong>rules()</strong> 返回数据验证规则的集合。如果你有一个处理用户提交数据的 EntryForm 对象，可通过 <strong>validate()</strong> 方法触发数据验证，如数据验证失败，<strong>hasErrors()</strong> 将为 true，失败信息可通过 <strong>getErrors()</strong> 获取。</li>
+</ul>
+<h4 id="第二步，创建操作（controller）"><a href="#第二步，创建操作（controller）" class="headerlink" title="- 第二步，创建操作（controller）"></a>- 第二步，创建操作（controller）</h4><p>依然是在 SiteController 中创建。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public function actionEntry()</div><div class="line">&#123;</div><div class="line">    $model = new EntryForm;</div><div class="line">    if ($model-&gt;load(Yii::$app-&gt;request-&gt;post())</div><div class="line">        &amp;&amp; $model.validate()</div><div class="line">    ) &#123;</div><div class="line">        return $this-&gt;render(&apos;entry-confirm&apos;, [&apos;model&apos; =&gt; $model]);</div><div class="line">    &#125; else &#123;</div><div class="line">        return $this-&gt;render(&apos;entry&apos;, [&apos;model&apos; =&gt; $model]);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>首先创建一个 EntryForm 对象。然后尝试从 \$_POST 获取用户提交的数据，由 Yii 的 [[yii\web\Request::post()]] 方法负责获取。</li>
+<li><strong>Yii::$app</strong> 代表应用实例，它是一个全局可访问的单例，同时也是一个<strong>服务定位器</strong>，能提供request、reponse、db鞥等特定功能的组件。</li>
+</ul>
+<h4 id="第三步，创建视图（view）"><a href="#第三步，创建视图（view）" class="headerlink" title="- 第三步，创建视图（view）"></a>- 第三步，创建视图（view）</h4><p>视图1 views/site/entry.php<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">use yii\helpers\Html;</div><div class="line">use yii\widgets\ActiveForm;</div><div class="line">?&gt;</div><div class="line"></div><div class="line">&lt;?php $form = ActiveForm::begin(); ?&gt;</div><div class="line">&lt;?= $form-&gt;field($model, &apos;name&apos;) ?&gt;</div><div class="line">&lt;?= $form-&gt;field($model, &apos;email&apos;) ?&gt;</div><div class="line">&lt;div class=&quot;form-group&quot;&gt;</div><div class="line">    &lt;?= Html::submitButton(&apos;Submit&apos;, [&apos;class&apos; =&gt; &apos;btn btn-primary&apos;]) ?&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;?php ActiveForm::end(); ?&gt;</div></pre></td></tr></table></figure></p>
+<p>视图2 views/site/entry-confirm.php<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">use yii\helpers\Html;</div><div class="line">?&gt;</div><div class="line"></div><div class="line">&lt;p&gt;You have entered the following information:&lt;/p&gt;</div><div class="line">&lt;ul&gt;</div><div class="line">    &lt;li&gt;</div><div class="line">        &lt;label&gt;Name&lt;/label&gt;: &lt;?= Html::encode($model-&gt;name) ?&gt;</div><div class="line">    &lt;/li&gt;</div><div class="line">    &lt;li&gt;</div><div class="line">        &lt;label&gt;Email&lt;/label&gt;: &lt;?= Html::encode($model-&gt;email) ?&gt;</div><div class="line">    &lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>强大的表单部件  [[yii\widgets\ActiveForm|ActiveForm]] ， <strong>begin()</strong> 和 <strong>end()</strong> 分别渲染表单的开始和结束。</li>
+</ul>
+<h4 id="第四步，访问页面"><a href="#第四步，访问页面" class="headerlink" title="- 第四步，访问页面"></a>- 第四步，访问页面</h4><p><a href="http://localhost:8080/index.php?r=site/entry" target="_blank" rel="external">http://localhost:8080/index.php?r=site/entry</a><br>当当当~，通过这个链接访问页面就可以看到一个简单的表单了，当不输入或email输入有误的情况下点击提交按钮时，表单会有相应的提示；验证通过后会跳转到成功页面，并将输入的内容打印出来。amazing~</p>
+<p>接下来，就可以学习一下数据库操作啦。</p>
+<hr>
+<p>学到这里之后发现，Yii的view部分的小部件太强大了好么，作为写过很多smarty的童鞋来说，为什么不早点学学这些 ,,Ծ‸Ծ,,<br>学无止境~~hoho</p>
 
   </div>
   <footer class="article-footer">
