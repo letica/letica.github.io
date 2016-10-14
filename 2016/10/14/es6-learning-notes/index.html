@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>ES6 学习笔记 | Hug letica</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="发展历史
+环境
+使用nvm管理node版本
+ES6 相关
+Babel转码工具
+
+
+语法 2.1 变量声明 2.2 解构赋值 2.3 …
+
+
+book: ECMAScript 6 入门">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6 学习笔记">
+<meta property="og:url" content="http://letica.github.io/2016/10/14/es6-learning-notes/index.html">
+<meta property="og:site_name" content="Hug letica">
+<meta property="og:description" content="发展历史
+环境
+使用nvm管理node版本
+ES6 相关
+Babel转码工具
+
+
+语法 2.1 变量声明 2.2 解构赋值 2.3 …
+
+
+book: ECMAScript 6 入门">
+<meta property="og:updated_time" content="2016-10-14T11:08:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6 学习笔记">
+<meta name="twitter:description" content="发展历史
+环境
+使用nvm管理node版本
+ES6 相关
+Babel转码工具
+
+
+语法 2.1 变量声明 2.2 解构赋值 2.3 …
+
+
+book: ECMAScript 6 入门">
+  
+    <link rel="alternative" href="/atom.xml" title="Hug letica" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//favicon.png">
+  
+  <script src="/style.js"></script>
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="https://avatars2.githubusercontent.com/u/5069297?v=3&amp;s=460" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Letica</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Hug letica</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/随笔">随笔</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">Tags</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">Links</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">About</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/letica" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/5762832411" title="weibo">weibo</a>
+		        
+					<a class="douban" target="_blank" href="https://www.douban.com/people/Letica/" title="douban">douban</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Letica</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="https://avatars2.githubusercontent.com/u/5069297?v=3&amp;s=460" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Letica</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Hug letica</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/tags/随笔">随笔</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/letica" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/5762832411" title="weibo">weibo</a>
+			        
+						<a class="douban" target="_blank" href="https://www.douban.com/people/Letica/" title="douban">douban</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-es6-learning-notes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ES6 学习笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<ol>
+<li>发展历史</li>
+<li>环境<ul>
+<li>使用nvm管理node版本</li>
+<li>ES6 相关</li>
+<li>Babel转码工具</li>
+</ul>
+</li>
+<li>语法<br> 2.1 变量声明<br> 2.2 解构赋值<br> 2.3 …</li>
+</ol>
+</blockquote>
+<p>book: <a href="http://es6.ruanyifeng.com/" target="_blank" rel="external">ECMAScript 6 入门</a></p>
+<a id="more"></a>
+<hr>
+<h2 id="0-发展历史"><a href="#0-发展历史" class="headerlink" title="0. 发展历史"></a>0. 发展历史</h2><p>1996.11，ECMAScript 1.0发布<br>1998.6，ECMAScript 2.0发布<br>1999.12，ECMAScript 3.0发布<br>2000年之后直到2007.10，ECMAScript 4.0草案发布，最终因分歧较大未发布正式版本<br>2009.12，ECMAScript 5.0<br>2011.6，ECMAScript 5.1发布<br>2015.6，ES2015（《ECMAScript 2015标准》）发布<br>2016.6，ES2016（《ECMAScript 2016标准》）发布</p>
+<blockquote>
+<p>ES6既是一个历史名词，也是一个泛指，含义是5.1版以后的JavaScript的下一代标准，涵盖了ES2015、ES2016、ES2017等等，而ES2015则是正式名称，特指该年发布的正式版本的语言标准。本书中提到“ES6”的地方，一般是指ES2015标准，但有时也是泛指“下一代JavaScript语言”。</p>
+</blockquote>
+<p>ECMAScript 与 Javascript 的区别是，前者是后者的规格，后者是前者的一种实现。</p>
+<h2 id="1-环境"><a href="#1-环境" class="headerlink" title="1. 环境"></a>1. 环境</h2><h3 id="使用nvm管理node版本"><a href="#使用nvm管理node版本" class="headerlink" title="使用nvm管理node版本"></a>使用nvm管理node版本</h3><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="meta">## 安装nvm，&lt;version number&gt;需要用版本号替换，目前是v0.32.0</span></div><div class="line">$ curl -o- https:<span class="comment">//raw.githubusercontent.com/creationix/nvm/&lt;version number&gt;/install.sh | bash</span></div><div class="line"></div><div class="line"><span class="meta">## 激活nvm</span></div><div class="line">$ source ~/.nvm/nvm.sh</div><div class="line"></div><div class="line"><span class="meta">## 列出远程node版本</span></div><div class="line">$ nvm ls-remote</div><div class="line"></div><div class="line"><span class="meta">## 安装指定版本的node</span></div><div class="line">$ nvm install v4<span class="number">.1</span><span class="number">.2</span></div><div class="line"></div><div class="line"><span class="meta">## 切换到指定版本</span></div><div class="line">$ nvm use v4<span class="number">.1</span><span class="number">.2</span></div><div class="line"></div><div class="line"><span class="meta">## 查看当前已安装的node版本</span></div><div class="line">$ nvm ls</div><div class="line"></div><div class="line"><span class="meta">## 设置指定版本为默认的node版本</span></div><div class="line">$ nvm alias <span class="keyword">default</span> stable</div><div class="line"></div><div class="line"><span class="meta">## 查看当前node版本</span></div><div class="line">$ node -v</div><div class="line"></div><div class="line"><span class="meta">## 查看node安装目录</span></div><div class="line">$ which node</div><div class="line"></div><div class="line"><span class="meta">## npm安装的全局目录</span></div><div class="line">$ npm config <span class="keyword">get</span> prefix</div><div class="line">$ npm config <span class="keyword">set</span> prefix /usr/local/</div></pre></td></tr></table></figure>
+<h4 id="查看ES6支持程度"><a href="#查看ES6支持程度" class="headerlink" title="查看ES6支持程度"></a>查看ES6支持程度</h4><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## 查看Node所有已经实现的ES6特性</span></div><div class="line">$ <span class="keyword">node</span> <span class="title">--v8-options</span> | grep harmony</div><div class="line"></div><div class="line"><span class="comment">## 查看你正在使用的Node环境对ES6的支持程度</span></div><div class="line">$ npm install -g es-checker</div><div class="line">$ es-checker</div></pre></td></tr></table></figure>
+<h3 id="Babel转码工具"><a href="#Babel转码工具" class="headerlink" title="Babel转码工具"></a>Babel转码工具</h3><h4 id="配置文件-babelrc"><a href="#配置文件-babelrc" class="headerlink" title="配置文件.babelrc"></a>配置文件.babelrc</h4><p>Babel的配置文件是.babelrc，存放在项目的根目录下。使用Babel的第一步，就是配置这个文件。</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    // 设定转码规则</div><div class="line">    <span class="string">"presets"</span>: [<span class="string">"latest"</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>注意，以下所有Babel工具和模块的使用，都必须先写好.babelrc。</strong></p>
+<h4 id="babel-cli-其它使用方式"><a href="#babel-cli-其它使用方式" class="headerlink" title="babel-cli 其它使用方式"></a>babel-cli <a href="http://babeljs.io/docs/setup/#installation" target="_blank" rel="external">其它使用方式</a></h4><figure class="highlight q"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --<span class="built_in">save</span>-<span class="built_in">dev</span> babel-cli</div></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="http://babeljs.io/docs/setup/#installation" target="_blank" rel="external">Babel官网</a>推荐将 babel-cli 安装在项目本地，原因有二：</p>
+<ul>
+<li>Different projects on the same machine can depend on different versions of Babel allowing you to update one at a time.</li>
+<li>It means you do not have an implicit dependency on the environment you are working in. Making your project far more portable and easier to setup.</li>
+</ul>
+</blockquote>
+<p>安装完成后就可以编译es6代码了。<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 转码结果输出到标准输出</span></div><div class="line">$ babel example.js</div><div class="line"></div><div class="line"><span class="comment"># 转码结果写入一个文件，--out-file 或 -o 参数指定输出文件</span></div><div class="line">$ babel example.js --<span class="keyword">out</span>-file compiled.js</div><div class="line"><span class="comment"># 或者</span></div><div class="line">$ babel example.js -o compiled.js</div><div class="line"></div><div class="line"><span class="comment"># 整个目录转码，--out-dir 或 -d 参数指定输出目录</span></div><div class="line">$ babel src --<span class="keyword">out</span>-dir <span class="class"><span class="keyword">lib</span></span></div><div class="line"><span class="comment"># 或者</span></div><div class="line">$ babel src -d <span class="class"><span class="keyword">lib</span></span></div><div class="line"></div><div class="line"><span class="comment"># -s 参数生成source map文件</span></div><div class="line">$ babel src -d <span class="class"><span class="keyword">lib</span> -<span class="title">s</span></span></div></pre></td></tr></table></figure></p>
+<h4 id="babel-node"><a href="#babel-node" class="headerlink" title="babel-node"></a>babel-node</h4><p>babel-cli自带babel-node命令，可以直接运行ES6代码。</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">$ babel-<span class="keyword">node</span></div><div class="line"><span class="title">&gt; (x</span> =&gt; x * <span class="number">2</span>)(<span class="number">1</span>)</div><div class="line"><span class="number">2</span></div><div class="line"></div><div class="line"><span class="comment">## 直接运行文件</span></div><div class="line">$ babel-<span class="keyword">node</span> <span class="title">es6</span>.js</div><div class="line"><span class="number">2</span></div><div class="line"></div><div class="line"><span class="comment">## 改写package.json，使用babel-node替代node，这样script.js本身就不用做任何转码处理。</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"scripts"</span>: &#123;</div><div class="line">    <span class="string">"script-name"</span>: <span class="string">"babel-node script.js"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="babel-register"><a href="#babel-register" class="headerlink" title="babel-register"></a>babel-register</h4><p>babel-register模块改写require命令，为它加上一个钩子。此后，每当使用require加载.js、.jsx、.es和.es6后缀名的文件，就会先用Babel进行转码。<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">npm</span> install --save-dev babel-register</div><div class="line"></div><div class="line"><span class="regexp">//</span> 使用（就不需要手动对index.js转码了，只会对<span class="built_in">require</span>命令加载的文件转码，而不会对当前文件转码。另外，由于它是实时转码，所以只适合在开发环境使用。）</div><div class="line"><span class="built_in">require</span>(<span class="string">"babel-register"</span>);</div><div class="line"><span class="built_in">require</span>(<span class="string">"./index.js"</span>);</div></pre></td></tr></table></figure></p>
+<h4 id="babel-core"><a href="#babel-core" class="headerlink" title="babel-core"></a>babel-core</h4><p>如果某些代码需要调用Babel的API进行转码，就要使用babel-core模块。<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">$</span> npm install babel-core --save</div><div class="line"></div><div class="line"><span class="comment">// 使用：</span></div><div class="line">var babel = require(<span class="string">'babel-core'</span>);</div><div class="line"><span class="comment">// 字符串转码</span></div><div class="line">babel.transform(<span class="string">'code();'</span>, <span class="keyword">options</span>);</div><div class="line"><span class="comment">// =&gt; &#123; code, map, ast &#125;</span></div></pre></td></tr></table></figure></p>
+<h2 id="2-语法"><a href="#2-语法" class="headerlink" title="2. 语法"></a>2. 语法</h2><h4 id="2-1-变量声明"><a href="#2-1-变量声明" class="headerlink" title="2.1 变量声明"></a>2.1 变量声明</h4><blockquote>
+<p>var/function/ let/const/import/class，新增后四种。</p>
+</blockquote>
+<ul>
+<li><p>let：声明变量，类似var，与var区别如下，<br>只在let所在代码块内有效，for语句的计数器很适合用let声明；<br>不存在变量提升，一定要先声明后使用；<br>暂时性死区，在一个作用域内所有变量都需要先声明后使用，否则会导致ReferenceError；<br>不允许重复声明；</p>
+</li>
+<li><p>const：声明只读变量。<br>除只读外，其它特性与let类似。<br>const定义引用类型时，表示的是地址可读，如对象或数组，其值仍然可修改，如果要冻结，可使用Object.freeze();</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> foo = <span class="built_in">Object</span>.freeze(&#123;&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 常规模式时，下面一行不起作用；</span></div><div class="line"><span class="comment">// 严格模式时，该行会报错</span></div><div class="line">foo.prop = <span class="number">123</span>;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>ES5中，var或function定义的全局变量与顶层对象(window/global)的属性等价。<br>ES6中，let、const、class定义的全局变量不再跟顶层对象有关联。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"><span class="comment">// 如果在Node的REPL环境，可以写成global.a</span></div><div class="line"><span class="comment">// 或者采用通用方法，写成this.a</span></div><div class="line"><span class="built_in">window</span>.a <span class="comment">// 1</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> b = <span class="number">1</span>;</div><div class="line"><span class="built_in">window</span>.b <span class="comment">// undefined</span></div></pre></td></tr></table></figure></p>
+</blockquote>
+<ul>
+<li>import </li>
+<li>class</li>
+</ul>
+<h4 id="2-2-解构赋值"><a href="#2-2-解构赋值" class="headerlink" title="2.2 解构赋值"></a>2.2 解构赋值</h4><ul>
+<li><p>数组的解构赋值<br>只要某种数据结构具有Iterator接口，都可以采用数组形式的解构赋值。如果解构失败（严格相等于undefined），变量的值就等于undefined。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> [x1, y1, z1] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]; <span class="comment">// x1 = 1; y1 = 2; z1 = 3;</span></div><div class="line"><span class="keyword">var</span> [x2, y2] = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="string">'a'</span>]); <span class="comment">// x2 = 'a'; y2 = undefined;</span></div><div class="line"></div><div class="line"><span class="comment">// 默认值</span></div><div class="line"><span class="comment">// 注意，ES6内部使用严格相等运算符（===），判断一个位置是否有值。所以，如果一个数组成员不严格等于undefined，默认值是不会生效的。</span></div><div class="line"><span class="keyword">var</span> [x3 = <span class="number">1</span>] = []; <span class="comment">// x3 = 1</span></div><div class="line"><span class="keyword">var</span> [x4 = <span class="number">1</span>] = [<span class="keyword">null</span>]; <span class="comment">// x4 = null</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>对象的解构赋值<br>等号左边如有冒号，冒号之前是模式，最终会将<strong>等号右边对应模式的值</strong>赋值给<strong>冒号之后的变量</strong>。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 按照对象的key进行赋值</span></div><div class="line">var &#123;foo, bar&#125; = &#123;<span class="string">foo:</span> <span class="string">'aaa'</span>, <span class="string">bar:</span> <span class="string">'bbb'</span>&#125;; <span class="comment">// foo = 'aaa'; bar = 'bbb'</span></div><div class="line"><span class="comment">// 等价于：</span></div><div class="line">var &#123; <span class="string">foo:</span> foo, <span class="string">bar:</span> bar &#125; = &#123; <span class="string">foo:</span> <span class="string">'aaa'</span>, <span class="string">bar:</span> <span class="string">'bbb'</span>&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 模式</span></div><div class="line">var &#123;<span class="string">foo:</span> baz&#125; = &#123;<span class="string">foo:</span> <span class="string">'aaa'</span>&#125;; <span class="comment">// baz = 'aaa'; foo = undefined</span></div><div class="line"></div><div class="line"><span class="comment">// 指定默认值</span></div><div class="line">var &#123;<span class="string">x:</span> y = <span class="number">3</span>&#125; = &#123;&#125;; <span class="comment">// y = 3;</span></div><div class="line">var &#123;<span class="string">x:</span> y = <span class="number">3</span>&#125; = &#123;<span class="string">x:</span> <span class="number">5</span>&#125;; <span class="comment">// y = 5</span></div><div class="line"></div><div class="line"><span class="comment">// 将一个已声明的变量用于解构赋值时，注意写法，第二行的小括号不可省略，否则JS引擎会将&#123;x&#125;作为代码块处理从而报错。</span></div><div class="line">var x;</div><div class="line">(&#123;x&#125; = &#123;<span class="string">x:</span> <span class="number">1</span>&#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>字符串的解构赋值</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> [a, b, c] = <span class="string">'hello'</span>; <span class="comment">// a = 'h', b = 'e', c = 'l'</span></div><div class="line"><span class="keyword">var</span> &#123;length: <span class="built_in">len</span>&#125; = <span class="string">'hello'</span>; <span class="comment">// len = 5</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>数值和布尔值的解构赋值<br>解构赋值的规则是，只要等号右边的值不是对象，就先将其转为对象。</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> &#123;<span class="built_in">toString</span>: s&#125; = <span class="number">123</span>;</div><div class="line"><span class="attr">s</span> === Number.prototype.<span class="built_in">toString</span> // <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> &#123;<span class="built_in">toString</span>: s&#125; = <span class="literal">true</span>;</div><div class="line"><span class="attr">s</span> === Boolean.prototype.<span class="built_in">toString</span> // <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> &#123; prop: x &#125; = undefined; // TypeError</div><div class="line"><span class="keyword">let</span> &#123; prop: y &#125; = <span class="literal">null</span>; // TypeError</div></pre></td></tr></table></figure>
+</li>
+<li><p>函数参数的解构赋值<br>与变量的解构赋值一致，只是这个变量是作为函数的参数而已。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function <span class="built_in">move</span>(&#123;x = <span class="number">0</span>, y = <span class="number">0</span>&#125; = &#123;&#125;) &#123;</div><div class="line">  <span class="built_in">return</span> [x, y];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">move</span>(&#123;x: <span class="number">3</span>, y: <span class="number">8</span>&#125;); <span class="comment">// [3, 8]</span></div><div class="line"><span class="built_in">move</span>(&#123;x: <span class="number">3</span>&#125;); <span class="comment">// [3, 0]</span></div><div class="line"><span class="built_in">move</span>(&#123;&#125;); <span class="comment">// [0, 0]</span></div><div class="line"><span class="built_in">move</span>(); <span class="comment">// [0, 0]</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>小括号的使用：<br>只有赋值语句的非模式部分，可以使用圆括号。<br>错误：<br>var [(a)] = [1];<br>function f([(z)]) {return z;}<br>({p: a}) = {p: 42};<br>[({p: a}), {x: c}] = [{}, {}];<br>正确：<br>[(b)] = [3];<br>({p: (d)} = {});</p>
+</blockquote>
+<ul>
+<li><p>用途</p>
+<ul>
+<li><p>交换变量的值</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">[x, y]</span> = <span class="string">[y, x]</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>从函数返回多个值</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 返回一个数组</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span><span class="params">()</span> </span>&#123;</div><div class="line">  <span class="keyword">return</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> [a, b, c] = example();</div><div class="line"></div><div class="line"><span class="comment">// 返回一个对象</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span><span class="params">()</span> </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    foo: <span class="number">1</span>,</div><div class="line">    bar: <span class="number">2</span></div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> &#123;foo, bar&#125; = example();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>- 函数参数的定义
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 参数是一组有次序的值</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span><span class="params">([x, y, z])</span> <span class="comment">&#123; ... &#125;</span></span></div><div class="line"><span class="title">f</span><span class="params">([1, 2, 3])</span>;</div><div class="line"></div><div class="line"><span class="comment">// 参数是一组无次序的值</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span><span class="params">(&#123;x, y, z&#125;)</span> <span class="comment">&#123; ... &#125;</span></span></div><div class="line"><span class="title">f</span><span class="params">(&#123;z: 3, y: 2, x: 1&#125;)</span>;</div></pre></td></tr></table></figure>
+
+
+- 提取JSON数据
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var jsonData = &#123;</div><div class="line">    id: <span class="number">42</span>,</div><div class="line">    <span class="keyword">status</span>: <span class="string">"OK"</span>,</div><div class="line">    <span class="keyword">data</span>: [<span class="number">867</span>, <span class="number">5309</span>]</div><div class="line">&#125;;</div><div class="line">let &#123;id, <span class="keyword">status</span>, <span class="keyword">data</span>: <span class="keyword">number</span>&#125; = jsonData;</div><div class="line">console.<span class="built_in">log</span>(id, <span class="keyword">status</span>, <span class="keyword">number</span>); // <span class="number">42</span>, <span class="string">"OK"</span>, [<span class="number">867</span>, <span class="number">5309</span>]</div></pre></td></tr></table></figure>
+
+
+- 函数参数的默认值
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">jQuery.ajax = <span class="function"><span class="keyword">function</span> <span class="params">(url, &#123;</span></span></div><div class="line">    async = true,</div><div class="line">    beforeSend = function () &#123;&#125;,</div><div class="line">    cache = <span class="literal">true</span>,</div><div class="line">    complete = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;&#125;,</div><div class="line">    crossDomain = <span class="literal">false</span>,</div><div class="line">    global = <span class="literal">true</span>,</div><div class="line">    <span class="comment">// ... more config</span></div><div class="line">&#125;) &#123;</div><div class="line">  <span class="comment">// ... do stuff</span></div><div class="line">&#125;;</div><div class="line"><span class="comment">// 避免了 var foo = config.foo || 'default foo' 这样的语句</span></div></pre></td></tr></table></figure>
+
+
+- 遍历Map
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">var</span> <span class="built_in">map</span> = <span class="built_in">new</span> Map();</div><div class="line"><span class="built_in">map</span>.set('<span class="built_in">first</span>', 'hello');</div><div class="line"><span class="built_in">map</span>.set('<span class="built_in">second</span>', 'world');</div><div class="line"></div><div class="line">// [<span class="built_in">key</span>] 或 [, value] 可以只获取<span class="built_in">key</span>或只获取value</div><div class="line"><span class="keyword">for</span> (<span class="built_in">let</span> [<span class="built_in">key</span>, value] of <span class="built_in">map</span>) &#123;</div><div class="line">  console.<span class="built_in">log</span>(<span class="built_in">key</span> + <span class="string">" is "</span> + value);</div><div class="line">&#125;</div><div class="line">// <span class="built_in">first</span> <span class="built_in">is</span> hello</div><div class="line">// <span class="built_in">second</span> <span class="built_in">is</span> world</div></pre></td></tr></table></figure>
+
+
+- 输入模块的指定方法
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> &#123;SourceMapConsumer, SourceNode&#125; = <span class="built_in">require</span>(<span class="string">"source-map"</span>);</div></pre></td></tr></table></figure>
+</code></pre>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/14/es6-learning-notes/" class="archive-article-date">
+  	<time datetime="2016-10-14T11:07:06.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-14</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-price-tags"></i>
+	<a class="article-category-link" href="/categories/front-end/">front-end</a>
+	</div>
+
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/10/10/front-end-auto-testing/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前端自动化测试</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'letica'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Letica
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/journal/" style="font-size: 10px;">journal</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/yii2/" style="font-size: 20px;">yii2</a> <a href="/tags/规范/" style="font-size: 10px;">规范</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://cheerego.com/">cheerego</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">^_*</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
