@@ -181,512 +181,512 @@ className 命名规范">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>前端项目的各种规范对于一个本着对项目负责对自己的代码负责的前端er来说，是必不可少的。<br>以下整理一些基础的规范，供参考。<br><em>当别人接手到你的项目，觉得一切都特别清晰的时候，你可以自豪的说这是哥写的~！</em></p>
+        <p>&#x524D;&#x7AEF;&#x9879;&#x76EE;&#x7684;&#x5404;&#x79CD;&#x89C4;&#x8303;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x672C;&#x7740;&#x5BF9;&#x9879;&#x76EE;&#x8D1F;&#x8D23;&#x5BF9;&#x81EA;&#x5DF1;&#x7684;&#x4EE3;&#x7801;&#x8D1F;&#x8D23;&#x7684;&#x524D;&#x7AEF;er&#x6765;&#x8BF4;&#xFF0C;&#x662F;&#x5FC5;&#x4E0D;&#x53EF;&#x5C11;&#x7684;&#x3002;<br>&#x4EE5;&#x4E0B;&#x6574;&#x7406;&#x4E00;&#x4E9B;&#x57FA;&#x7840;&#x7684;&#x89C4;&#x8303;&#xFF0C;&#x4F9B;&#x53C2;&#x8003;&#x3002;<br><em>&#x5F53;&#x522B;&#x4EBA;&#x63A5;&#x624B;&#x5230;&#x4F60;&#x7684;&#x9879;&#x76EE;&#xFF0C;&#x89C9;&#x5F97;&#x4E00;&#x5207;&#x90FD;&#x7279;&#x522B;&#x6E05;&#x6670;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x81EA;&#x8C6A;&#x7684;&#x8BF4;&#x8FD9;&#x662F;&#x54E5;&#x5199;&#x7684;~&#xFF01;</em></p>
 <blockquote>
 <ul>
-<li><a href="#dir">项目目录结构</a></li>
-<li><a href="#src_asset_dir">开发和部署目录结构</a></li>
-<li><a href="#naming_spec">命名规范</a><ul>
-<li>目录命名规范</li>
-<li>文件命名规范</li>
-<li>className 命名规范</li>
+<li><a href="#dir">&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x7ED3;&#x6784;</a></li>
+<li><a href="#src_asset_dir">&#x5F00;&#x53D1;&#x548C;&#x90E8;&#x7F72;&#x76EE;&#x5F55;&#x7ED3;&#x6784;</a></li>
+<li><a href="#naming_spec">&#x547D;&#x540D;&#x89C4;&#x8303;</a><ul>
+<li>&#x76EE;&#x5F55;&#x547D;&#x540D;&#x89C4;&#x8303;</li>
+<li>&#x6587;&#x4EF6;&#x547D;&#x540D;&#x89C4;&#x8303;</li>
+<li>className &#x547D;&#x540D;&#x89C4;&#x8303;</li>
 </ul>
 </li>
 </ul>
 </blockquote>
 <a id="more"></a>
 <hr>
-<h2 id="项目目录结构"><a href="#项目目录结构" class="headerlink" title="项目目录结构"></a><h3 id="dir">项目目录结构</h3></h2><p>包括但不限于以下内容：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$&#123;root&#125;</span>/</div><div class="line">    web/</div><div class="line">        src/</div><div class="line">            ...</div><div class="line">        asset/</div><div class="line">            ...</div><div class="line">        dep/</div><div class="line">        build/</div><div class="line">        <span class="built_in">test</span>/</div><div class="line">        doc/</div><div class="line">        package.json</div><div class="line">        README.md</div></pre></td></tr></table></figure></p>
+<h2 id="&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x7ED3;&#x6784;"><a href="#&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x7ED3;&#x6784;" class="headerlink" title="&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x7ED3;&#x6784;"></a><h3 id="&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x7ED3;&#x6784;">&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x7ED3;&#x6784;</h3></h2><p>&#x5305;&#x62EC;&#x4F46;&#x4E0D;&#x9650;&#x4E8E;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#xFF1A;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="variable">${root}</span>/</div><div class="line">    web/</div><div class="line">        src/</div><div class="line">            ...</div><div class="line">        asset/</div><div class="line">            ...</div><div class="line">        dep/</div><div class="line">        build/</div><div class="line">        <span class="built_in">test</span>/</div><div class="line">        doc/</div><div class="line">        package.json</div><div class="line">        README.md</div></pre></td></tr></table></figure></p>
 <ul>
-<li><p>\${root}/<br>${root} 为项目名称。</p>
+<li><p>\${root}/<br>${root} &#x4E3A;&#x9879;&#x76EE;&#x540D;&#x79F0;&#x3002;</p>
 </li>
-<li><p>web/<br>web 目录为该项目下的前端模块，如果仅包括前端模块，该层可省略。</p>
+<li><p>web/<br>web &#x76EE;&#x5F55;&#x4E3A;&#x8BE5;&#x9879;&#x76EE;&#x4E0B;&#x7684;&#x524D;&#x7AEF;&#x6A21;&#x5757;&#xFF0C;&#x5982;&#x679C;&#x4EC5;&#x5305;&#x62EC;&#x524D;&#x7AEF;&#x6A21;&#x5757;&#xFF0C;&#x8BE5;&#x5C42;&#x53EF;&#x7701;&#x7565;&#x3002;</p>
 </li>
-<li><p>src/<br>前端开发目录。</p>
+<li><p>src/<br>&#x524D;&#x7AEF;&#x5F00;&#x53D1;&#x76EE;&#x5F55;&#x3002;</p>
 </li>
-<li><p>asset/<br>前端部署目录。</p>
+<li><p>asset/<br>&#x524D;&#x7AEF;&#x90E8;&#x7F72;&#x76EE;&#x5F55;&#x3002;</p>
 </li>
-<li><p>dep/<br>用于存放依赖的第三方包，不允许做任何改动。</p>
+<li><p>dep/<br>&#x7528;&#x4E8E;&#x5B58;&#x653E;&#x4F9D;&#x8D56;&#x7684;&#x7B2C;&#x4E09;&#x65B9;&#x5305;&#xFF0C;&#x4E0D;&#x5141;&#x8BB8;&#x505A;&#x4EFB;&#x4F55;&#x6539;&#x52A8;&#x3002;</p>
 <blockquote>
-<p>第三方依赖通过 <code>npm</code> 安装时，默认安装在 <code>node_modules</code> 目录下，无须做改动，部署时配置好部署规则即可。</p>
+<p>&#x7B2C;&#x4E09;&#x65B9;&#x4F9D;&#x8D56;&#x901A;&#x8FC7; <code>npm</code> &#x5B89;&#x88C5;&#x65F6;&#xFF0C;&#x9ED8;&#x8BA4;&#x5B89;&#x88C5;&#x5728; <code>node_modules</code> &#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x65E0;&#x987B;&#x505A;&#x6539;&#x52A8;&#xFF0C;&#x90E8;&#x7F72;&#x65F6;&#x914D;&#x7F6E;&#x597D;&#x90E8;&#x7F72;&#x89C4;&#x5219;&#x5373;&#x53EF;&#x3002;</p>
 </blockquote>
 </li>
-<li><p>build/<br>用于存放工具类脚本。</p>
+<li><p>build/<br>&#x7528;&#x4E8E;&#x5B58;&#x653E;&#x5DE5;&#x5177;&#x7C7B;&#x811A;&#x672C;&#x3002;</p>
 </li>
-<li><p>test/<br>用于存放测试用例以及开发阶段的模拟数据。</p>
+<li><p>test/<br>&#x7528;&#x4E8E;&#x5B58;&#x653E;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x4EE5;&#x53CA;&#x5F00;&#x53D1;&#x9636;&#x6BB5;&#x7684;&#x6A21;&#x62DF;&#x6570;&#x636E;&#x3002;</p>
 </li>
-<li><p>doc/<br>用于存放项目文档。</p>
+<li><p>doc/<br>&#x7528;&#x4E8E;&#x5B58;&#x653E;&#x9879;&#x76EE;&#x6587;&#x6863;&#x3002;</p>
 </li>
-<li><p>package.json<br>项目描述文件。</p>
+<li><p>package.json<br>&#x9879;&#x76EE;&#x63CF;&#x8FF0;&#x6587;&#x4EF6;&#x3002;</p>
 <blockquote>
-<p><code>npm init</code> 可生成该文件<br><code>npm install jquery --save-dev</code> 安装依赖时可自动生成依赖声明</p>
+<p><code>npm init</code> &#x53EF;&#x751F;&#x6210;&#x8BE5;&#x6587;&#x4EF6;<br><code>npm install jquery --save-dev</code> &#x5B89;&#x88C5;&#x4F9D;&#x8D56;&#x65F6;&#x53EF;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x4F9D;&#x8D56;&#x58F0;&#x660E;</p>
 </blockquote>
 </li>
-<li><p>README.md<br>项目描述文件，概要描述此项目的功能等信息。</p>
+<li><p>README.md<br>&#x9879;&#x76EE;&#x63CF;&#x8FF0;&#x6587;&#x4EF6;&#xFF0C;&#x6982;&#x8981;&#x63CF;&#x8FF0;&#x6B64;&#x9879;&#x76EE;&#x7684;&#x529F;&#x80FD;&#x7B49;&#x4FE1;&#x606F;&#x3002;</p>
 </li>
 </ul>
-<h2 id="开发和部署目录结构"><a href="#开发和部署目录结构" class="headerlink" title="开发和部署目录结构"></a><h3 id="src_asset_dir">开发和部署目录结构</h3></h2><h3 id="开发目录-src"><a href="#开发目录-src" class="headerlink" title="开发目录 src/"></a>开发目录 src/</h3><p>开发目录按功能划分。<br><code>src/</code> 下首先按功能划分目录，包括 <code>通用子模块common</code> 和 <code>业务子模块</code>。子模块目录下的静态资源js、css、html可不划分目录，如文件过多可考虑继续拆分子模块。<br>如果项目为 SPA ，可将页面入口文件直接放在 <code>web/</code> 目录下，如果有多个入口文件，可在src/ 目录同级添加 <code>entry</code> 目录。</p>
+<h2 id="&#x5F00;&#x53D1;&#x548C;&#x90E8;&#x7F72;&#x76EE;&#x5F55;&#x7ED3;&#x6784;"><a href="#&#x5F00;&#x53D1;&#x548C;&#x90E8;&#x7F72;&#x76EE;&#x5F55;&#x7ED3;&#x6784;" class="headerlink" title="&#x5F00;&#x53D1;&#x548C;&#x90E8;&#x7F72;&#x76EE;&#x5F55;&#x7ED3;&#x6784;"></a><h3 id="&#x5F00;&#x53D1;&#x548C;&#x90E8;&#x7F72;&#x76EE;&#x5F55;&#x7ED3;&#x6784;">&#x5F00;&#x53D1;&#x548C;&#x90E8;&#x7F72;&#x76EE;&#x5F55;&#x7ED3;&#x6784;</h3></h2><h3 id="&#x5F00;&#x53D1;&#x76EE;&#x5F55;-src"><a href="#&#x5F00;&#x53D1;&#x76EE;&#x5F55;-src" class="headerlink" title="&#x5F00;&#x53D1;&#x76EE;&#x5F55; src/"></a>&#x5F00;&#x53D1;&#x76EE;&#x5F55; src/</h3><p>&#x5F00;&#x53D1;&#x76EE;&#x5F55;&#x6309;&#x529F;&#x80FD;&#x5212;&#x5206;&#x3002;<br><code>src/</code> &#x4E0B;&#x9996;&#x5148;&#x6309;&#x529F;&#x80FD;&#x5212;&#x5206;&#x76EE;&#x5F55;&#xFF0C;&#x5305;&#x62EC; <code>&#x901A;&#x7528;&#x5B50;&#x6A21;&#x5757;common</code> &#x548C; <code>&#x4E1A;&#x52A1;&#x5B50;&#x6A21;&#x5757;</code>&#x3002;&#x5B50;&#x6A21;&#x5757;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x9759;&#x6001;&#x8D44;&#x6E90;js&#x3001;css&#x3001;html&#x53EF;&#x4E0D;&#x5212;&#x5206;&#x76EE;&#x5F55;&#xFF0C;&#x5982;&#x6587;&#x4EF6;&#x8FC7;&#x591A;&#x53EF;&#x8003;&#x8651;&#x7EE7;&#x7EED;&#x62C6;&#x5206;&#x5B50;&#x6A21;&#x5757;&#x3002;<br>&#x5982;&#x679C;&#x9879;&#x76EE;&#x4E3A; SPA &#xFF0C;&#x53EF;&#x5C06;&#x9875;&#x9762;&#x5165;&#x53E3;&#x6587;&#x4EF6;&#x76F4;&#x63A5;&#x653E;&#x5728; <code>web/</code> &#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x591A;&#x4E2A;&#x5165;&#x53E3;&#x6587;&#x4EF6;&#xFF0C;&#x53EF;&#x5728;src/ &#x76EE;&#x5F55;&#x540C;&#x7EA7;&#x6DFB;&#x52A0; <code>entry</code> &#x76EE;&#x5F55;&#x3002;</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">src/</div><div class="line">    common/</div><div class="line">        img/</div><div class="line">            sprites<span class="selector-class">.png</span></div><div class="line">            logo<span class="selector-class">.png</span></div><div class="line">        conf<span class="selector-class">.js</span></div><div class="line">        layout<span class="selector-class">.tpl</span><span class="selector-class">.html</span></div><div class="line">        layout<span class="selector-class">.less</span></div><div class="line">    biz1/</div><div class="line">        img/</div><div class="line">            add_button<span class="selector-class">.png</span></div><div class="line">        add<span class="selector-class">.js</span></div><div class="line">        add<span class="selector-class">.tpl</span><span class="selector-class">.html</span></div><div class="line">        add<span class="selector-class">.less</span></div><div class="line">    biz2/</div><div class="line">        subbiz1/</div><div class="line">            list<span class="selector-class">.js</span></div><div class="line">            list<span class="selector-class">.tpl</span><span class="selector-class">.html</span></div><div class="line">            list<span class="selector-class">.css</span></div><div class="line">        subbiz2/</div><div class="line">entry/</div><div class="line">    index<span class="selector-class">.html</span></div><div class="line">    main.html</div></pre></td></tr></table></figure>
-<h3 id="部署目录-asset"><a href="#部署目录-asset" class="headerlink" title="部署目录 asset/"></a>部署目录 asset/</h3><p>通常构建工具会对 <code>src/</code>、 <code>dep/</code> 等目录下的资源进行分析、合并与压缩等，生成到asset目录下。</p>
-<p><code>asset/</code> 目录下一般有两个目录：</p>
+<h3 id="&#x90E8;&#x7F72;&#x76EE;&#x5F55;-asset"><a href="#&#x90E8;&#x7F72;&#x76EE;&#x5F55;-asset" class="headerlink" title="&#x90E8;&#x7F72;&#x76EE;&#x5F55; asset/"></a>&#x90E8;&#x7F72;&#x76EE;&#x5F55; asset/</h3><p>&#x901A;&#x5E38;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#x4F1A;&#x5BF9; <code>src/</code>&#x3001; <code>dep/</code> &#x7B49;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x8D44;&#x6E90;&#x8FDB;&#x884C;&#x5206;&#x6790;&#x3001;&#x5408;&#x5E76;&#x4E0E;&#x538B;&#x7F29;&#x7B49;&#xFF0C;&#x751F;&#x6210;&#x5230;asset&#x76EE;&#x5F55;&#x4E0B;&#x3002;</p>
+<p><code>asset/</code> &#x76EE;&#x5F55;&#x4E0B;&#x4E00;&#x822C;&#x6709;&#x4E24;&#x4E2A;&#x76EE;&#x5F55;&#xFF1A;</p>
 <ul>
-<li>static/: 静态资源如js、css、img等，按照 src/ 下的结构</li>
-<li>tpl/: 模板文件，按照 src/ 下的结构</li>
+<li>static/: &#x9759;&#x6001;&#x8D44;&#x6E90;&#x5982;js&#x3001;css&#x3001;img&#x7B49;&#xFF0C;&#x6309;&#x7167; src/ &#x4E0B;&#x7684;&#x7ED3;&#x6784;</li>
+<li>tpl/: &#x6A21;&#x677F;&#x6587;&#x4EF6;&#xFF0C;&#x6309;&#x7167; src/ &#x4E0B;&#x7684;&#x7ED3;&#x6784;</li>
 </ul>
-<figure class="highlight erlang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$&#123;root&#125;/</div><div class="line">    web/</div><div class="line">        asset/</div><div class="line">            static/</div><div class="line">                ...</div><div class="line">            tpl/</div><div class="line">                ...</div></pre></td></tr></table></figure>
-<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a><h3 id="naming_spec">命名规范</h3></h2><h3 id="目录命名规范"><a href="#目录命名规范" class="headerlink" title="目录命名规范"></a>目录命名规范</h3><p>目录按功能命名，一般用一个单词，小写，不宜过长；如需用多个单词，用下划线作为连接符。<br>模块内的图片统一放在 <code>img/</code> 目录。</p>
-<h3 id="文件命名规范"><a href="#文件命名规范" class="headerlink" title="文件命名规范"></a>文件命名规范</h3><p>文件命名以字母开头，且一律小写，以下划线作为多个单词的连接符，且只包含字母、下划线、数字。</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">${root}/</div><div class="line">    web/</div><div class="line">        asset/</div><div class="line">            static/</div><div class="line">                ...</div><div class="line">            tpl/</div><div class="line">                ...</div></pre></td></tr></table></figure>
+<h2 id="&#x547D;&#x540D;&#x89C4;&#x8303;"><a href="#&#x547D;&#x540D;&#x89C4;&#x8303;" class="headerlink" title="&#x547D;&#x540D;&#x89C4;&#x8303;"></a><h3 id="&#x547D;&#x540D;&#x89C4;&#x8303;">&#x547D;&#x540D;&#x89C4;&#x8303;</h3></h2><h3 id="&#x76EE;&#x5F55;&#x547D;&#x540D;&#x89C4;&#x8303;"><a href="#&#x76EE;&#x5F55;&#x547D;&#x540D;&#x89C4;&#x8303;" class="headerlink" title="&#x76EE;&#x5F55;&#x547D;&#x540D;&#x89C4;&#x8303;"></a>&#x76EE;&#x5F55;&#x547D;&#x540D;&#x89C4;&#x8303;</h3><p>&#x76EE;&#x5F55;&#x6309;&#x529F;&#x80FD;&#x547D;&#x540D;&#xFF0C;&#x4E00;&#x822C;&#x7528;&#x4E00;&#x4E2A;&#x5355;&#x8BCD;&#xFF0C;&#x5C0F;&#x5199;&#xFF0C;&#x4E0D;&#x5B9C;&#x8FC7;&#x957F;&#xFF1B;&#x5982;&#x9700;&#x7528;&#x591A;&#x4E2A;&#x5355;&#x8BCD;&#xFF0C;&#x7528;&#x4E0B;&#x5212;&#x7EBF;&#x4F5C;&#x4E3A;&#x8FDE;&#x63A5;&#x7B26;&#x3002;<br>&#x6A21;&#x5757;&#x5185;&#x7684;&#x56FE;&#x7247;&#x7EDF;&#x4E00;&#x653E;&#x5728; <code>img/</code> &#x76EE;&#x5F55;&#x3002;</p>
+<h3 id="&#x6587;&#x4EF6;&#x547D;&#x540D;&#x89C4;&#x8303;"><a href="#&#x6587;&#x4EF6;&#x547D;&#x540D;&#x89C4;&#x8303;" class="headerlink" title="&#x6587;&#x4EF6;&#x547D;&#x540D;&#x89C4;&#x8303;"></a>&#x6587;&#x4EF6;&#x547D;&#x540D;&#x89C4;&#x8303;</h3><p>&#x6587;&#x4EF6;&#x547D;&#x540D;&#x4EE5;&#x5B57;&#x6BCD;&#x5F00;&#x5934;&#xFF0C;&#x4E14;&#x4E00;&#x5F8B;&#x5C0F;&#x5199;&#xFF0C;&#x4EE5;&#x4E0B;&#x5212;&#x7EBF;&#x4F5C;&#x4E3A;&#x591A;&#x4E2A;&#x5355;&#x8BCD;&#x7684;&#x8FDE;&#x63A5;&#x7B26;&#xFF0C;&#x4E14;&#x53EA;&#x5305;&#x542B;&#x5B57;&#x6BCD;&#x3001;&#x4E0B;&#x5212;&#x7EBF;&#x3001;&#x6570;&#x5B57;&#x3002;</p>
 <blockquote>
-<p>同一个模块的 js、css、html 可使用相同的命名，fis3 可配置开启同名依赖(useSameNameRequire)。</p>
+<p>&#x540C;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x7684; js&#x3001;css&#x3001;html &#x53EF;&#x4F7F;&#x7528;&#x76F8;&#x540C;&#x7684;&#x547D;&#x540D;&#xFF0C;fis3 &#x53EF;&#x914D;&#x7F6E;&#x5F00;&#x542F;&#x540C;&#x540D;&#x4F9D;&#x8D56;(useSameNameRequire)&#x3002;</p>
 </blockquote>
-<h4 id="1-js-文件命名"><a href="#1-js-文件命名" class="headerlink" title="1. js 文件命名"></a>1. js 文件命名</h4><p>根据使用框架的不同，js文件可能存在多种用途，因此可按照命名后缀区分其用途，不在此列的按普通文件命名。</p>
+<h4 id="1-js-&#x6587;&#x4EF6;&#x547D;&#x540D;"><a href="#1-js-&#x6587;&#x4EF6;&#x547D;&#x540D;" class="headerlink" title="1. js &#x6587;&#x4EF6;&#x547D;&#x540D;"></a>1. js &#x6587;&#x4EF6;&#x547D;&#x540D;</h4><p>&#x6839;&#x636E;&#x4F7F;&#x7528;&#x6846;&#x67B6;&#x7684;&#x4E0D;&#x540C;&#xFF0C;js&#x6587;&#x4EF6;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x591A;&#x79CD;&#x7528;&#x9014;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x6309;&#x7167;&#x547D;&#x540D;&#x540E;&#x7F00;&#x533A;&#x5206;&#x5176;&#x7528;&#x9014;&#xFF0C;&#x4E0D;&#x5728;&#x6B64;&#x5217;&#x7684;&#x6309;&#x666E;&#x901A;&#x6587;&#x4EF6;&#x547D;&#x540D;&#x3002;</p>
 <ul>
-<li><p>{module_name}_ctrl.js<br>mv<em> 框架中的 controller，未使用 mv</em> 框架时不做区分。</p>
+<li><p>{module_name}_ctrl.js<br>mv<em> &#x6846;&#x67B6;&#x4E2D;&#x7684; controller&#xFF0C;&#x672A;&#x4F7F;&#x7528; mv</em> &#x6846;&#x67B6;&#x65F6;&#x4E0D;&#x505A;&#x533A;&#x5206;&#x3002;</p>
 </li>
-<li><p>{module_name}_service.js<br>对于与后端交互的接口操作可抽象为服务层。</p>
+<li><p>{module_name}_service.js<br>&#x5BF9;&#x4E8E;&#x4E0E;&#x540E;&#x7AEF;&#x4EA4;&#x4E92;&#x7684;&#x63A5;&#x53E3;&#x64CD;&#x4F5C;&#x53EF;&#x62BD;&#x8C61;&#x4E3A;&#x670D;&#x52A1;&#x5C42;&#x3002;</p>
 </li>
 </ul>
-<h4 id="2-img-文件命名"><a href="#2-img-文件命名" class="headerlink" title="2. img 文件命名"></a>2. img 文件命名</h4><p>图片命名建议按以下顺序命名：<br>业务模块名称（可选） + （mod_）图片功能类别（必选）+ 图片模块名称（可选） + 图片精度（可选）</p>
+<h4 id="2-img-&#x6587;&#x4EF6;&#x547D;&#x540D;"><a href="#2-img-&#x6587;&#x4EF6;&#x547D;&#x540D;" class="headerlink" title="2. img &#x6587;&#x4EF6;&#x547D;&#x540D;"></a>2. img &#x6587;&#x4EF6;&#x547D;&#x540D;</h4><p>&#x56FE;&#x7247;&#x547D;&#x540D;&#x5EFA;&#x8BAE;&#x6309;&#x4EE5;&#x4E0B;&#x987A;&#x5E8F;&#x547D;&#x540D;&#xFF1A;<br>&#x4E1A;&#x52A1;&#x6A21;&#x5757;&#x540D;&#x79F0;&#xFF08;&#x53EF;&#x9009;&#xFF09; + &#xFF08;mod_&#xFF09;&#x56FE;&#x7247;&#x529F;&#x80FD;&#x7C7B;&#x522B;&#xFF08;&#x5FC5;&#x9009;&#xFF09;+ &#x56FE;&#x7247;&#x6A21;&#x5757;&#x540D;&#x79F0;&#xFF08;&#x53EF;&#x9009;&#xFF09; + &#x56FE;&#x7247;&#x7CBE;&#x5EA6;&#xFF08;&#x53EF;&#x9009;&#xFF09;</p>
 <ul>
-<li><p>图片功能类别<br>mod_：是否公共，可选<br>icon：图标<br>logo：LOGO类<br>spr：单页面各种元素合并集合<br>btn：按钮<br>bg：可平铺或者大背景</p>
+<li><p>&#x56FE;&#x7247;&#x529F;&#x80FD;&#x7C7B;&#x522B;<br>mod_&#xFF1A;&#x662F;&#x5426;&#x516C;&#x5171;&#xFF0C;&#x53EF;&#x9009;<br>icon&#xFF1A;&#x56FE;&#x6807;<br>logo&#xFF1A;LOGO&#x7C7B;<br>spr&#xFF1A;&#x5355;&#x9875;&#x9762;&#x5404;&#x79CD;&#x5143;&#x7D20;&#x5408;&#x5E76;&#x96C6;&#x5408;<br>btn&#xFF1A;&#x6309;&#x94AE;<br>bg&#xFF1A;&#x53EF;&#x5E73;&#x94FA;&#x6216;&#x8005;&#x5927;&#x80CC;&#x666F;</p>
 </li>
-<li><p>图片精度<br>普清：@1x<br>Retina：@2x | @3x</p>
+<li><p>&#x56FE;&#x7247;&#x7CBE;&#x5EA6;<br>&#x666E;&#x6E05;&#xFF1A;@1x<br>Retina&#xFF1A;@2x | @3x</p>
 </li>
 </ul>
-<h3 id="className-命名规范"><a href="#className-命名规范" class="headerlink" title="className 命名规范"></a>className 命名规范</h3><p>ClassName的命名应该尽量精短、明确，必须以字母开头命名，且全部字母为小写，单词之间统一使用中划线 “-” 连接</p>
-<h4 id="命名原则"><a href="#命名原则" class="headerlink" title="命名原则"></a>命名原则</h4><p>基于姓氏命名法（继承 + 外来）。<br>祖先模块不能出现下划线，除了是全站公用模块，如 mod_ 系列的命名：</p>
-<p><strong>推荐：</strong></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modulename"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modulename_info"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modulename_son"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modulename_son"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        ...</div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    </div><div class="line"><span class="comment">&lt;!-- 这个是全站公用模块，祖先模块允许直接出现下划线 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mod_info"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mod_info_son"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mod_info_son"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    ...     </div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p><strong>不推荐：</strong></p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"modulename_info"</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"modulename_info_son"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"modulename_info_son"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    ...     </div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure>
-<p>在子孙模块数量可预测的情况下，严格继承祖先模块的命名前缀</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"modulename"</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"modulename_cover"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"modulename_info"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure>
-<p>当子孙模块超过4级或以上的时候，可以考虑在祖先模块内具有识辨性的独立缩写作为新的子孙模块</p>
-<p><strong>推荐：</strong></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modulename"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modulename_cover"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modulename_info"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modulename_info_user"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modulename_info_user_img"</span>&gt;</span></div><div class="line">                <span class="comment">&lt;!-- 这个时候 miui 为 modulename_info_user_img 首字母缩写--&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"miui_tit"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"miui_txt"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                ...</div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"modulename_info_list"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p><strong>不推荐：</strong></p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"modulename"</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"modulename_cover"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"modulename_info"</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"modulename_info_user"</span>&gt;</div><div class="line">            &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"modulename_info_user_img"</span>&gt;</div><div class="line">                &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"modulename_info_user_img_tit"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">                &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"modulename_info_user_img_txt"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">                ...</div><div class="line">            &lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"modulename_info_list"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure>
-<h4 id="模块命名"><a href="#模块命名" class="headerlink" title="模块命名"></a>模块命名</h4><p>全站公共模块：以 mod_ 开头</p>
-<figure class="highlight plain"><figcaption><span>class="mod_yours">```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">业务公共模块：以 业务名_mod_ 开头</div><div class="line"></div><div class="line">```&lt;div class=&quot;wx_mod_yours&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
-<h4 id="常用命名推荐"><a href="#常用命名推荐" class="headerlink" title="常用命名推荐"></a>常用命名推荐</h4><p>注意：ad、banner、gg、guanggao 等有机会和广告挂勾的字眠不建议直接用来做ClassName，因为有些浏览器插件（Chrome的广告拦截插件等）会直接过滤这些类名，因此</p>
+<h3 id="classname-&#x547D;&#x540D;&#x89C4;&#x8303;"><a href="#className-&#x547D;&#x540D;&#x89C4;&#x8303;" class="headerlink" title="className &#x547D;&#x540D;&#x89C4;&#x8303;"></a>className &#x547D;&#x540D;&#x89C4;&#x8303;</h3><p>ClassName&#x7684;&#x547D;&#x540D;&#x5E94;&#x8BE5;&#x5C3D;&#x91CF;&#x7CBE;&#x77ED;&#x3001;&#x660E;&#x786E;&#xFF0C;&#x5FC5;&#x987B;&#x4EE5;&#x5B57;&#x6BCD;&#x5F00;&#x5934;&#x547D;&#x540D;&#xFF0C;&#x4E14;&#x5168;&#x90E8;&#x5B57;&#x6BCD;&#x4E3A;&#x5C0F;&#x5199;&#xFF0C;&#x5355;&#x8BCD;&#x4E4B;&#x95F4;&#x7EDF;&#x4E00;&#x4F7F;&#x7528;&#x4E2D;&#x5212;&#x7EBF; &#x201C;-&#x201D; &#x8FDE;&#x63A5;</p>
+<h4 id="&#x547D;&#x540D;&#x539F;&#x5219;"><a href="#&#x547D;&#x540D;&#x539F;&#x5219;" class="headerlink" title="&#x547D;&#x540D;&#x539F;&#x5219;"></a>&#x547D;&#x540D;&#x539F;&#x5219;</h4><p>&#x57FA;&#x4E8E;&#x59D3;&#x6C0F;&#x547D;&#x540D;&#x6CD5;&#xFF08;&#x7EE7;&#x627F; + &#x5916;&#x6765;&#xFF09;&#x3002;<br>&#x7956;&#x5148;&#x6A21;&#x5757;&#x4E0D;&#x80FD;&#x51FA;&#x73B0;&#x4E0B;&#x5212;&#x7EBF;&#xFF0C;&#x9664;&#x4E86;&#x662F;&#x5168;&#x7AD9;&#x516C;&#x7528;&#x6A21;&#x5757;&#xFF0C;&#x5982; mod_ &#x7CFB;&#x5217;&#x7684;&#x547D;&#x540D;&#xFF1A;</p>
+<p><strong>&#x63A8;&#x8350;&#xFF1A;</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modulename&quot;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modulename_info&quot;</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modulename_son&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modulename_son&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        ...</div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    </div><div class="line"><span class="comment">&lt;!-- &#x8FD9;&#x4E2A;&#x662F;&#x5168;&#x7AD9;&#x516C;&#x7528;&#x6A21;&#x5757;&#xFF0C;&#x7956;&#x5148;&#x6A21;&#x5757;&#x5141;&#x8BB8;&#x76F4;&#x63A5;&#x51FA;&#x73B0;&#x4E0B;&#x5212;&#x7EBF; --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;mod_info&quot;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;mod_info_son&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;mod_info_son&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    ...     </div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>&#x4E0D;&#x63A8;&#x8350;&#xFF1A;</strong></p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;modulename_info&quot;</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;modulename_info_son&quot;</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;modulename_info_son&quot;</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    ...     </div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure>
+<p>&#x5728;&#x5B50;&#x5B59;&#x6A21;&#x5757;&#x6570;&#x91CF;&#x53EF;&#x9884;&#x6D4B;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E25;&#x683C;&#x7EE7;&#x627F;&#x7956;&#x5148;&#x6A21;&#x5757;&#x7684;&#x547D;&#x540D;&#x524D;&#x7F00;</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;modulename&quot;</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;modulename_cover&quot;</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;modulename_info&quot;</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure>
+<p>&#x5F53;&#x5B50;&#x5B59;&#x6A21;&#x5757;&#x8D85;&#x8FC7;4&#x7EA7;&#x6216;&#x4EE5;&#x4E0A;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x5728;&#x7956;&#x5148;&#x6A21;&#x5757;&#x5185;&#x5177;&#x6709;&#x8BC6;&#x8FA8;&#x6027;&#x7684;&#x72EC;&#x7ACB;&#x7F29;&#x5199;&#x4F5C;&#x4E3A;&#x65B0;&#x7684;&#x5B50;&#x5B59;&#x6A21;&#x5757;</p>
+<p><strong>&#x63A8;&#x8350;&#xFF1A;</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modulename&quot;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modulename_cover&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modulename_info&quot;</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modulename_info_user&quot;</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modulename_info_user_img&quot;</span>&gt;</span></div><div class="line">                <span class="comment">&lt;!-- &#x8FD9;&#x4E2A;&#x65F6;&#x5019; miui &#x4E3A; modulename_info_user_img &#x9996;&#x5B57;&#x6BCD;&#x7F29;&#x5199;--&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;miui_tit&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;miui_txt&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                ...</div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;modulename_info_list&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>&#x4E0D;&#x63A8;&#x8350;&#xFF1A;</strong></p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;modulename&quot;</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;modulename_cover&quot;</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;modulename_info&quot;</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;modulename_info_user&quot;</span>&gt;</div><div class="line">            &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;modulename_info_user_img&quot;</span>&gt;</div><div class="line">                &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;modulename_info_user_img_tit&quot;</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">                &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;modulename_info_user_img_txt&quot;</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">                ...</div><div class="line">            &lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">&quot;modulename_info_list&quot;</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">    &lt;/<span class="keyword">div</span>&gt;</div><div class="line">&lt;/<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure>
+<h4 id="&#x6A21;&#x5757;&#x547D;&#x540D;"><a href="#&#x6A21;&#x5757;&#x547D;&#x540D;" class="headerlink" title="&#x6A21;&#x5757;&#x547D;&#x540D;"></a>&#x6A21;&#x5757;&#x547D;&#x540D;</h4><p>&#x5168;&#x7AD9;&#x516C;&#x5171;&#x6A21;&#x5757;&#xFF1A;&#x4EE5; mod_ &#x5F00;&#x5934;</p>
+<figure class="highlight plain"><figcaption><span>class=&quot;mod_yours&quot;&gt;```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&#x4E1A;&#x52A1;&#x516C;&#x5171;&#x6A21;&#x5757;&#xFF1A;&#x4EE5; &#x4E1A;&#x52A1;&#x540D;_mod_ &#x5F00;&#x5934;</div><div class="line"></div><div class="line">```&lt;div class=&quot;wx_mod_yours&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+<h4 id="&#x5E38;&#x7528;&#x547D;&#x540D;&#x63A8;&#x8350;"><a href="#&#x5E38;&#x7528;&#x547D;&#x540D;&#x63A8;&#x8350;" class="headerlink" title="&#x5E38;&#x7528;&#x547D;&#x540D;&#x63A8;&#x8350;"></a>&#x5E38;&#x7528;&#x547D;&#x540D;&#x63A8;&#x8350;</h4><p>&#x6CE8;&#x610F;&#xFF1A;ad&#x3001;banner&#x3001;gg&#x3001;guanggao &#x7B49;&#x6709;&#x673A;&#x4F1A;&#x548C;&#x5E7F;&#x544A;&#x6302;&#x52FE;&#x7684;&#x5B57;&#x7720;&#x4E0D;&#x5EFA;&#x8BAE;&#x76F4;&#x63A5;&#x7528;&#x6765;&#x505A;ClassName&#xFF0C;&#x56E0;&#x4E3A;&#x6709;&#x4E9B;&#x6D4F;&#x89C8;&#x5668;&#x63D2;&#x4EF6;&#xFF08;Chrome&#x7684;&#x5E7F;&#x544A;&#x62E6;&#x622A;&#x63D2;&#x4EF6;&#x7B49;&#xFF09;&#x4F1A;&#x76F4;&#x63A5;&#x8FC7;&#x6EE4;&#x8FD9;&#x4E9B;&#x7C7B;&#x540D;&#xFF0C;&#x56E0;&#x6B64;</p>
 <p><code>&lt;div class=&quot;ad&quot;&gt;&lt;/div&gt;</code></p>
-<p>这种广告的英文或拼音类名不应该出现。<br>另外，敏感不和谐字眼也不应该出现，如 fuck、ass 等。</p>
+<p>&#x8FD9;&#x79CD;&#x5E7F;&#x544A;&#x7684;&#x82F1;&#x6587;&#x6216;&#x62FC;&#x97F3;&#x7C7B;&#x540D;&#x4E0D;&#x5E94;&#x8BE5;&#x51FA;&#x73B0;&#x3002;<br>&#x53E6;&#x5916;&#xFF0C;&#x654F;&#x611F;&#x4E0D;&#x548C;&#x8C10;&#x5B57;&#x773C;&#x4E5F;&#x4E0D;&#x5E94;&#x8BE5;&#x51FA;&#x73B0;&#xFF0C;&#x5982; fuck&#x3001;ass &#x7B49;&#x3002;</p>
 <table>
 <thead>
 <tr>
 <th>ClassName</th>
-<th>含义</th>
+<th>&#x542B;&#x4E49;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>about</td>
-<td>关于</td>
+<td>&#x5173;&#x4E8E;</td>
 </tr>
 <tr>
 <td>account</td>
-<td>账户</td>
+<td>&#x8D26;&#x6237;</td>
 </tr>
 <tr>
 <td>arrow</td>
-<td>箭头图标</td>
+<td>&#x7BAD;&#x5934;&#x56FE;&#x6807;</td>
 </tr>
 <tr>
 <td>article</td>
-<td>文章</td>
+<td>&#x6587;&#x7AE0;</td>
 </tr>
 <tr>
 <td>aside</td>
-<td>边栏</td>
+<td>&#x8FB9;&#x680F;</td>
 </tr>
 <tr>
 <td>audio</td>
-<td>音频</td>
+<td>&#x97F3;&#x9891;</td>
 </tr>
 <tr>
 <td>avatar</td>
-<td>头像</td>
+<td>&#x5934;&#x50CF;</td>
 </tr>
 <tr>
 <td>bg,background</td>
-<td>背景</td>
+<td>&#x80CC;&#x666F;</td>
 </tr>
 <tr>
 <td>bar</td>
-<td>栏（工具类）</td>
+<td>&#x680F;&#xFF08;&#x5DE5;&#x5177;&#x7C7B;&#xFF09;</td>
 </tr>
 <tr>
 <td>branding</td>
-<td>品牌化</td>
+<td>&#x54C1;&#x724C;&#x5316;</td>
 </tr>
 <tr>
 <td>crumb,breadcrumbs</td>
-<td>面包屑</td>
+<td>&#x9762;&#x5305;&#x5C51;</td>
 </tr>
 <tr>
 <td>btn,button</td>
-<td>按钮</td>
+<td>&#x6309;&#x94AE;</td>
 </tr>
 <tr>
 <td>caption</td>
-<td>标题，说明</td>
+<td>&#x6807;&#x9898;&#xFF0C;&#x8BF4;&#x660E;</td>
 </tr>
 <tr>
 <td>category</td>
-<td>分类</td>
+<td>&#x5206;&#x7C7B;</td>
 </tr>
 <tr>
 <td>chart</td>
-<td>图表</td>
+<td>&#x56FE;&#x8868;</td>
 </tr>
 <tr>
 <td>clearfix</td>
-<td>清除浮动</td>
+<td>&#x6E05;&#x9664;&#x6D6E;&#x52A8;</td>
 </tr>
 <tr>
 <td>close</td>
-<td>关闭</td>
+<td>&#x5173;&#x95ED;</td>
 </tr>
 <tr>
 <td>col,column</td>
-<td>列</td>
+<td>&#x5217;</td>
 </tr>
 <tr>
 <td>comment</td>
-<td>评论</td>
+<td>&#x8BC4;&#x8BBA;</td>
 </tr>
 <tr>
 <td>community</td>
-<td>社区</td>
+<td>&#x793E;&#x533A;</td>
 </tr>
 <tr>
 <td>container</td>
-<td>容器</td>
+<td>&#x5BB9;&#x5668;</td>
 </tr>
 <tr>
 <td>content</td>
-<td>内容</td>
+<td>&#x5185;&#x5BB9;</td>
 </tr>
 <tr>
 <td>copyright</td>
-<td>版权</td>
+<td>&#x7248;&#x6743;</td>
 </tr>
 <tr>
 <td>current</td>
-<td>当前态，选中态</td>
+<td>&#x5F53;&#x524D;&#x6001;&#xFF0C;&#x9009;&#x4E2D;&#x6001;</td>
 </tr>
 <tr>
 <td>default</td>
-<td>默认</td>
+<td>&#x9ED8;&#x8BA4;</td>
 </tr>
 <tr>
 <td>description</td>
-<td>描述</td>
+<td>&#x63CF;&#x8FF0;</td>
 </tr>
 <tr>
 <td>details</td>
-<td>细节</td>
+<td>&#x7EC6;&#x8282;</td>
 </tr>
 <tr>
 <td>disabled</td>
-<td>不可用</td>
+<td>&#x4E0D;&#x53EF;&#x7528;</td>
 </tr>
 <tr>
 <td>entry</td>
-<td>文章，博文</td>
+<td>&#x6587;&#x7AE0;&#xFF0C;&#x535A;&#x6587;</td>
 </tr>
 <tr>
 <td>error</td>
-<td>错误</td>
+<td>&#x9519;&#x8BEF;</td>
 </tr>
 <tr>
 <td>even</td>
-<td>偶数，常用于多行列表或表格中</td>
+<td>&#x5076;&#x6570;&#xFF0C;&#x5E38;&#x7528;&#x4E8E;&#x591A;&#x884C;&#x5217;&#x8868;&#x6216;&#x8868;&#x683C;&#x4E2D;</td>
 </tr>
 <tr>
 <td>fail</td>
-<td>失败（提示）</td>
+<td>&#x5931;&#x8D25;&#xFF08;&#x63D0;&#x793A;&#xFF09;</td>
 </tr>
 <tr>
 <td>feature</td>
-<td>专题</td>
+<td>&#x4E13;&#x9898;</td>
 </tr>
 <tr>
 <td>fewer</td>
-<td>收起</td>
+<td>&#x6536;&#x8D77;</td>
 </tr>
 <tr>
 <td>field</td>
-<td>用于表单的输入区域</td>
+<td>&#x7528;&#x4E8E;&#x8868;&#x5355;&#x7684;&#x8F93;&#x5165;&#x533A;&#x57DF;</td>
 </tr>
 <tr>
 <td>figure</td>
-<td>图</td>
+<td>&#x56FE;</td>
 </tr>
 <tr>
 <td>filter</td>
-<td>筛选</td>
+<td>&#x7B5B;&#x9009;</td>
 </tr>
 <tr>
 <td>first</td>
-<td>第一个，常用于列表中</td>
+<td>&#x7B2C;&#x4E00;&#x4E2A;&#xFF0C;&#x5E38;&#x7528;&#x4E8E;&#x5217;&#x8868;&#x4E2D;</td>
 </tr>
 <tr>
 <td>footer</td>
-<td>页脚</td>
+<td>&#x9875;&#x811A;</td>
 </tr>
 <tr>
 <td>forum</td>
-<td>论坛</td>
+<td>&#x8BBA;&#x575B;</td>
 </tr>
 <tr>
 <td>gallery</td>
-<td>画廊</td>
+<td>&#x753B;&#x5ECA;</td>
 </tr>
 <tr>
 <td>group</td>
-<td>模块，清除浮动</td>
+<td>&#x6A21;&#x5757;&#xFF0C;&#x6E05;&#x9664;&#x6D6E;&#x52A8;</td>
 </tr>
 <tr>
 <td>header</td>
-<td>页头</td>
+<td>&#x9875;&#x5934;</td>
 </tr>
 <tr>
 <td>help</td>
-<td>帮助</td>
+<td>&#x5E2E;&#x52A9;</td>
 </tr>
 <tr>
 <td>hide</td>
-<td>隐藏</td>
+<td>&#x9690;&#x85CF;</td>
 </tr>
 <tr>
 <td>hightlight</td>
-<td>高亮</td>
+<td>&#x9AD8;&#x4EAE;</td>
 </tr>
 <tr>
 <td>home</td>
-<td>主页</td>
+<td>&#x4E3B;&#x9875;</td>
 </tr>
 <tr>
 <td>icon</td>
-<td>图标</td>
+<td>&#x56FE;&#x6807;</td>
 </tr>
 <tr>
 <td>info,information</td>
-<td>信息</td>
+<td>&#x4FE1;&#x606F;</td>
 </tr>
 <tr>
 <td>last</td>
-<td>最后一个，常用于列表中</td>
+<td>&#x6700;&#x540E;&#x4E00;&#x4E2A;&#xFF0C;&#x5E38;&#x7528;&#x4E8E;&#x5217;&#x8868;&#x4E2D;</td>
 </tr>
 <tr>
 <td>links</td>
-<td>链接</td>
+<td>&#x94FE;&#x63A5;</td>
 </tr>
 <tr>
 <td>login</td>
-<td>登录</td>
+<td>&#x767B;&#x5F55;</td>
 </tr>
 <tr>
 <td>logout</td>
-<td>退出</td>
+<td>&#x9000;&#x51FA;</td>
 </tr>
 <tr>
 <td>logo</td>
-<td>标志</td>
+<td>&#x6807;&#x5FD7;</td>
 </tr>
 <tr>
 <td>main</td>
-<td>主体</td>
+<td>&#x4E3B;&#x4F53;</td>
 </tr>
 <tr>
 <td>menu</td>
-<td>菜单</td>
+<td>&#x83DC;&#x5355;</td>
 </tr>
 <tr>
 <td>meta</td>
-<td>作者、更新时间等信息栏，一般位于标题之下</td>
+<td>&#x4F5C;&#x8005;&#x3001;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#x7B49;&#x4FE1;&#x606F;&#x680F;&#xFF0C;&#x4E00;&#x822C;&#x4F4D;&#x4E8E;&#x6807;&#x9898;&#x4E4B;&#x4E0B;</td>
 </tr>
 <tr>
 <td>module</td>
-<td>模块</td>
+<td>&#x6A21;&#x5757;</td>
 </tr>
 <tr>
 <td>more</td>
-<td>更多（展开）</td>
+<td>&#x66F4;&#x591A;&#xFF08;&#x5C55;&#x5F00;&#xFF09;</td>
 </tr>
 <tr>
 <td>msg,message</td>
-<td>消息</td>
+<td>&#x6D88;&#x606F;</td>
 </tr>
 <tr>
 <td>nav,navigation</td>
-<td>导航</td>
+<td>&#x5BFC;&#x822A;</td>
 </tr>
 <tr>
 <td>next</td>
-<td>下一页</td>
+<td>&#x4E0B;&#x4E00;&#x9875;</td>
 </tr>
 <tr>
 <td>nub</td>
-<td>小块</td>
+<td>&#x5C0F;&#x5757;</td>
 </tr>
 <tr>
 <td>odd</td>
-<td>奇数，常用于多行列表或表格中</td>
+<td>&#x5947;&#x6570;&#xFF0C;&#x5E38;&#x7528;&#x4E8E;&#x591A;&#x884C;&#x5217;&#x8868;&#x6216;&#x8868;&#x683C;&#x4E2D;</td>
 </tr>
 <tr>
 <td>off</td>
-<td>鼠标离开</td>
+<td>&#x9F20;&#x6807;&#x79BB;&#x5F00;</td>
 </tr>
 <tr>
 <td>on</td>
-<td>鼠标移过</td>
+<td>&#x9F20;&#x6807;&#x79FB;&#x8FC7;</td>
 </tr>
 <tr>
 <td>output</td>
-<td>输出</td>
+<td>&#x8F93;&#x51FA;</td>
 </tr>
 <tr>
 <td>pagination</td>
-<td>分页</td>
+<td>&#x5206;&#x9875;</td>
 </tr>
 <tr>
 <td>pop,popup</td>
-<td>弹窗</td>
+<td>&#x5F39;&#x7A97;</td>
 </tr>
 <tr>
 <td>preview</td>
-<td>预览</td>
+<td>&#x9884;&#x89C8;</td>
 </tr>
 <tr>
 <td>previous</td>
-<td>上一页</td>
+<td>&#x4E0A;&#x4E00;&#x9875;</td>
 </tr>
 <tr>
 <td>primary</td>
-<td>主要</td>
+<td>&#x4E3B;&#x8981;</td>
 </tr>
 <tr>
 <td>progress</td>
-<td>进度条</td>
+<td>&#x8FDB;&#x5EA6;&#x6761;</td>
 </tr>
 <tr>
 <td>promotion</td>
-<td>促销</td>
+<td>&#x4FC3;&#x9500;</td>
 </tr>
 <tr>
 <td>rcommd,recommendations</td>
-<td>推荐</td>
+<td>&#x63A8;&#x8350;</td>
 </tr>
 <tr>
 <td>reg,register</td>
-<td>注册</td>
+<td>&#x6CE8;&#x518C;</td>
 </tr>
 <tr>
 <td>save</td>
-<td>保存</td>
+<td>&#x4FDD;&#x5B58;</td>
 </tr>
 <tr>
 <td>search</td>
-<td>搜索</td>
+<td>&#x641C;&#x7D22;</td>
 </tr>
 <tr>
 <td>secondary</td>
-<td>次要</td>
+<td>&#x6B21;&#x8981;</td>
 </tr>
 <tr>
 <td>section</td>
-<td>区块</td>
+<td>&#x533A;&#x5757;</td>
 </tr>
 <tr>
 <td>selected</td>
-<td>已选</td>
+<td>&#x5DF2;&#x9009;</td>
 </tr>
 <tr>
 <td>share</td>
-<td>分享</td>
+<td>&#x5206;&#x4EAB;</td>
 </tr>
 <tr>
 <td>show</td>
-<td>显示</td>
+<td>&#x663E;&#x793A;</td>
 </tr>
 <tr>
 <td>sidebar</td>
-<td>边栏，侧栏</td>
+<td>&#x8FB9;&#x680F;&#xFF0C;&#x4FA7;&#x680F;</td>
 </tr>
 <tr>
 <td>slide</td>
-<td>幻灯片，图片切换</td>
+<td>&#x5E7B;&#x706F;&#x7247;&#xFF0C;&#x56FE;&#x7247;&#x5207;&#x6362;</td>
 </tr>
 <tr>
 <td>sort</td>
-<td>排序</td>
+<td>&#x6392;&#x5E8F;</td>
 </tr>
 <tr>
 <td>sub</td>
-<td>次级的，子级的</td>
+<td>&#x6B21;&#x7EA7;&#x7684;&#xFF0C;&#x5B50;&#x7EA7;&#x7684;</td>
 </tr>
 <tr>
 <td>submit</td>
-<td>提交</td>
+<td>&#x63D0;&#x4EA4;</td>
 </tr>
 <tr>
 <td>subscribe</td>
-<td>订阅</td>
+<td>&#x8BA2;&#x9605;</td>
 </tr>
 <tr>
 <td>subtitle</td>
-<td>副标题</td>
+<td>&#x526F;&#x6807;&#x9898;</td>
 </tr>
 <tr>
 <td>success</td>
-<td>成功（提示）</td>
+<td>&#x6210;&#x529F;&#xFF08;&#x63D0;&#x793A;&#xFF09;</td>
 </tr>
 <tr>
 <td>summary</td>
-<td>摘要</td>
+<td>&#x6458;&#x8981;</td>
 </tr>
 <tr>
 <td>tab</td>
-<td>标签页</td>
+<td>&#x6807;&#x7B7E;&#x9875;</td>
 </tr>
 <tr>
 <td>table</td>
-<td>表格</td>
+<td>&#x8868;&#x683C;</td>
 </tr>
 <tr>
 <td>txt,text</td>
-<td>文本</td>
+<td>&#x6587;&#x672C;</td>
 </tr>
 <tr>
 <td>thumbnail</td>
-<td>缩略图</td>
+<td>&#x7F29;&#x7565;&#x56FE;</td>
 </tr>
 <tr>
 <td>time</td>
-<td>时间</td>
+<td>&#x65F6;&#x95F4;</td>
 </tr>
 <tr>
 <td>tips</td>
-<td>提示</td>
+<td>&#x63D0;&#x793A;</td>
 </tr>
 <tr>
 <td>title</td>
-<td>标题</td>
+<td>&#x6807;&#x9898;</td>
 </tr>
 <tr>
 <td>video</td>
-<td>视频</td>
+<td>&#x89C6;&#x9891;</td>
 </tr>
 <tr>
 <td>wrap,wrapper</td>
-<td>容器，包，一般用于最外层</td>
+<td>&#x5BB9;&#x5668;&#xFF0C;&#x5305;&#xFF0C;&#x4E00;&#x822C;&#x7528;&#x4E8E;&#x6700;&#x5916;&#x5C42;</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<p>部分参考<a href="https://guide.aotu.io/docs/name/classname.html" target="_blank" rel="external">【凹凸实验室】</a></p>
+<p>&#x90E8;&#x5206;&#x53C2;&#x8003;<a href="https://guide.aotu.io/docs/name/classname.html" target="_blank" rel="external">&#x3010;&#x51F9;&#x51F8;&#x5B9E;&#x9A8C;&#x5BA4;&#x3011;</a></p>
 
       
     </div>
