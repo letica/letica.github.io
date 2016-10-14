@@ -16,7 +16,7 @@ learn this book: ECMAScript 6 入门">
 <meta property="og:description" content="虽然感觉每天都在学习，可是感受着前端圈的新技术不断的更新迭代，仍时刻有种落伍的感觉，尤其在人人都在谈论es6、react的2016。是呀，2016都快要结束了，已经没人在用jQuery了，快快来学习es6吧~！
 我只是一个简单的学习笔记。
 learn this book: ECMAScript 6 入门">
-<meta property="og:updated_time" content="2016-10-14T11:47:44.000Z">
+<meta property="og:updated_time" content="2016-10-14T12:55:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6 学习笔记 (ing)">
 <meta name="twitter:description" content="虽然感觉每天都在学习，可是感受着前端圈的新技术不断的更新迭代，仍时刻有种落伍的感觉，尤其在人人都在谈论es6、react的2016。是呀，2016都快要结束了，已经没人在用jQuery了，快快来学习es6吧~！
@@ -192,45 +192,129 @@ learn this book: ECMAScript 6 入门">
 </li>
 </ul>
 <!-- tocstop -->
-<hr>
 <h2 id="0-&#x53D1;&#x5C55;&#x5386;&#x53F2;"><a href="#0-&#x53D1;&#x5C55;&#x5386;&#x53F2;" class="headerlink" title="0. &#x53D1;&#x5C55;&#x5386;&#x53F2;"></a>0. &#x53D1;&#x5C55;&#x5386;&#x53F2;</h2><p>1996.11&#xFF0C;ECMAScript 1.0&#x53D1;&#x5E03;<br>1998.6&#xFF0C;ECMAScript 2.0&#x53D1;&#x5E03;<br>1999.12&#xFF0C;ECMAScript 3.0&#x53D1;&#x5E03;<br>2000&#x5E74;&#x4E4B;&#x540E;&#x76F4;&#x5230;2007.10&#xFF0C;ECMAScript 4.0&#x8349;&#x6848;&#x53D1;&#x5E03;&#xFF0C;&#x6700;&#x7EC8;&#x56E0;&#x5206;&#x6B67;&#x8F83;&#x5927;&#x672A;&#x53D1;&#x5E03;&#x6B63;&#x5F0F;&#x7248;&#x672C;<br>2009.12&#xFF0C;ECMAScript 5.0<br>2011.6&#xFF0C;ECMAScript 5.1&#x53D1;&#x5E03;<br>2015.6&#xFF0C;ES2015&#xFF08;&#x300A;ECMAScript 2015&#x6807;&#x51C6;&#x300B;&#xFF09;&#x53D1;&#x5E03;<br>2016.6&#xFF0C;ES2016&#xFF08;&#x300A;ECMAScript 2016&#x6807;&#x51C6;&#x300B;&#xFF09;&#x53D1;&#x5E03;</p>
 <blockquote>
 <p>ES6&#x65E2;&#x662F;&#x4E00;&#x4E2A;&#x5386;&#x53F2;&#x540D;&#x8BCD;&#xFF0C;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x6CDB;&#x6307;&#xFF0C;&#x542B;&#x4E49;&#x662F;5.1&#x7248;&#x4EE5;&#x540E;&#x7684;JavaScript&#x7684;&#x4E0B;&#x4E00;&#x4EE3;&#x6807;&#x51C6;&#xFF0C;&#x6DB5;&#x76D6;&#x4E86;ES2015&#x3001;ES2016&#x3001;ES2017&#x7B49;&#x7B49;&#xFF0C;&#x800C;ES2015&#x5219;&#x662F;&#x6B63;&#x5F0F;&#x540D;&#x79F0;&#xFF0C;&#x7279;&#x6307;&#x8BE5;&#x5E74;&#x53D1;&#x5E03;&#x7684;&#x6B63;&#x5F0F;&#x7248;&#x672C;&#x7684;&#x8BED;&#x8A00;&#x6807;&#x51C6;&#x3002;&#x672C;&#x4E66;&#x4E2D;&#x63D0;&#x5230;&#x201C;ES6&#x201D;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x4E00;&#x822C;&#x662F;&#x6307;ES2015&#x6807;&#x51C6;&#xFF0C;&#x4F46;&#x6709;&#x65F6;&#x4E5F;&#x662F;&#x6CDB;&#x6307;&#x201C;&#x4E0B;&#x4E00;&#x4EE3;JavaScript&#x8BED;&#x8A00;&#x201D;&#x3002;</p>
 </blockquote>
 <p>ECMAScript &#x4E0E; Javascript &#x7684;&#x533A;&#x522B;&#x662F;&#xFF0C;&#x524D;&#x8005;&#x662F;&#x540E;&#x8005;&#x7684;&#x89C4;&#x683C;&#xFF0C;&#x540E;&#x8005;&#x662F;&#x524D;&#x8005;&#x7684;&#x4E00;&#x79CD;&#x5B9E;&#x73B0;&#x3002;</p>
-<h2 id="1-&#x73AF;&#x5883;"><a href="#1-&#x73AF;&#x5883;" class="headerlink" title="1. &#x73AF;&#x5883;"></a>1. &#x73AF;&#x5883;</h2><h3 id="&#x4F7F;&#x7528;nvm&#x7BA1;&#x7406;node&#x7248;&#x672C;"><a href="#&#x4F7F;&#x7528;nvm&#x7BA1;&#x7406;node&#x7248;&#x672C;" class="headerlink" title="&#x4F7F;&#x7528;nvm&#x7BA1;&#x7406;node&#x7248;&#x672C;"></a>&#x4F7F;&#x7528;nvm&#x7BA1;&#x7406;node&#x7248;&#x672C;</h3><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="meta">## &#x5B89;&#x88C5;nvm&#xFF0C;&lt;version number&gt;&#x9700;&#x8981;&#x7528;&#x7248;&#x672C;&#x53F7;&#x66FF;&#x6362;&#xFF0C;&#x76EE;&#x524D;&#x662F;v0.32.0</span></div><div class="line">$ curl -o- https:<span class="comment">//raw.githubusercontent.com/creationix/nvm/&lt;version number&gt;/install.sh | bash</span></div><div class="line"></div><div class="line"><span class="meta">## &#x6FC0;&#x6D3B;nvm</span></div><div class="line">$ source ~/.nvm/nvm.sh</div><div class="line"></div><div class="line"><span class="meta">## &#x5217;&#x51FA;&#x8FDC;&#x7A0B;node&#x7248;&#x672C;</span></div><div class="line">$ nvm ls-remote</div><div class="line"></div><div class="line"><span class="meta">## &#x5B89;&#x88C5;&#x6307;&#x5B9A;&#x7248;&#x672C;&#x7684;node</span></div><div class="line">$ nvm install v4<span class="number">.1</span><span class="number">.2</span></div><div class="line"></div><div class="line"><span class="meta">## &#x5207;&#x6362;&#x5230;&#x6307;&#x5B9A;&#x7248;&#x672C;</span></div><div class="line">$ nvm use v4<span class="number">.1</span><span class="number">.2</span></div><div class="line"></div><div class="line"><span class="meta">## &#x67E5;&#x770B;&#x5F53;&#x524D;&#x5DF2;&#x5B89;&#x88C5;&#x7684;node&#x7248;&#x672C;</span></div><div class="line">$ nvm ls</div><div class="line"></div><div class="line"><span class="meta">## &#x8BBE;&#x7F6E;&#x6307;&#x5B9A;&#x7248;&#x672C;&#x4E3A;&#x9ED8;&#x8BA4;&#x7684;node&#x7248;&#x672C;</span></div><div class="line">$ nvm alias <span class="keyword">default</span> stable</div><div class="line"></div><div class="line"><span class="meta">## &#x67E5;&#x770B;&#x5F53;&#x524D;node&#x7248;&#x672C;</span></div><div class="line">$ node -v</div><div class="line"></div><div class="line"><span class="meta">## &#x67E5;&#x770B;node&#x5B89;&#x88C5;&#x76EE;&#x5F55;</span></div><div class="line">$ which node</div><div class="line"></div><div class="line"><span class="meta">## npm&#x5B89;&#x88C5;&#x7684;&#x5168;&#x5C40;&#x76EE;&#x5F55;</span></div><div class="line">$ npm config <span class="keyword">get</span> prefix</div><div class="line">$ npm config <span class="keyword">set</span> prefix /usr/local/</div></pre></td></tr></table></figure>
-<h4 id="&#x67E5;&#x770B;es6&#x652F;&#x6301;&#x7A0B;&#x5EA6;"><a href="#&#x67E5;&#x770B;ES6&#x652F;&#x6301;&#x7A0B;&#x5EA6;" class="headerlink" title="&#x67E5;&#x770B;ES6&#x652F;&#x6301;&#x7A0B;&#x5EA6;"></a>&#x67E5;&#x770B;ES6&#x652F;&#x6301;&#x7A0B;&#x5EA6;</h4><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## &#x67E5;&#x770B;Node&#x6240;&#x6709;&#x5DF2;&#x7ECF;&#x5B9E;&#x73B0;&#x7684;ES6&#x7279;&#x6027;</span></div><div class="line">$ <span class="keyword">node</span> <span class="title">--v8-options</span> | grep harmony</div><div class="line"></div><div class="line"><span class="comment">## &#x67E5;&#x770B;&#x4F60;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x7684;Node&#x73AF;&#x5883;&#x5BF9;ES6&#x7684;&#x652F;&#x6301;&#x7A0B;&#x5EA6;</span></div><div class="line">$ npm install -g es-checker</div><div class="line">$ es-checker</div></pre></td></tr></table></figure>
-<h3 id="babel&#x8F6C;&#x7801;&#x5DE5;&#x5177;"><a href="#Babel&#x8F6C;&#x7801;&#x5DE5;&#x5177;" class="headerlink" title="Babel&#x8F6C;&#x7801;&#x5DE5;&#x5177;"></a>Babel&#x8F6C;&#x7801;&#x5DE5;&#x5177;</h3><h4 id="&#x914D;&#x7F6E;&#x6587;&#x4EF6;babelrc"><a href="#&#x914D;&#x7F6E;&#x6587;&#x4EF6;-babelrc" class="headerlink" title="&#x914D;&#x7F6E;&#x6587;&#x4EF6;.babelrc"></a>&#x914D;&#x7F6E;&#x6587;&#x4EF6;.babelrc</h4><p>Babel&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x662F;.babelrc&#xFF0C;&#x5B58;&#x653E;&#x5728;&#x9879;&#x76EE;&#x7684;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x3002;&#x4F7F;&#x7528;Babel&#x7684;&#x7B2C;&#x4E00;&#x6B65;&#xFF0C;&#x5C31;&#x662F;&#x914D;&#x7F6E;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x3002;</p>
-<figure class="highlight clojure"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">{</div><div class="line">    // &#x8BBE;&#x5B9A;&#x8F6C;&#x7801;&#x89C4;&#x5219;</div><div class="line">    <span class="string">&quot;presets&quot;</span>: [<span class="string">&quot;latest&quot;</span>]</div><div class="line">}</div></pre></td></tr></table></figure>
-<p><strong>&#x6CE8;&#x610F;&#xFF0C;&#x4EE5;&#x4E0B;&#x6240;&#x6709;Babel&#x5DE5;&#x5177;&#x548C;&#x6A21;&#x5757;&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x90FD;&#x5FC5;&#x987B;&#x5148;&#x5199;&#x597D;.babelrc&#x3002;</strong></p>
+<h2 id="1-&#x73AF;&#x5883;"><a href="#1-&#x73AF;&#x5883;" class="headerlink" title="1. &#x73AF;&#x5883;"></a>1. &#x73AF;&#x5883;</h2><h3 id="&#x4F7F;&#x7528;nvm&#x7BA1;&#x7406;node&#x7248;&#x672C;"><a href="#&#x4F7F;&#x7528;nvm&#x7BA1;&#x7406;node&#x7248;&#x672C;" class="headerlink" title="&#x4F7F;&#x7528;nvm&#x7BA1;&#x7406;node&#x7248;&#x672C;"></a>&#x4F7F;&#x7528;nvm&#x7BA1;&#x7406;node&#x7248;&#x672C;</h3><pre><code>## &#x5B89;&#x88C5;nvm&#xFF0C;&lt;version number&gt;&#x9700;&#x8981;&#x7528;&#x7248;&#x672C;&#x53F7;&#x66FF;&#x6362;&#xFF0C;&#x76EE;&#x524D;&#x662F;v0.32.0
+$ curl -o- https://raw.githubusercontent.com/creationix/nvm/&lt;version number&gt;/install.sh | bash
+
+## &#x6FC0;&#x6D3B;nvm
+$ source ~/.nvm/nvm.sh
+
+## &#x5217;&#x51FA;&#x8FDC;&#x7A0B;node&#x7248;&#x672C;
+$ nvm ls-remote
+
+## &#x5B89;&#x88C5;&#x6307;&#x5B9A;&#x7248;&#x672C;&#x7684;node
+$ nvm install v4.1.2
+
+## &#x5207;&#x6362;&#x5230;&#x6307;&#x5B9A;&#x7248;&#x672C;
+$ nvm use v4.1.2
+
+## &#x67E5;&#x770B;&#x5F53;&#x524D;&#x5DF2;&#x5B89;&#x88C5;&#x7684;node&#x7248;&#x672C;
+$ nvm ls
+
+## &#x8BBE;&#x7F6E;&#x6307;&#x5B9A;&#x7248;&#x672C;&#x4E3A;&#x9ED8;&#x8BA4;&#x7684;node&#x7248;&#x672C;
+$ nvm alias default stable
+
+## &#x67E5;&#x770B;&#x5F53;&#x524D;node&#x7248;&#x672C;
+$ node -v
+
+## &#x67E5;&#x770B;node&#x5B89;&#x88C5;&#x76EE;&#x5F55;
+$ which node
+
+## npm&#x5B89;&#x88C5;&#x7684;&#x5168;&#x5C40;&#x76EE;&#x5F55;
+$ npm config get prefix
+$ npm config set prefix /usr/local/
+</code></pre><h4 id="&#x67E5;&#x770B;es6&#x652F;&#x6301;&#x7A0B;&#x5EA6;"><a href="#&#x67E5;&#x770B;ES6&#x652F;&#x6301;&#x7A0B;&#x5EA6;" class="headerlink" title="&#x67E5;&#x770B;ES6&#x652F;&#x6301;&#x7A0B;&#x5EA6;"></a>&#x67E5;&#x770B;ES6&#x652F;&#x6301;&#x7A0B;&#x5EA6;</h4><pre><code>## &#x67E5;&#x770B;Node&#x6240;&#x6709;&#x5DF2;&#x7ECF;&#x5B9E;&#x73B0;&#x7684;ES6&#x7279;&#x6027;
+$ node --v8-options | grep harmony
+
+## &#x67E5;&#x770B;&#x4F60;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x7684;Node&#x73AF;&#x5883;&#x5BF9;ES6&#x7684;&#x652F;&#x6301;&#x7A0B;&#x5EA6;
+$ npm install -g es-checker
+$ es-checker
+</code></pre><h3 id="babel&#x8F6C;&#x7801;&#x5DE5;&#x5177;"><a href="#Babel&#x8F6C;&#x7801;&#x5DE5;&#x5177;" class="headerlink" title="Babel&#x8F6C;&#x7801;&#x5DE5;&#x5177;"></a>Babel&#x8F6C;&#x7801;&#x5DE5;&#x5177;</h3><h4 id="&#x914D;&#x7F6E;&#x6587;&#x4EF6;babelrc"><a href="#&#x914D;&#x7F6E;&#x6587;&#x4EF6;-babelrc" class="headerlink" title="&#x914D;&#x7F6E;&#x6587;&#x4EF6;.babelrc"></a>&#x914D;&#x7F6E;&#x6587;&#x4EF6;.babelrc</h4><p>Babel&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x662F;.babelrc&#xFF0C;&#x5B58;&#x653E;&#x5728;&#x9879;&#x76EE;&#x7684;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x3002;&#x4F7F;&#x7528;Babel&#x7684;&#x7B2C;&#x4E00;&#x6B65;&#xFF0C;&#x5C31;&#x662F;&#x914D;&#x7F6E;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x3002;</p>
+<pre><code>{
+    // &#x8BBE;&#x5B9A;&#x8F6C;&#x7801;&#x89C4;&#x5219;
+    &quot;presets&quot;: [&quot;latest&quot;]
+}
+</code></pre><p><strong>&#x6CE8;&#x610F;&#xFF0C;&#x4EE5;&#x4E0B;&#x6240;&#x6709;Babel&#x5DE5;&#x5177;&#x548C;&#x6A21;&#x5757;&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x90FD;&#x5FC5;&#x987B;&#x5148;&#x5199;&#x597D;.babelrc&#x3002;</strong></p>
 <h4 id="babel-cli"><a href="#babel-cli" class="headerlink" title="babel-cli"></a>babel-cli</h4><p><a href="http://babeljs.io/docs/setup/#installation" target="_blank" rel="external">&#x5176;&#x5B83;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;</a></p>
-<figure class="highlight q"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --<span class="built_in">save</span>-<span class="built_in">dev</span> babel-cli</div></pre></td></tr></table></figure>
-<blockquote>
+<pre><code>$ npm install --save-dev babel-cli
+</code></pre><blockquote>
 <p><a href="http://babeljs.io/docs/setup/#installation" target="_blank" rel="external">Babel&#x5B98;&#x7F51;</a>&#x63A8;&#x8350;&#x5C06; babel-cli &#x5B89;&#x88C5;&#x5728;&#x9879;&#x76EE;&#x672C;&#x5730;&#xFF0C;&#x539F;&#x56E0;&#x6709;&#x4E8C;&#xFF1A;</p>
 <ul>
 <li>Different projects on the same machine can depend on different versions of Babel allowing you to update one at a time.</li>
 <li>It means you do not have an implicit dependency on the environment you are working in. Making your project far more portable and easier to setup.</li>
 </ul>
 </blockquote>
-<p>&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x7F16;&#x8BD1;es6&#x4EE3;&#x7801;&#x4E86;&#x3002;<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># &#x8F6C;&#x7801;&#x7ED3;&#x679C;&#x8F93;&#x51FA;&#x5230;&#x6807;&#x51C6;&#x8F93;&#x51FA;</span></div><div class="line">$ babel example.js</div><div class="line"></div><div class="line"><span class="comment"># &#x8F6C;&#x7801;&#x7ED3;&#x679C;&#x5199;&#x5165;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;--out-file &#x6216; -o &#x53C2;&#x6570;&#x6307;&#x5B9A;&#x8F93;&#x51FA;&#x6587;&#x4EF6;</span></div><div class="line">$ babel example.js --<span class="keyword">out</span>-file compiled.js</div><div class="line"><span class="comment"># &#x6216;&#x8005;</span></div><div class="line">$ babel example.js -o compiled.js</div><div class="line"></div><div class="line"><span class="comment"># &#x6574;&#x4E2A;&#x76EE;&#x5F55;&#x8F6C;&#x7801;&#xFF0C;--out-dir &#x6216; -d &#x53C2;&#x6570;&#x6307;&#x5B9A;&#x8F93;&#x51FA;&#x76EE;&#x5F55;</span></div><div class="line">$ babel src --<span class="keyword">out</span>-dir <span class="class"><span class="keyword">lib</span></span></div><div class="line"><span class="comment"># &#x6216;&#x8005;</span></div><div class="line">$ babel src -d <span class="class"><span class="keyword">lib</span></span></div><div class="line"></div><div class="line"><span class="comment"># -s &#x53C2;&#x6570;&#x751F;&#x6210;source map&#x6587;&#x4EF6;</span></div><div class="line">$ babel src -d <span class="class"><span class="keyword">lib</span> -<span class="title">s</span></span></div></pre></td></tr></table></figure></p>
-<h4 id="babel-node"><a href="#babel-node" class="headerlink" title="babel-node"></a>babel-node</h4><p>babel-cli&#x81EA;&#x5E26;babel-node&#x547D;&#x4EE4;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8FD0;&#x884C;ES6&#x4EE3;&#x7801;&#x3002;</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">$ babel-<span class="keyword">node</span></div><div class="line"><span class="title">&gt; (x</span> =&gt; x * <span class="number">2</span>)(<span class="number">1</span>)</div><div class="line"><span class="number">2</span></div><div class="line"></div><div class="line"><span class="comment">## &#x76F4;&#x63A5;&#x8FD0;&#x884C;&#x6587;&#x4EF6;</span></div><div class="line">$ babel-<span class="keyword">node</span> <span class="title">es6</span>.js</div><div class="line"><span class="number">2</span></div><div class="line"></div><div class="line"><span class="comment">## &#x6539;&#x5199;package.json&#xFF0C;&#x4F7F;&#x7528;babel-node&#x66FF;&#x4EE3;node&#xFF0C;&#x8FD9;&#x6837;script.js&#x672C;&#x8EAB;&#x5C31;&#x4E0D;&#x7528;&#x505A;&#x4EFB;&#x4F55;&#x8F6C;&#x7801;&#x5904;&#x7406;&#x3002;</span></div><div class="line">{</div><div class="line">  <span class="string">&quot;scripts&quot;</span>: {</div><div class="line">    <span class="string">&quot;script-name&quot;</span>: <span class="string">&quot;babel-node script.js&quot;</span></div><div class="line">  }</div><div class="line">}</div></pre></td></tr></table></figure>
-<h4 id="babel-register"><a href="#babel-register" class="headerlink" title="babel-register"></a>babel-register</h4><p>babel-register&#x6A21;&#x5757;&#x6539;&#x5199;require&#x547D;&#x4EE4;&#xFF0C;&#x4E3A;&#x5B83;&#x52A0;&#x4E0A;&#x4E00;&#x4E2A;&#x94A9;&#x5B50;&#x3002;&#x6B64;&#x540E;&#xFF0C;&#x6BCF;&#x5F53;&#x4F7F;&#x7528;require&#x52A0;&#x8F7D;.js&#x3001;.jsx&#x3001;.es&#x548C;.es6&#x540E;&#x7F00;&#x540D;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x5C31;&#x4F1A;&#x5148;&#x7528;Babel&#x8FDB;&#x884C;&#x8F6C;&#x7801;&#x3002;<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">npm</span> install --save-dev babel-register</div><div class="line"></div><div class="line"><span class="regexp">//</span> &#x4F7F;&#x7528;&#xFF08;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x624B;&#x52A8;&#x5BF9;index.js&#x8F6C;&#x7801;&#x4E86;&#xFF0C;&#x53EA;&#x4F1A;&#x5BF9;<span class="built_in">require</span>&#x547D;&#x4EE4;&#x52A0;&#x8F7D;&#x7684;&#x6587;&#x4EF6;&#x8F6C;&#x7801;&#xFF0C;&#x800C;&#x4E0D;&#x4F1A;&#x5BF9;&#x5F53;&#x524D;&#x6587;&#x4EF6;&#x8F6C;&#x7801;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x7531;&#x4E8E;&#x5B83;&#x662F;&#x5B9E;&#x65F6;&#x8F6C;&#x7801;&#xFF0C;&#x6240;&#x4EE5;&#x53EA;&#x9002;&#x5408;&#x5728;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x4F7F;&#x7528;&#x3002;&#xFF09;</div><div class="line"><span class="built_in">require</span>(<span class="string">&quot;babel-register&quot;</span>);</div><div class="line"><span class="built_in">require</span>(<span class="string">&quot;./index.js&quot;</span>);</div></pre></td></tr></table></figure></p>
-<h4 id="babel-core"><a href="#babel-core" class="headerlink" title="babel-core"></a>babel-core</h4><p>&#x5982;&#x679C;&#x67D0;&#x4E9B;&#x4EE3;&#x7801;&#x9700;&#x8981;&#x8C03;&#x7528;Babel&#x7684;API&#x8FDB;&#x884C;&#x8F6C;&#x7801;&#xFF0C;&#x5C31;&#x8981;&#x4F7F;&#x7528;babel-core&#x6A21;&#x5757;&#x3002;<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">$</span> npm install babel-core --save</div><div class="line"></div><div class="line"><span class="comment">// &#x4F7F;&#x7528;&#xFF1A;</span></div><div class="line">var babel = require(<span class="string">&apos;babel-core&apos;</span>);</div><div class="line"><span class="comment">// &#x5B57;&#x7B26;&#x4E32;&#x8F6C;&#x7801;</span></div><div class="line">babel.transform(<span class="string">&apos;code();&apos;</span>, <span class="keyword">options</span>);</div><div class="line"><span class="comment">// =&gt; { code, map, ast }</span></div></pre></td></tr></table></figure></p>
-<h2 id="2-&#x8BED;&#x6CD5;"><a href="#2-&#x8BED;&#x6CD5;" class="headerlink" title="2. &#x8BED;&#x6CD5;"></a>2. &#x8BED;&#x6CD5;</h2><h4 id="21-&#x53D8;&#x91CF;&#x58F0;&#x660E;"><a href="#2-1-&#x53D8;&#x91CF;&#x58F0;&#x660E;" class="headerlink" title="2.1 &#x53D8;&#x91CF;&#x58F0;&#x660E;"></a>2.1 &#x53D8;&#x91CF;&#x58F0;&#x660E;</h4><blockquote>
+<p>&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x7F16;&#x8BD1;es6&#x4EE3;&#x7801;&#x4E86;&#x3002;</p>
+<pre><code># &#x8F6C;&#x7801;&#x7ED3;&#x679C;&#x8F93;&#x51FA;&#x5230;&#x6807;&#x51C6;&#x8F93;&#x51FA;
+$ babel example.js
+
+# &#x8F6C;&#x7801;&#x7ED3;&#x679C;&#x5199;&#x5165;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;--out-file &#x6216; -o &#x53C2;&#x6570;&#x6307;&#x5B9A;&#x8F93;&#x51FA;&#x6587;&#x4EF6;
+$ babel example.js --out-file compiled.js
+# &#x6216;&#x8005;
+$ babel example.js -o compiled.js
+
+# &#x6574;&#x4E2A;&#x76EE;&#x5F55;&#x8F6C;&#x7801;&#xFF0C;--out-dir &#x6216; -d &#x53C2;&#x6570;&#x6307;&#x5B9A;&#x8F93;&#x51FA;&#x76EE;&#x5F55;
+$ babel src --out-dir lib
+# &#x6216;&#x8005;
+$ babel src -d lib
+
+# -s &#x53C2;&#x6570;&#x751F;&#x6210;source map&#x6587;&#x4EF6;
+$ babel src -d lib -s
+</code></pre><h4 id="babel-node"><a href="#babel-node" class="headerlink" title="babel-node"></a>babel-node</h4><p>babel-cli&#x81EA;&#x5E26;babel-node&#x547D;&#x4EE4;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8FD0;&#x884C;ES6&#x4EE3;&#x7801;&#x3002;</p>
+<pre><code>$ babel-node
+&gt; (x =&gt; x * 2)(1)
+2
+
+## &#x76F4;&#x63A5;&#x8FD0;&#x884C;&#x6587;&#x4EF6;
+$ babel-node es6.js
+2
+
+## &#x6539;&#x5199;package.json&#xFF0C;&#x4F7F;&#x7528;babel-node&#x66FF;&#x4EE3;node&#xFF0C;&#x8FD9;&#x6837;script.js&#x672C;&#x8EAB;&#x5C31;&#x4E0D;&#x7528;&#x505A;&#x4EFB;&#x4F55;&#x8F6C;&#x7801;&#x5904;&#x7406;&#x3002;
+{
+  &quot;scripts&quot;: {
+    &quot;script-name&quot;: &quot;babel-node script.js&quot;
+  }
+}
+</code></pre><h4 id="babel-register"><a href="#babel-register" class="headerlink" title="babel-register"></a>babel-register</h4><p>babel-register&#x6A21;&#x5757;&#x6539;&#x5199;require&#x547D;&#x4EE4;&#xFF0C;&#x4E3A;&#x5B83;&#x52A0;&#x4E0A;&#x4E00;&#x4E2A;&#x94A9;&#x5B50;&#x3002;&#x6B64;&#x540E;&#xFF0C;&#x6BCF;&#x5F53;&#x4F7F;&#x7528;require&#x52A0;&#x8F7D;.js&#x3001;.jsx&#x3001;.es&#x548C;.es6&#x540E;&#x7F00;&#x540D;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x5C31;&#x4F1A;&#x5148;&#x7528;Babel&#x8FDB;&#x884C;&#x8F6C;&#x7801;&#x3002;</p>
+<pre><code>$ npm install --save-dev babel-register
+
+## &#x4F7F;&#x7528;&#xFF08;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x624B;&#x52A8;&#x5BF9;index.js&#x8F6C;&#x7801;&#x4E86;&#xFF0C;&#x53EA;&#x4F1A;&#x5BF9;require&#x547D;&#x4EE4;&#x52A0;&#x8F7D;&#x7684;&#x6587;&#x4EF6;&#x8F6C;&#x7801;&#xFF0C;&#x800C;&#x4E0D;&#x4F1A;&#x5BF9;&#x5F53;&#x524D;&#x6587;&#x4EF6;&#x8F6C;&#x7801;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x7531;&#x4E8E;&#x5B83;&#x662F;&#x5B9E;&#x65F6;&#x8F6C;&#x7801;&#xFF0C;&#x6240;&#x4EE5;&#x53EA;&#x9002;&#x5408;&#x5728;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x4F7F;&#x7528;&#x3002;&#xFF09;
+require(&quot;babel-register&quot;);
+require(&quot;./index.js&quot;);
+</code></pre><h4 id="babel-core"><a href="#babel-core" class="headerlink" title="babel-core"></a>babel-core</h4><p>&#x5982;&#x679C;&#x67D0;&#x4E9B;&#x4EE3;&#x7801;&#x9700;&#x8981;&#x8C03;&#x7528;Babel&#x7684;API&#x8FDB;&#x884C;&#x8F6C;&#x7801;&#xFF0C;&#x5C31;&#x8981;&#x4F7F;&#x7528;babel-core&#x6A21;&#x5757;&#x3002;</p>
+<pre><code>$ npm install babel-core --save
+
+// &#x4F7F;&#x7528;&#xFF1A;
+var babel = require(&apos;babel-core&apos;);
+// &#x5B57;&#x7B26;&#x4E32;&#x8F6C;&#x7801;
+babel.transform(&apos;code();&apos;, options);
+// =&gt; { code, map, ast }
+</code></pre><h2 id="2-&#x8BED;&#x6CD5;"><a href="#2-&#x8BED;&#x6CD5;" class="headerlink" title="2. &#x8BED;&#x6CD5;"></a>2. &#x8BED;&#x6CD5;</h2><h4 id="21-&#x53D8;&#x91CF;&#x58F0;&#x660E;"><a href="#2-1-&#x53D8;&#x91CF;&#x58F0;&#x660E;" class="headerlink" title="2.1 &#x53D8;&#x91CF;&#x58F0;&#x660E;"></a>2.1 &#x53D8;&#x91CF;&#x58F0;&#x660E;</h4><blockquote>
 <p>var/function/ let/const/import/class&#xFF0C;&#x65B0;&#x589E;&#x540E;&#x56DB;&#x79CD;&#x3002;</p>
 </blockquote>
 <ul>
 <li><p>let&#xFF1A;&#x58F0;&#x660E;&#x53D8;&#x91CF;&#xFF0C;&#x7C7B;&#x4F3C;var&#xFF0C;&#x4E0E;var&#x533A;&#x522B;&#x5982;&#x4E0B;&#xFF0C;<br>&#x53EA;&#x5728;let&#x6240;&#x5728;&#x4EE3;&#x7801;&#x5757;&#x5185;&#x6709;&#x6548;&#xFF0C;for&#x8BED;&#x53E5;&#x7684;&#x8BA1;&#x6570;&#x5668;&#x5F88;&#x9002;&#x5408;&#x7528;let&#x58F0;&#x660E;&#xFF1B;<br>&#x4E0D;&#x5B58;&#x5728;&#x53D8;&#x91CF;&#x63D0;&#x5347;&#xFF0C;&#x4E00;&#x5B9A;&#x8981;&#x5148;&#x58F0;&#x660E;&#x540E;&#x4F7F;&#x7528;&#xFF1B;<br>&#x6682;&#x65F6;&#x6027;&#x6B7B;&#x533A;&#xFF0C;&#x5728;&#x4E00;&#x4E2A;&#x4F5C;&#x7528;&#x57DF;&#x5185;&#x6240;&#x6709;&#x53D8;&#x91CF;&#x90FD;&#x9700;&#x8981;&#x5148;&#x58F0;&#x660E;&#x540E;&#x4F7F;&#x7528;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x5BFC;&#x81F4;ReferenceError&#xFF1B;<br>&#x4E0D;&#x5141;&#x8BB8;&#x91CD;&#x590D;&#x58F0;&#x660E;&#xFF1B;</p>
 </li>
 <li><p>const&#xFF1A;&#x58F0;&#x660E;&#x53EA;&#x8BFB;&#x53D8;&#x91CF;&#x3002;<br>&#x9664;&#x53EA;&#x8BFB;&#x5916;&#xFF0C;&#x5176;&#x5B83;&#x7279;&#x6027;&#x4E0E;let&#x7C7B;&#x4F3C;&#x3002;<br>const&#x5B9A;&#x4E49;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x65F6;&#xFF0C;&#x8868;&#x793A;&#x7684;&#x662F;&#x5730;&#x5740;&#x53EF;&#x8BFB;&#xFF0C;&#x5982;&#x5BF9;&#x8C61;&#x6216;&#x6570;&#x7EC4;&#xFF0C;&#x5176;&#x503C;&#x4ECD;&#x7136;&#x53EF;&#x4FEE;&#x6539;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x51BB;&#x7ED3;&#xFF0C;&#x53EF;&#x4F7F;&#x7528;Object.freeze();</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> foo = <span class="built_in">Object</span>.freeze({});</div><div class="line"></div><div class="line"><span class="comment">// &#x5E38;&#x89C4;&#x6A21;&#x5F0F;&#x65F6;&#xFF0C;&#x4E0B;&#x9762;&#x4E00;&#x884C;&#x4E0D;&#x8D77;&#x4F5C;&#x7528;&#xFF1B;</span></div><div class="line"><span class="comment">// &#x4E25;&#x683C;&#x6A21;&#x5F0F;&#x65F6;&#xFF0C;&#x8BE5;&#x884C;&#x4F1A;&#x62A5;&#x9519;</span></div><div class="line">foo.prop = <span class="number">123</span>;</div></pre></td></tr></table></figure>
+<p>  const foo = Object.freeze({});</p>
+<p>  // &#x5E38;&#x89C4;&#x6A21;&#x5F0F;&#x65F6;&#xFF0C;&#x4E0B;&#x9762;&#x4E00;&#x884C;&#x4E0D;&#x8D77;&#x4F5C;&#x7528;&#xFF1B;<br>  // &#x4E25;&#x683C;&#x6A21;&#x5F0F;&#x65F6;&#xFF0C;&#x8BE5;&#x884C;&#x4F1A;&#x62A5;&#x9519;<br>  foo.prop = 123;</p>
 </li>
 </ul>
 <blockquote>
-<p>ES5&#x4E2D;&#xFF0C;var&#x6216;function&#x5B9A;&#x4E49;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x4E0E;&#x9876;&#x5C42;&#x5BF9;&#x8C61;(window/global)&#x7684;&#x5C5E;&#x6027;&#x7B49;&#x4EF7;&#x3002;<br>ES6&#x4E2D;&#xFF0C;let&#x3001;const&#x3001;class&#x5B9A;&#x4E49;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x4E0D;&#x518D;&#x8DDF;&#x9876;&#x5C42;&#x5BF9;&#x8C61;&#x6709;&#x5173;&#x8054;&#x3002;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"><span class="comment">// &#x5982;&#x679C;&#x5728;Node&#x7684;REPL&#x73AF;&#x5883;&#xFF0C;&#x53EF;&#x4EE5;&#x5199;&#x6210;global.a</span></div><div class="line"><span class="comment">// &#x6216;&#x8005;&#x91C7;&#x7528;&#x901A;&#x7528;&#x65B9;&#x6CD5;&#xFF0C;&#x5199;&#x6210;this.a</span></div><div class="line"><span class="built_in">window</span>.a <span class="comment">// 1</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> b = <span class="number">1</span>;</div><div class="line"><span class="built_in">window</span>.b <span class="comment">// undefined</span></div></pre></td></tr></table></figure></p>
+<p>ES5&#x4E2D;&#xFF0C;var&#x6216;function&#x5B9A;&#x4E49;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x4E0E;&#x9876;&#x5C42;&#x5BF9;&#x8C61;(window/global)&#x7684;&#x5C5E;&#x6027;&#x7B49;&#x4EF7;&#x3002;<br>ES6&#x4E2D;&#xFF0C;let&#x3001;const&#x3001;class&#x5B9A;&#x4E49;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x4E0D;&#x518D;&#x8DDF;&#x9876;&#x5C42;&#x5BF9;&#x8C61;&#x6709;&#x5173;&#x8054;&#x3002;</p>
 </blockquote>
-<ul>
+<pre><code>var a = 1;
+// &#x5982;&#x679C;&#x5728;Node&#x7684;REPL&#x73AF;&#x5883;&#xFF0C;&#x53EF;&#x4EE5;&#x5199;&#x6210;global.a
+// &#x6216;&#x8005;&#x91C7;&#x7528;&#x901A;&#x7528;&#x65B9;&#x6CD5;&#xFF0C;&#x5199;&#x6210;this.a
+window.a // 1
+
+let b = 1;
+window.b // undefined
+</code></pre><ul>
 <li>import </li>
 <li>class</li>
 </ul>
