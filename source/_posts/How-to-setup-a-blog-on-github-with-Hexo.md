@@ -1,8 +1,8 @@
 ---
 title: 如何使用Hexo在github上搭建blog
 date: 2016-08-11 13:36:40
-categories: hexo
-tags: hexo github
+categories: tool
+tags: hexo
 ---
 
 原文：[How to setup a blog on github with Hexo](http://zirho.github.io/2016/06/04/hexo/)
