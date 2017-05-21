@@ -112,7 +112,7 @@ theme: {theme-name}
 # Site
 title: letica's blog                      #设置header里的title
 subtitle: love and peace                  #副标题
-description: 
+description:
 author: letica                            #作者名,会显示在左下角
 email: letica@126.com                       #邮箱呗
 language: zh-CN                               #设置中文
@@ -154,7 +154,7 @@ $ hexo deploy
 
 ```
 $ git remote add origin {your-git-repo-url}
-$ git checkout -b source 
+$ git checkout -b source
 $ git push origin source
 ```
 
@@ -173,4 +173,3 @@ $ hexo deploy
 
 
 *Happy posting!*
-

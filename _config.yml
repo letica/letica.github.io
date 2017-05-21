@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hug letica                     #设置header里的title
-subtitle:  Hug letica               #副标题
-description: 
+title: letica's timezone                     #设置header里的title
+subtitle:                 #副标题
+description:
 author: Letica                            #作者名,会显示在左下角
 email: letica@126.com                       #邮箱呗
-language: zh-CN                               #设置中文
+language: zh-Hans                              #设置中文
 timezone:
 
 # URL
@@ -71,7 +71,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: yilia
+theme: next
 
 # comments
 # duoshuo_shortname: letica.github.io

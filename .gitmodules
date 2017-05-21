@@ -1,3 +1,6 @@
 [submodule "themes/chan"]
 	path = themes/chan
 	url = https://github.com/denjones/hexo-theme-chan.git
+[submodule "themes/next"]
+	path = themes/next
+	url = https://github.com/iissnan/hexo-theme-next.git
