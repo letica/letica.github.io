@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-CN">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -77,7 +77,7 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Hug letica" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="letica's timezone" type="application/atom+xml" />
 
 
 
@@ -89,34 +89,17 @@
 
 
 
-<meta name="description" content="为了避免在别人讨论『PHP是不是世界上最好的语言』的时候插不上话，于是学起了PHP~自从两年多前告别Java之后，再次接触后端语言，感觉很新鲜。ps虽然PHP在大多数工程师眼里算不得什么后端语言（啊？什么？我还做过Java……惊恐脸(´･_･`)
-
-目录
-
-Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境
-安装Composer
-通过 Composer 安装Yii">
+<meta name="description" content="为了避免在别人讨论『PHP是不是世界上最好的语言』的时候插不上话，于是学起了PHP~自从两年多前告别Java之后，再次接触后端语言，感觉很新鲜。ps虽然PHP在大多数工程师眼里算不得什么后端语言（啊？什么？我还做过Java……惊恐脸(´･_･`)  目录  Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境 安装Composer 通过 Composer 安装Yii">
+<meta name="keywords" content="yii2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Yii2学习笔记『一』搭建环境">
 <meta property="og:url" content="http://letica.github.io/2016/08/12/yii-study-01/index.html">
-<meta property="og:site_name" content="Hug letica">
-<meta property="og:description" content="为了避免在别人讨论『PHP是不是世界上最好的语言』的时候插不上话，于是学起了PHP~自从两年多前告别Java之后，再次接触后端语言，感觉很新鲜。ps虽然PHP在大多数工程师眼里算不得什么后端语言（啊？什么？我还做过Java……惊恐脸(´･_･`)
-
-目录
-
-Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境
-安装Composer
-通过 Composer 安装Yii">
+<meta property="og:site_name" content="letica&#39;s timezone">
+<meta property="og:description" content="为了避免在别人讨论『PHP是不是世界上最好的语言』的时候插不上话，于是学起了PHP~自从两年多前告别Java之后，再次接触后端语言，感觉很新鲜。ps虽然PHP在大多数工程师眼里算不得什么后端语言（啊？什么？我还做过Java……惊恐脸(´･_･`)  目录  Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境 安装Composer 通过 Composer 安装Yii">
 <meta property="og:updated_time" content="2016-08-14T12:30:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yii2学习笔记『一』搭建环境">
-<meta name="twitter:description" content="为了避免在别人讨论『PHP是不是世界上最好的语言』的时候插不上话，于是学起了PHP~自从两年多前告别Java之后，再次接触后端语言，感觉很新鲜。ps虽然PHP在大多数工程师眼里算不得什么后端语言（啊？什么？我还做过Java……惊恐脸(´･_･`)
-
-目录
-
-Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境
-安装Composer
-通过 Composer 安装Yii">
+<meta name="twitter:description" content="为了避免在别人讨论『PHP是不是世界上最好的语言』的时候插不上话，于是学起了PHP~自从两年多前告别Java之后，再次接触后端语言，感觉很新鲜。ps虽然PHP在大多数工程师眼里算不得什么后端语言（啊？什么？我还做过Java……惊恐脸(´･_･`)  目录  Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境 安装Composer 通过 Composer 安装Yii">
 
 
 
@@ -124,13 +107,13 @@ Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -150,16 +133,26 @@ Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境
 
 
 
-  <title> Yii2学习笔记『一』搭建环境 | Hug letica </title>
+  <title> Yii2学习笔记『一』搭建环境 | letica's timezone </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
 
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3c28f55ed3a230f5dc516bd83e9901c1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -186,12 +179,12 @@ Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hug letica</span>
+        <span class="site-title">letica's timezone</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">Hug letica</p>
+        <p class="site-subtitle"></p>
       
   </div>
 
@@ -216,7 +209,17 @@ Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -226,17 +229,7 @@ Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            Tags
+            归档
           </a>
         </li>
       
@@ -274,11 +267,11 @@ Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Letica">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/5069297?v=3&s=460">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hug letica">
+      <meta itemprop="name" content="letica's timezone">
     </span>
 
     
@@ -303,9 +296,9 @@ Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-08-12T18:12:18+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-12T18:12:18+08:00">
                 2016-08-12
               </time>
             
@@ -324,7 +317,7 @@ Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -500,10 +493,10 @@ Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            站点概览
           </li>
         </ul>
       
@@ -511,7 +504,7 @@ Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
+               src="https://avatars2.githubusercontent.com/u/5069297?v=3&s=460"
                alt="Letica" />
           <p class="site-author-name" itemprop="name">Letica</p>
            
@@ -524,7 +517,7 @@ Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">9</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
@@ -535,7 +528,7 @@ Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-name">分类</span>
               
             </div>
           
@@ -546,7 +539,7 @@ Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">9</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">标签</span>
               
             </div>
           
@@ -619,13 +612,13 @@ Mac OS使用brew安装Nginx、MySQL、PHP-FPM的LAMP开发环境
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
-  Theme -
+  主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 

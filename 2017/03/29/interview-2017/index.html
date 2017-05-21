@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-CN">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -77,7 +77,7 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Hug letica" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="letica's timezone" type="application/atom+xml" />
 
 
 
@@ -89,19 +89,17 @@
 
 
 
-<meta name="description" content="Q: 如何知道自己的技术水平在行业内所处的位置？
-A: 去面试~! 尤其是所处行业的top公司 &amp;amp; 团队。">
+<meta name="description" content="Q: 如何知道自己的技术水平在行业内所处的位置？ A: 去面试~! 尤其是所处行业的top公司 &amp;amp; 团队。">
+<meta name="keywords" content="面试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端面试小记">
+<meta property="og:title" content="前端面试分享">
 <meta property="og:url" content="http://letica.github.io/2017/03/29/interview-2017/index.html">
-<meta property="og:site_name" content="Hug letica">
-<meta property="og:description" content="Q: 如何知道自己的技术水平在行业内所处的位置？
-A: 去面试~! 尤其是所处行业的top公司 &amp;amp; 团队。">
-<meta property="og:updated_time" content="2017-03-31T06:14:15.000Z">
+<meta property="og:site_name" content="letica&#39;s timezone">
+<meta property="og:description" content="Q: 如何知道自己的技术水平在行业内所处的位置？ A: 去面试~! 尤其是所处行业的top公司 &amp;amp; 团队。">
+<meta property="og:updated_time" content="2017-05-21T11:40:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端面试小记">
-<meta name="twitter:description" content="Q: 如何知道自己的技术水平在行业内所处的位置？
-A: 去面试~! 尤其是所处行业的top公司 &amp;amp; 团队。">
+<meta name="twitter:title" content="前端面试分享">
+<meta name="twitter:description" content="Q: 如何知道自己的技术水平在行业内所处的位置？ A: 去面试~! 尤其是所处行业的top公司 &amp;amp; 团队。">
 
 
 
@@ -109,13 +107,13 @@ A: 去面试~! 尤其是所处行业的top公司 &amp;amp; 团队。">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -135,16 +133,26 @@ A: 去面试~! 尤其是所处行业的top公司 &amp;amp; 团队。">
 
 
 
-  <title> 前端面试小记 | Hug letica </title>
+  <title> 前端面试分享 | letica's timezone </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
 
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3c28f55ed3a230f5dc516bd83e9901c1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -171,12 +179,12 @@ A: 去面试~! 尤其是所处行业的top公司 &amp;amp; 团队。">
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hug letica</span>
+        <span class="site-title">letica's timezone</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">Hug letica</p>
+        <p class="site-subtitle"></p>
       
   </div>
 
@@ -201,7 +209,17 @@ A: 去面试~! 尤其是所处行业的top公司 &amp;amp; 团队。">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -211,17 +229,7 @@ A: 去面试~! 尤其是所处行业的top公司 &amp;amp; 团队。">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            Tags
+            归档
           </a>
         </li>
       
@@ -259,11 +267,11 @@ A: 去面试~! 尤其是所处行业的top公司 &amp;amp; 团队。">
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Letica">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/5069297?v=3&s=460">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hug letica">
+      <meta itemprop="name" content="letica's timezone">
     </span>
 
     
@@ -275,7 +283,7 @@ A: 去面试~! 尤其是所处行业的top公司 &amp;amp; 团队。">
             
             
               
-                前端面试小记
+                前端面试分享
               
             
           </h1>
@@ -288,9 +296,9 @@ A: 去面试~! 尤其是所处行业的top公司 &amp;amp; 团队。">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-29T17:30:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-29T17:30:00+08:00">
                 2017-03-29
               </time>
             
@@ -309,7 +317,7 @@ A: 去面试~! 尤其是所处行业的top公司 &amp;amp; 团队。">
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -349,59 +357,60 @@ A: 去面试~! 尤其是所处行业的top公司 &amp;amp; 团队。">
 
       
         <blockquote>
-<p>Q: &#x5982;&#x4F55;&#x77E5;&#x9053;&#x81EA;&#x5DF1;&#x7684;&#x6280;&#x672F;&#x6C34;&#x5E73;&#x5728;&#x884C;&#x4E1A;&#x5185;&#x6240;&#x5904;&#x7684;&#x4F4D;&#x7F6E;&#xFF1F;</p>
-<p>A: &#x53BB;&#x9762;&#x8BD5;~! &#x5C24;&#x5176;&#x662F;&#x6240;&#x5904;&#x884C;&#x4E1A;&#x7684;top&#x516C;&#x53F8; &amp; &#x56E2;&#x961F;&#x3002;</p>
+<p>Q: 如何知道自己的技术水平在行业内所处的位置？</p>
+<p>A: 去面试~! 尤其是所处行业的top公司 &amp; 团队。</p>
 </blockquote>
 <a id="more"></a>
 <hr>
-<h4 id="322-alibaba&#x795E;&#x9A6C;"><a href="#3-22-Alibaba&#x795E;&#x9A6C;" class="headerlink" title="3.22 Alibaba&#x795E;&#x9A6C;"></a>3.22 Alibaba&#x795E;&#x9A6C;</h4><ol>
-<li>&#x76D2;&#x5B50;&#x6A21;&#x578B;&#xFF0C;box-sizing</li>
-<li>&#x5B9E;&#x73B0;&#x5E03;&#x5C40;&#xFF1A;&#x5DE6;&#x680F;&#x5B9A;&#x5BBD;&#xFF0C;&#x53F3;&#x680F;&#x81EA;&#x9002;&#x5E94;</li>
-<li>position&#x7684;&#x503C;&#x90FD;&#x6709;&#x54EA;&#x4E9B;&#xFF0C;&#x4F5C;&#x7528;&#x5206;&#x522B;&#x662F;&#x4EC0;&#x4E48;</li>
-<li>&#x5B9E;&#x73B0;&#x6570;&#x7EC4;&#x53BB;&#x91CD;</li>
-<li>&#x95ED;&#x5305; &amp; &#x4E8B;&#x4EF6;&#x59D4;&#x6258;&#xFF1A;&#x4E00;&#x4E2A;&#x9875;&#x9762;&#x6709;&#x5F88;&#x591A;li&#x6807;&#x7B7E;&#xFF0C;&#x70B9;&#x51FB;&#x6807;&#x7B7E;&#x5F39;&#x51FA;&#x5BF9;&#x5E94;&#x7684;index</li>
-<li>&#x6B63;&#x5219;&#xFF1A;&#x5339;&#x914D;url&#xFF1B;replace&#x66FF;&#x6362;&#x5B57;&#x7B26;&#x4E32;&#x9996;&#x5C3E;&#x7A7A;&#x683C;</li>
-<li>&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7EE7;&#x627F;</li>
-<li>&#x89E3;&#x91CA;&#x4E00;&#x4E0B;&#x539F;&#x578B;&#x673A;&#x5236;</li>
-<li><p>&#x4E0B;&#x9762;&#x4E00;&#x6BB5;&#x4EE3;&#x7801;&#x7684;&#x8F93;&#x51FA;&#x662F;&#x4EC0;&#x4E48;</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = {</div><div class="line">    toString: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</div><div class="line">        <span class="keyword">return</span>: <span class="number">2</span>;</div><div class="line">    }</div><div class="line">};</div><div class="line"><span class="keyword">var</span> b = {};</div><div class="line">b[a] = <span class="number">1</span>;</div><div class="line"><span class="built_in">console</span>.log(b);</div></pre></td></tr></table></figure>
+<h4 id="ali"><a href="#ali" class="headerlink" title="ali"></a>ali</h4><ol>
+<li>盒子模型，box-sizing</li>
+<li>实现布局：左栏定宽，右栏自适应</li>
+<li>position的值都有哪些，作用分别是什么</li>
+<li>实现数组去重</li>
+<li>闭包 &amp; 事件委托：一个页面有很多li标签，点击标签弹出对应的index</li>
+<li>正则：匹配url；replace替换字符串首尾空格</li>
+<li>如何实现继承</li>
+<li>解释一下原型机制</li>
+<li><p>下面一段代码的输出是什么</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123;</div><div class="line">    <span class="attr">toString</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span>: <span class="number">2</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> b = &#123;&#125;;</div><div class="line">b[a] = <span class="number">1</span>;</div><div class="line"><span class="built_in">console</span>.log(b);</div></pre></td></tr></table></figure>
 </li>
-<li><p>requireJS &#x7684;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x673A;&#x5236;&#xFF0C;&#x662F;&#x5982;&#x4F55;&#x907F;&#x514D;&#x91CD;&#x590D;&#x52A0;&#x8F7D;&#x7684;&#xFF1F;</p>
+<li><p>requireJS 的模块加载机制，是如何避免重复加载的？</p>
 </li>
-<li>fis &#x7684;&#x5B9E;&#x65F6;&#x5237;&#x65B0;&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7684;&#xFF1F;</li>
-<li>vue &#x4E0E; angularJS&#x7684;&#x533A;&#x522B;</li>
-<li>Array &#x7684; find() &#x4E0E; some()</li>
+<li>fis 的实时刷新是如何实现的？</li>
+<li>vue 与 angularJS的区别</li>
+<li>Array 的 find() 与 some()</li>
 </ol>
 <hr>
-<h3 id="328-didi"><a href="#3-28-Didi" class="headerlink" title="3.28 Didi"></a>3.28 Didi</h3><ol>
-<li><p>&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x8F93;&#x51FA;&#x662F;&#x4EC0;&#x4E48;</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun1</span>(<span class="params"></span>) </span>{</div><div class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a + a);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun2</span>(<span class="params"></span>) </span>{</div><div class="line">    <span class="keyword">var</span> a = <span class="number">3</span>;</div><div class="line">    fun1();</div><div class="line">}</div><div class="line"></div><div class="line">fun2();</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun3</span> (<span class="params"></span>) </span>{</div><div class="line">    <span class="keyword">this</span>.a = <span class="number">4</span>;</div><div class="line">}</div><div class="line"></div><div class="line">fun3.prototype = {</div><div class="line">    a: <span class="number">5</span></div><div class="line">};</div><div class="line"></div><div class="line"><span class="keyword">var</span> f3 = <span class="keyword">new</span> fun3();</div><div class="line">fun1.call(f3);</div></pre></td></tr></table></figure>
+<h3 id="didi"><a href="#Didi" class="headerlink" title="Didi"></a>Didi</h3><ol>
+<li><p>以下代码输出是什么</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun1</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.a + a);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun2</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">3</span>;</div><div class="line">    fun1();</div><div class="line">&#125;</div><div class="line"></div><div class="line">fun2();</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun3</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.a = <span class="number">4</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">fun3.prototype = &#123;</div><div class="line">    <span class="attr">a</span>: <span class="number">5</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> f3 = <span class="keyword">new</span> fun3();</div><div class="line">fun1.call(f3);</div></pre></td></tr></table></figure>
 </li>
-<li><p>&#x70B9;&#x51FB;li&#x6807;&#x7B7E;&#x5F39;&#x51FA;&#x7D22;&#x5F15;</p>
+<li><p>点击li标签弹出索引</p>
 </li>
-<li>&#x6DF1;&#x5EA6;&#x62F7;&#x8D1D;</li>
-<li>&#x539F;&#x751F;js&#x5B9E;&#x73B0;jquery offset&#x51FD;&#x6570;</li>
-<li>&#x5DE6;&#x8FB9;&#x5B9A;&#x5BBD;&#xFF0C;&#x53F3;&#x8FB9;&#x81EA;&#x9002;&#x5E94;&#x5E03;&#x5C40;</li>
-<li>&#x5B9E;&#x73B0;&#x7EE7;&#x627F;</li>
-<li><p>&#x6A21;&#x677F;&#x66FF;&#x6362;&#xFF1A;&#x5B9E;&#x73B0;template&#x51FD;&#x6570;</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">template(<span class="string">&apos;&lt;div class=&quot;{%className%}&quot;&gt;{%name%}&lt;/div&gt;&apos;</span>, {</div><div class="line">    className: <span class="string">&apos;col-md-4&apos;</span>,</div><div class="line">    name: <span class="string">&apos;didi&apos;</span></div><div class="line">})</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">template</span>(<span class="params"></span>) </span>{</div><div class="line">}</div></pre></td></tr></table></figure>
+<li>深度拷贝</li>
+<li>原生js实现jquery offset函数</li>
+<li>左边定宽，右边自适应布局</li>
+<li>实现继承</li>
+<li><p>模板替换：实现template函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">template(<span class="string">'&lt;div class="&#123;%className%&#125;"&gt;&#123;%name%&#125;&lt;/div&gt;'</span>, &#123;</div><div class="line">    <span class="attr">className</span>: <span class="string">'col-md-4'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'didi'</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">template</span>(<span class="params"></span>) </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
-<li><p>AngularJS &#x4E0E; vue &#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF0C;&#x53CC;&#x5411;&#x7ED1;&#x5B9A;&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7684;</p>
+<li><p>AngularJS 与 vue 有什么区别，双向绑定是如何实现的</p>
 </li>
-<li>fis &#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#xFF0C;fis &#x63D2;&#x4EF6;&#x7684;&#x5DE5;&#x4F5C;&#x673A;&#x5236;&#xFF0C;&#x5B57;&#x4F53;&#x6587;&#x4EF6;&#x7684;&#x7CBE;&#x7B80;&#x4F18;&#x5316;&#x5E94;&#x8BE5;&#x5728;&#x54EA;&#x4E00;&#x6B65;&#x6DFB;&#x52A0;&#x63D2;&#x4EF6;&#x6765;&#x6267;&#x884C;&#xFF1B;</li>
-<li>http &#x72B6;&#x6001;&#x7801;&#xFF0C;200 &#x4E0E; 304 &#x7684;&#x533A;&#x522B;&#xFF0C;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7F13;&#x5B58;&#x6587;&#x4EF6;</li>
-<li>&#x6D4F;&#x89C8;&#x5668;&#x4ECE;&#x8F93;&#x5165; url &#x5230;&#x6572;&#x56DE;&#x8F66;&#x663E;&#x793A;&#x9875;&#x9762;&#x53D1;&#x751F;&#x4E86;&#x4EC0;&#x4E48;&#xFF1F;</li>
+<li>fis 的工作原理，fis 插件的工作机制，字体文件的精简优化应该在哪一步添加插件来执行；</li>
+<li>http 状态码，200 与 304 的区别，如何实现缓存文件</li>
+<li>浏览器从输入 url 到敲回车显示页面发生了什么？</li>
 </ol>
 <hr>
-<h4 id="&#x5176;&#x5B83;"><a href="#&#x5176;&#x5B83;" class="headerlink" title="&#x5176;&#x5B83;"></a>&#x5176;&#x5B83;</h4><ol>
-<li>AngularJS &#x7684; isolate scope &#x4E0E;&#x666E;&#x901A;&#x7684; scope &#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF1F;</li>
+<h4 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h4><ol>
+<li>AngularJS 的 isolate scope 与普通的 scope 有什么区别？</li>
 </ol>
 <hr>
-<h3 id="&#x603B;&#x7ED3;"><a href="#&#x603B;&#x7ED3;" class="headerlink" title="&#x603B;&#x7ED3;"></a>&#x603B;&#x7ED3;</h3><ol>
-<li>&#x9762;&#x8BD5;&#x9898;&#x6574;&#x4F53;&#x504F;&#x57FA;&#x7840;&#xFF0C;&#x9700;&#x8981;&#x6DF1;&#x5EA6;&#x7406;&#x89E3;&#x57FA;&#x7840;&#x77E5;&#x8BC6;&#x7684;&#x539F;&#x7406;&#xFF0C;&#x4ECE;&#x800C;&#x878D;&#x4F1A;&#x8D2F;&#x901A;&#x3001;&#x4E3E;&#x4E00;&#x53CD;&#x4E09;&#x3002;</li>
-<li>&#x5BF9;&#x6846;&#x67B6;&#x7684;&#x8BA4;&#x8BC6;&#x4E5F;&#x4E0D;&#x80FD;&#x4EC5;&#x4EC5;&#x505C;&#x7559;&#x5728;&#x4F1A;&#x7528;&#x4E0A;&#xFF0C;&#x800C;&#x662F;&#x5728;&#x719F;&#x7EC3;&#x4F7F;&#x7528;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x53BB;&#x4E86;&#x89E3;&#x539F;&#x7406;&#x3001;&#x67E5;&#x770B;&#x5206;&#x6790;&#x6E90;&#x7801;&#xFF0C;&#x8FD9;&#x6837;&#x65E2;&#x4E86;&#x89E3;&#x6574;&#x4F53;&#xFF0C;&#x53C8;&#x6DF1;&#x5165;&#x5C40;&#x90E8;&#x3002;&#x4E0D;&#x4EC5;&#x8981;&#x4F1A;&#x4F7F;&#x7528;&#x8F6E;&#x5B50;&#xFF0C;&#x4E5F;&#x8981;&#x57F9;&#x517B;&#x81EA;&#x5DF1;&#x9020;&#x8F6E;&#x5B50;&#x7684;&#x80FD;&#x529B;&#x3002;</li>
-<li>&#x5E73;&#x65F6;&#x7684;&#x5DE5;&#x4F5C;&#x4E2D;&#x8981;&#x5B66;&#x4F1A;&#x603B;&#x7ED3;&#x548C;&#x5206;&#x4EAB;&#xFF0C;&#x8FD9;&#x662F;&#x6211;&#x76EE;&#x524D;&#x7684;&#x5F31;&#x70B9;&#x3002;&#x5176;&#x5B9E;&#x6211;&#x662F;&#x4ECE;&#x4ECA;&#x5E74;&#x624D;&#x5F00;&#x59CB;&#x4F7F;&#x7528;&#x601D;&#x7EF4;&#x5BFC;&#x56FE;&#x6765;&#x6574;&#x7406;&#x77E5;&#x8BC6;&#x4F53;&#x7CFB;&#xFF0C;&#x77ED;&#x77ED;&#x7684;&#x65F6;&#x95F4;&#x5185;&#x53D7;&#x76CA;&#x826F;&#x591A;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x611F;&#x89C9;&#x5230;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x4E0D;&#x592A;&#x591F;&#x7528;&#xFF0C;&#x5C40;&#x9650;&#x4E8E;&#x300E;&#x521D;&#x5B66;&#x300F;&#x6574;&#x4F53;&#x6846;&#x67B6;&#xFF0C;&#x8981;&#x6DF1;&#x5165;&#x5206;&#x6790;&#x7684;&#x8BDD;&#x53EF;&#x80FD;&#x8FD8;&#x662F;&#x8981;&#x901A;&#x8FC7;&#x5199;&#x603B;&#x7ED3;&#x6587;&#x3001;&#x5206;&#x4EAB;&#x7ED9;&#x522B;&#x4EBA;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x8FD9;&#x662F;&#x6211;&#x4E0B;&#x4E00;&#x6B65;&#x8981;&#x8D70;&#x7684;&#x8DEF;&#x3002;</li>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>面试题整体偏基础，需要深度理解基础知识的原理，从而融会贯通、举一反三。</li>
+<li>对框架的认识也不能仅仅停留在使用上，而是在熟练使用的前提下再去了解原理、查看分析源码，这样既了解整体，又深入局部。不仅要会使用轮子，也要培养自己造轮子的能力。</li>
+<li>平时的工作中要学会总结和分享，这是我目前的弱点。其实我是从今年才开始使用思维导图来整理自己的技术知识体系，短短的时间内受益良多，同时也感觉到这种方式不太够用，局限于『初学』整体框架，要深入分析的话可能还是要通过写总结文、分享给别人这种方式，这是我下一步要走的路。</li>
 </ol>
+<p>+U！</p>
 
       
     </div>
@@ -505,10 +514,10 @@ A: 去面试~! 尤其是所处行业的top公司 &amp;amp; 团队。">
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            站点概览
           </li>
         </ul>
       
@@ -516,7 +525,7 @@ A: 去面试~! 尤其是所处行业的top公司 &amp;amp; 团队。">
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
+               src="https://avatars2.githubusercontent.com/u/5069297?v=3&s=460"
                alt="Letica" />
           <p class="site-author-name" itemprop="name">Letica</p>
            
@@ -529,7 +538,7 @@ A: 去面试~! 尤其是所处行业的top公司 &amp;amp; 团队。">
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">9</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
@@ -540,7 +549,7 @@ A: 去面试~! 尤其是所处行业的top公司 &amp;amp; 团队。">
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-name">分类</span>
               
             </div>
           
@@ -551,7 +560,7 @@ A: 去面试~! 尤其是所处行业的top公司 &amp;amp; 团队。">
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">9</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">标签</span>
               
             </div>
           
@@ -592,7 +601,7 @@ A: 去面试~! 尤其是所处行业的top公司 &amp;amp; 团队。">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#322-alibaba神马"><span class="nav-number">1.</span> <span class="nav-text">3.22 Alibaba神马</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#328-didi"><span class="nav-number"></span> <span class="nav-text">3.28 Didi</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#其它"><span class="nav-number">1.</span> <span class="nav-text">其它</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number"></span> <span class="nav-text">总结</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#ali"><span class="nav-number">1.</span> <span class="nav-text">ali</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#didi"><span class="nav-number"></span> <span class="nav-text">Didi</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#其它"><span class="nav-number">1.</span> <span class="nav-text">其它</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number"></span> <span class="nav-text">总结</span></a></div>
             
 
           </div>
@@ -624,13 +633,13 @@ A: 去面试~! 尤其是所处行业的top公司 &amp;amp; 团队。">
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
-  Theme -
+  主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
