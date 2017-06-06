@@ -1,5 +1,5 @@
-title: [译] vuex 基础：教程和说明
-date: 2017-05-31 19:00:00
+title: 【译】vuex 基础：教程和说明
+date: 2017-06-04 15:00:00
 categories: front-end
 tags: vue, vuex
 ---
