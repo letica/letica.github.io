@@ -1,7 +1,7 @@
 title: 【译】vuex 基础：教程和说明
 date: 2017-06-04 15:00:00
 categories: front-end
-tags: vue, vuex
+tags: vuex
 ---
 
 原文地址：[Vuex basics: Tutorial and explanation](https://skyronic.com/2016/01/03/vuex-basics-tutorial)
