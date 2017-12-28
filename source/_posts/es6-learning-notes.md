@@ -12,6 +12,14 @@ learn from this book:  [《ECMAScript 6 入门》](http://es6.ruanyifeng.com/) b
 
 <!-- more -->
 
+- [ ] Symbol
+- [ ] 模块化 import export
+- [ ] 解构
+- [ ] 不定参数、默认参数
+- [ ] 箭头函数
+- [ ] 代理 proxy
+
+ 
 <!-- toc -->
 
 ## 0. 发展历史
@@ -82,22 +90,56 @@ ECMAScript 与 Javascript 的区别是：前者是后者的规格，后者是前
 2. 在 `package.json` 添加如下配置
 ```
     "babel": {
-     　　"presets": ["es2015"]
+     　　"presets": ["es2015", "stage-2"]
     }
 ```
 
-> [Babel官网](http://babeljs.io/docs/setup/#installation)推荐将 babel-cli 安装在项目本地，原因有二：
+[你可以在这里测试转码效果](http://babeljs.io/repl/)
+
+> [Babel官网](http://babeljs.io/docs/setup/#installation) 推荐将 babel-cli 安装在项目本地，原因有二：
 - Different projects on the same machine can depend on different versions of Babel allowing you to update one at a time.
-- 一台机器上的不同项目可能会基于不同版本的 Babel ，这样允许你一次升级一个项目，不会互相影响
 - It means you do not have an implicit dependency on the environment you are working in. Making your project far more portable and easier to setup.
+
+- 一台机器上的不同项目可能会基于不同版本的 Babel ，这样允许你一次升级一个项目，不会互相影响
 - 这意味着在你工作的环境下没有含义不明的依赖。使你的项目更轻便、更容易安装。
 
 [[这里还有其它的使用方式]](http://babeljs.io/docs/setup/#installation)
 
-## 2. 语法
+## 2. 主要内容
 
-#### 2.1 变量声明
-> var/function/ let/const/import/class，新增后四种。
+### 数据类型变化
+
+JS 中的数据类型有：undefined null String Number Boolean Object
+
+#### 新增 symbol 类型
+
+```
+// 创建一个新的symbol，它的值与其它任何值皆不相等：
+var mySymbol = Symbol()
+
+// 创建一个独一无二的symbol：
+var isMoving = Symbol("isMoving")
+```
+
+- 三种获取 Symbol 的方式
+    1. Symbol()
+    2. Symbol.for(string)
+    3. 使用标准定义的 Symbol，如 `Symbol.iterator`
+
+- tips
+    - symbol 不能被自动转为字符串或数字，但可以转为 boolean；
+    - symbol 作为属性时不能被 for...in、 `Object.keys()`等遍历到，可以使用`Object.getOwnPropertySymbols(obj)` 或`Reflect.ownKeys(obj)`，前者返回对象的 symbol 键，后者返回所有字符串键和 symbol 键；
+    - Symbol.keyFor(s1) 返回 symbol s1的 key 值
+
+#### Object
+
+- Object.defineProperty()
+- Object.freeze()
+- Object.seal()
+
+### 语法变化
+
+#### 变量声明
 
 - let：声明变量，类似var。与var区别如下：
     - **块级作用域**。只在let所在代码块内有效，for语句的计数器很适合用let声明；
@@ -118,6 +160,8 @@ ECMAScript 与 Javascript 的区别是：前者是后者的规格，后者是前
 
 - import
 
+todo 模块
+
 - class
 
 > ES5中，var或function定义的全局变量与顶层对象(window/global)的属性等价。
@@ -133,136 +177,109 @@ let b = 1;
 window.b // undefined
 ```
 
-#### 2.2 解构赋值
+#### 模板字符串
 
-- 数组
-只要某种数据结构具有Iterator接口，都可以采用数组形式的解构赋值。如果解构失败（严格相等于undefined），变量的值就等于undefined。
+- 基础使用方法
+```
+var str = 'world'
+var result = `hello ${str}` // 'hello world'
+```
 
-    ```
-    var [x1, y1, z1] = [1, 2, 3]; // x1 = 1; y1 = 2; z1 = 3;
-    var [x2, y2] = new Set(['a']); // x2 = 'a'; y2 = undefined;
+- 标签模板 tagged templates
+语法：模板字符串开始的反撇号前附加一个额外的标签，可以是标识符、属性值或方法调用等任何 ES6的成员表达式或调用表达式。
 
-    // 默认值
-    // 注意，ES6内部使用严格相等运算符（===），判断一个位置是否有值。所以，如果一个数组成员不严格等于undefined，默认值是不会生效的。
-    var [x3 = 1] = []; // x3 = 1
-    var [x4 = 1] = [null]; // x4 = null
-    ```
+```
+var message = SaferHTML`<p>${bonk.sender} 向你示好。</p>`;
 
-- 对象
-等号左边如有冒号，冒号之前是模式，最终会将**等号右边对应模式的值**赋值给**冒号之后的变量**。
+// 等效于
+var message = SaferHTML(templateData, bonk.sender);
 
-    ```
-    // 按照对象的key进行赋值
-    var {foo, bar} = {foo: 'aaa', bar: 'bbb'}; // foo = 'aaa'; bar = 'bbb'
-    // 等价于：
-    var { foo: foo, bar: bar } = { foo: 'aaa', bar: 'bbb'};
+// SaferHTML是一个普通的函数，它可以是这样：
+function SaferHTML(templateData) {
+  var s = templateData[0];
+  for (var i = 1; i < arguments.length; i++) {
+    var arg = String(arguments[i]);
 
-    // 模式
-    var {foo: baz} = {foo: 'aaa'}; // baz = 'aaa'; foo = undefined
+    // 转义占位符中的特殊字符。
+    s += arg.replace(/&/g, "&")
+            .replace(/</g, "<")
+            .replace(/</g, ">");
 
-    // 指定默认值
-    var {x: y = 3} = {}; // y = 3;
-    var {x: y = 3} = {x: 5}; // y = 5
+    // 不转义模板中的特殊字符。
+    s += templateData[i];
+  }
+  return s;
+}
+```
 
-    // 将一个已声明的变量用于解构赋值时，注意写法，第二行的小括号不可省略，否则JS引擎会将{x}作为代码块处理从而报错。
-    var x;
-    ({x} = {x: 1});
-    ```
+#### 不定参数、默认参数
 
-- 字符串
+- 不定参数
 
-    ```
-    var [a, b, c] = 'hello'; // a = 'h', b = 'e', c = 'l'
-    var {length: len} = 'hello'; // len = 5
-    ```
-
-- 数值和布尔值
-解构赋值的规则是，只要等号右边的值不是对象，就先将其转为对象。
+    1. 使用 `arguments`解决
+    2. 使用 `...` 展开运算符
 
     ```
-    let {toString: s} = 123;
-    s === Number.prototype.toString // true
-
-    let {toString: s} = true;
-    s === Boolean.prototype.toString // true
-
-    let { prop: x } = undefined; // TypeError
-    let { prop: y } = null; // TypeError
-    ```
-
-- 函数参数
-与变量的解构赋值一致，只是这个变量是作为函数的参数而已。
-
-    ```
-    function move({x = 0, y = 0} = {}) {
-      return [x, y];
+    // needles 是 haystack 后面所有参数组成的数组
+    function containsAll(haystack, ...needles) {
+        for (var needle of needles) {
+            if (haystack.indexOf(needle) === -1) {
+                return false
+            }
+        }
+        return true
     }
-
-    move({x: 3, y: 8}); // [3, 8]
-    move({x: 3}); // [3, 0]
-    move({}); // [0, 0]
-    move(); // [0, 0]
     ```
 
-    > 小括号的使用：
-    > 只有赋值语句的非模式部分，可以使用圆括号。
+- 默认参数
+形参部分通过赋值语句可以设置默认参数，从左至右依次赋值
 
-    错误：
+```
+function getItemById (id = 0) {
+    return {
+        id,
+        name: 'moly'
+    }
+}
+```
+
+
+#### 解构
+
+- 对象赋值模式
+    
+    被解构的值需要被强制转换为对象。因此 null 和 undefined 不能被解构。
     ```
-    var [(a)] = [1];
-    function f([(z)]) {return z;}
-    ({p: a}) = {p: 42};
-    [({p: a}), {x: c}] = [{}, {}];
-    正确：
-    [(b)] = [3];
-    ({p: (d)} = {});
+    var {a, b} = {a: 1, b: 2} // a: 1, b: 2
+    var {a: name} = {a: 'moly'} // name: moly
+    ```
+
+- 数组赋值模式
+
+    被解构的值一定要包含一个迭代器。同样 null 和 undefined 不可迭代。
+    ```
+    var [a, b] = [1, 2, 3]
+    var [head, ...tail] = [1, 2, 3, 4]; // head: 1,  tail: [2, 3, 4]
     ```
 
 - 用途总结
     - 交换变量的值
 
         ```
-        [x, y] = [y, x];
+        [x, y] = [y, x]
         ```
-    - 从函数返回多个值
-
-        ```
-        // 返回一个数组
-        function example() {
-          return [1, 2, 3];
-        }
-        var [a, b, c] = example();
-        // 返回一个对象
-        function example() {
-          return {
-            foo: 1,
-            bar: 2
-          };
-        }
-        var {foo, bar} = example();
-        ```
-    - 函数参数的定义
+    - 函数参数定义
 
         ```
         // 参数是一组有次序的值
         function f([x, y, z]) { ... }
-        f([1, 2, 3]);
+        f([1, 2, 3])
 
         // 参数是一组无次序的值
         function f({x, y, z}) { ... }
-        f({z: 3, y: 2, x: 1});
+        f({z: 3, y: 2, x: 1})
         ```
-    - 提取JSON数据
 
-        ```
-        var jsonData = {
-            id: 42,
-            status: "OK",
-            data: [867, 5309]
-        };
-        let {id, status, data: number} = jsonData;
-        console.log(id, status, number); // 42, "OK", [867, 5309]
-        ```
     - 函数参数的默认值
 
         ```
@@ -279,21 +296,189 @@ window.b // undefined
         };
         // 避免了 var foo = config.foo || 'default foo' 这样的语句
         ```
+        
     - 遍历Map
 
         ```
-        var map = new Map();
-        map.set('first', 'hello');
-        map.set('second', 'world');
+        var map = new Map()
+        map.set('first', 'hello')
+        map.set('second', 'world')
         // [key] 或 [, value] 可以只获取key或只获取value
         for (let [key, value] of map) {
-          console.log(key + " is " + value);
+            console.log(key + " is " + value)
         }
         // first is hello
         // second is world
         ```
+
+    - 多重返回值
+    ```
+    // 数组形式
+    function returnMultipleValues() {
+        return [1, 2]
+    }
+    var [foo, bar] = returnMultipleValues()
+
+    // 对象形式
+    function returnMultipleValues() {
+        return {
+            foo: 1,
+            bar: 2
+        }
+    }
+    var {foo, bar} = returnMultipleValues()
+    ```
+
     - 输入模块的指定方法
 
         ```
         const {SourceMapConsumer, SourceNode} = require("source-map");
+        // 类似 `import` 的语法
         ```
+
+#### 箭头函数
+
+```
+var sum = (a, b) => a + b
+sum(2, 3) // 5
+```
+
+- 箭头函数没有自己的 this 值，它的 this 继承自外围作用域
+- 箭头函数没有自己的 arguments 值，可以使用不定参数和默认参数来实现
+
+详细的语法参考 [这里](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+
+#### 循环
+
+- 最初我们使用普通的 for 循环遍历数组
+```
+var arr = [1, 2, 3]
+for (var i = 0; i < arr.length; i++) {
+    console.log(i, arr[i])
+}
+```
+
+- ES5之后，使用 Array.prototype.forEach
+```
+arr.forEach(function (val) {
+    console.log(val)
+})
+```
+forEach 的缺点： 不能使用 break 中断循环；不能使用 return 返回外层。
+
+- 或许也可以试一下 for-in 循环
+```
+for (var index in arr) {
+    console.log(arr[index])
+}
+```
+for-in 的缺点：循环变量 index 不是数字而是字符串；遍历的不仅包含数组元素还可能包含自定义属性，如 arr.name；更甚，遍历结果可能按随机顺序 orz！
+
+其实 for-in 是为遍历对象而设计的。
+
+- 请使用 for-of 循环吧
+```
+for (var val of arr) {
+    console.log(val)
+}
+```
+简洁而正确，可正确响应 `break`、`continue`、`return`。
+它为遍历各种集合而设计，实际是调用集合的`[Symbol.iterator]()`方法。
+```
+// 因为jQuery对象与数组相似，可以为其添加与数组一致的迭代器方法
+jQuery.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator]
+// 这样就可以使用 for-of 遍历 jQuery 对象了
+for (var $item of $('div')) {
+    console.log($item)
+}
+```
+
+#### 迭代器
+
+Array/Set/Map 都有一个迭代器方法，也就是`[Symbol.iterator]()`。可以为任何对象添加这个方法，拥有这个方法的对象被称为`可迭代的`。
+
+迭代器是一个拥有 `next` 方法的对象，遍历这个对象时，每个循环都调用 next 方法。
+
+```
+var zeroesForeverIterator = {
+    [Symbol.iterator] () {
+        return this
+    },
+    next () {
+        return {done: false, value: 0};
+    }
+}
+```
+
+#### 生成器
+
+生成器是一种特殊的函数，它与函数有以下不同：
+1. 使用`function*`声明
+2. 函数内部可以写无数个 `yield` 语句，类似`return`
+3. 调用生成器函数，返回一个暂停的生成器对象
+4. 每当调用生成器对象的 `.next()` 方法，函数将开启运行直到下一个`yield`语句，并返回对象`{value: 'yield 后的值', done: false}`，执行到最后一个 yield 时，返回对象的 done 值为 true。
+
+```
+function* quips (name) {
+    yield 'this'
+    yield 'is'
+    yield name + '\'s'
+    yield 'generator'
+}
+var q = quips('celine')
+q.next()  // {value: 'this', done: false}
+q.next()  // {value: 'is', done: false}
+q.next()  // {value: 'celine's', done: false}
+q.next()  // {value: 'generator', done: true}
+```
+
+这个奇怪的东西是用来干嘛的？
+
+假如我想实现一个 range 迭代器，像这样：
+```
+// 应该弹出三次 "ding"
+for (var value of range(0, 3)) {
+    alert("Ding! at floor #" + value);
+}
+
+// 方法一：使用 ES6的 class 实现
+class RangeIterator {
+  constructor(start, stop) {
+    this.value = start;
+    this.stop = stop;
+  }
+
+  [Symbol.iterator]() { return this; }
+
+  next() {
+    var value = this.value;
+    if (value < this.stop) {
+      this.value++;
+      return {done: false, value: value};
+    } else {
+      return {done: true, value: undefined};
+    }
+  }
+}
+
+// 返回一个新的迭代器，可以从start到stop计数。
+function range(start, stop) {
+  return new RangeIterator(start, stop);
+}
+
+// 方法二：用生成器
+function* range (start, stop) {
+    for (var i = start; i < stop; i++) {
+        yield i;
+    }
+}
+```
+好了，我和我的小伙伴都惊呆了，竟然如此简单！
+
+> 生成器是迭代器。
+
+#### 集合
+
+#### 代理 Proxy
+
+todo
