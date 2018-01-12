@@ -11,14 +11,6 @@ toc: true
 learn from this book:  [《ECMAScript 6 入门》](http://es6.ruanyifeng.com/) by 阮一峰
 
 <!-- more -->
-
-- [ ] Symbol
-- [ ] 模块化 import export
-- [ ] 解构
-- [ ] 不定参数、默认参数
-- [ ] 箭头函数
-- [ ] 代理 proxy
-
  
 <!-- toc -->
 
@@ -158,11 +150,86 @@ var isMoving = Symbol("isMoving")
     foo.prop = 123;
     ```
 
-- import
-
-todo 模块
-
 - class
+
+通常我们这样实现一个类：
+```
+function Circle(radius) {
+    this.radius = radius;
+    Circle.circlesMade++;
+}
+Circle.draw = function draw(circle, canvas) { /* Canvas绘制代码 */ }
+Object.defineProperty(Circle, "circlesMade", {
+    get: function() {
+        return !this._count ? 0 : this._count;
+    },
+    set: function(val) {
+        this._count = val;
+    }
+});
+Circle.prototype = {
+    area() {
+        return Math.pow(this.radius, 2) * Math.PI;
+    },
+    get radius() {
+        return this._radius;
+    },
+    set radius(radius) {
+        if (!Number.isInteger(radius))
+            throw new Error("圆的半径必须为整数。");
+        this._radius = radius;
+    }
+};
+```
+
+现在，新增了`class` 关键字用来声明一个类，像这样：
+
+```
+class Circle {
+    constructor(radius) {
+        this.radius = radius;
+        Circle.circlesMade++;
+    };
+    static draw(circle, canvas) {
+        // Canvas绘制代码
+    };
+    static get circlesMade() {
+        return !this._count ? 0 : this._count;
+    };
+    static set circlesMade(val) {
+        this._count = val;
+    };
+    area() {
+        return Math.pow(this.radius, 2) * Math.PI;
+    };
+    get radius() {
+        return this._radius;
+    };
+    set radius(radius) {
+        if (!Number.isInteger(radius))
+            throw new Error("圆的半径必须为整数。");
+        this._radius = radius;
+    };
+}
+```
+
+同时，还增加了`extends`来实现继承：
+
+```
+class Shape {
+    get color() {
+        return this._color;
+    }
+    set color(c) {
+        this._color = parseColorAsRGB(c);
+        this.markChanged();  // 稍后重绘Canvas
+    }
+}
+
+class Rectangle extends Shape {
+
+}
+```
 
 > ES5中，var或function定义的全局变量与顶层对象(window/global)的属性等价。
 > ES6中，let、const、class定义的全局变量不再跟顶层对象有关联。
@@ -384,6 +451,7 @@ for (var val of arr) {
 ```
 简洁而正确，可正确响应 `break`、`continue`、`return`。
 它为遍历各种集合而设计，实际是调用集合的`[Symbol.iterator]()`方法。
+但它也有缺点，那就是无法获取索引值。
 ```
 // 因为jQuery对象与数组相似，可以为其添加与数组一致的迭代器方法
 jQuery.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator]
@@ -413,10 +481,10 @@ var zeroesForeverIterator = {
 #### 生成器
 
 生成器是一种特殊的函数，它与函数有以下不同：
-1. 使用`function*`声明
-2. 函数内部可以写无数个 `yield` 语句，类似`return`
-3. 调用生成器函数，返回一个暂停的生成器对象
-4. 每当调用生成器对象的 `.next()` 方法，函数将开启运行直到下一个`yield`语句，并返回对象`{value: 'yield 后的值', done: false}`，执行到最后一个 yield 时，返回对象的 done 值为 true。
+1. 使用 `function*` 声明；
+2. 函数内部可以写无数个 `yield` 语句，类似`return`；
+3. 调用生成器函数，返回一个暂停的生成器对象；
+4. 每当调用生成器对象的 `.next()` 方法，函数将开启运行直到下一个`yield`语句，并返回对象 `{value: 'yield 后的值', done: false}`，执行到最后一个 yield 时，返回对象的 done 值为 true。
 
 ```
 function* quips (name) {
@@ -425,6 +493,7 @@ function* quips (name) {
     yield name + '\'s'
     yield 'generator'
 }
+
 var q = quips('celine')
 q.next()  // {value: 'this', done: false}
 q.next()  // {value: 'is', done: false}
@@ -432,7 +501,7 @@ q.next()  // {value: 'celine's', done: false}
 q.next()  // {value: 'generator', done: true}
 ```
 
-这个奇怪的东西是用来干嘛的？
+这个奇怪的东西是用来干嘛的呢？
 
 假如我想实现一个 range 迭代器，像这样：
 ```
@@ -473,12 +542,15 @@ function* range (start, stop) {
     }
 }
 ```
-好了，我和我的小伙伴都惊呆了，竟然如此简单！
+就是这么简洁明了，我和我的小伙伴都惊呆了！
 
 > 生成器是迭代器。
+
+#### 模块
+
+- es6中，一个js 文件是一个模块，默认为严格模式；
+- 在模块中可以使用 import 来引入模块，用 export 来导出模块。
 
 #### 集合
 
 #### 代理 Proxy
-
-todo
