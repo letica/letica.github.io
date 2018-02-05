@@ -1,0 +1,820 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="meta," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="letica'ss timezone" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="html5 meta/link 标签详解。">
+<meta name="keywords" content="meta">
+<meta property="og:type" content="article">
+<meta property="og:title" content="html5 - meta&#x2F;link 标签详解">
+<meta property="og:url" content="http://letica.github.io/2018/01/02/html5-meta/index.html">
+<meta property="og:site_name" content="letica&#39;ss timezone">
+<meta property="og:description" content="html5 meta/link 标签详解。">
+<meta property="og:updated_time" content="2018-02-05T13:02:58.253Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="html5 - meta&#x2F;link 标签详解">
+<meta name="twitter:description" content="html5 meta/link 标签详解。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://letica.github.io/2018/01/02/html5-meta/"/>
+
+
+
+
+
+  <title> html5 - meta/link 标签详解 | letica'ss timezone </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3c28f55ed3a230f5dc516bd83e9901c1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">letica'ss timezone</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://letica.github.io/2018/01/02/html5-meta/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Letica">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/5069297?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="letica'ss timezone">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                html5 - meta/link 标签详解
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-02T19:07:06+08:00">
+                2018-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/front-end/" itemprop="url" rel="index">
+                    <span itemprop="name">front-end</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>html5 meta/link 标签详解。</p>
+<a id="more"></a>
+<!-- toc -->
+<ul>
+<li><a href="#meta">meta</a><ul>
+<li><a href="#char-set">char-set</a></li>
+<li><a href="#name">name</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+<h2 id="meta"><a href="#meta" class="headerlink" title="meta"></a>meta</h2><p>meta标签有三个属性： char-set / name / http-equiv </p>
+<h3 id="char-set"><a href="#char-set" class="headerlink" title="char-set"></a>char-set</h3><p>设置字符集</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta <span class="keyword">char</span>-<span class="built_in">set</span>=<span class="string">"utf-8"</span>&gt;</div></pre></td></tr></table></figure>
+<h3 id="name"><a href="#name" class="headerlink" title="name"></a>name</h3><p>用于描述网页，与属性 <code>content</code> 搭配使用，<code>content</code> 中的内容主要是便于搜索引擎机器人查找信息和分类信息用的。</p>
+<ul>
+<li>keywords 关键字</li>
+<li>description 网站内容描述</li>
+<li><p>robots 机器人向导</p>
+<p>  content 可选值：all, none, index, noindex, follow, nofollow，默认 all。</p>
+</li>
+<li><p>author 作者</p>
+  <figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta <span class="built_in">name</span>=<span class="string">"author"</span> contect=<span class="string">"name, xxx@163.com"</span> /&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>generator 信息参数，代表网站用什么软件做的</p>
+</li>
+<li>COPYRIGHT 版权信息</li>
+<li><p>revisit-after  网站重访，如’7days’代表7天。</p>
+</li>
+<li><p>viewport</p>
+<ul>
+<li><p>width </p>
+<p>  viewport的宽度[device-width | pixel_value]， width如果直接设置pixel_value 数值，大部分的安卓手机不支持，但是ios支持；</p>
+</li>
+<li><p>height</p>
+<p>  viewport 的高度 （范围从 223 到 10,000 ）</p>
+</li>
+<li><p>user-scalable  [yes | no]是否允许缩放</p>
+</li>
+<li>initial-scale -  [数值] 初始化比例（范围从 &gt; 0 到 10）</li>
+<li>minimum-scale -  [数值] 允许缩放的最小比例</li>
+<li>maximum-scale -  [数值] 允许缩放的最大比例</li>
+<li>target-densitydpi - 值有以下（一般推荐设置中等响度密度或者低像素密度，后者设置具体的值</li>
+<li>dpi_value，另外webkit内核已不准备再支持此属性）</li>
+<li>dpi_value 一般是70-400//没英寸像素点的个数</li>
+<li>device-dpi设备默认像素密度</li>
+<li>high-dpi 高像素密度</li>
+<li>medium-dpi 中等像素密度</li>
+<li>low-dpi 低像素密度</li>
+</ul>
+</li>
+<li><p>format-detection 忽略电话号码和邮箱</p>
+  <figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta <span class="attr">name="format-detection"</span> <span class="attr">content="telephone=no;</span> <span class="attr">email=no”&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>renderer<br>  启用360浏览器的极速模式。</p>
+  <figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta <span class="built_in">name</span>=<span class="string">"renderer"</span> content=<span class="string">"webkit"</span>&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>HandheldFriendly</p>
+<p>  针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓</p>
+  <figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=<span class="string">"HandheldFriendly"</span> content=<span class="string">"true”&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>MobileOptimized</p>
+<p>  微软的老式浏览器。</p>
+  <figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta <span class="built_in">name</span>=<span class="string">"MobileOptimized"</span> content=<span class="string">"320"</span>&gt;</div></pre></td></tr></table></figure>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 其它 --&gt;</span></div><div class="line"><span class="comment">&lt;!-- UC强制竖屏 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"screen-orientation"</span> <span class="attr">content</span>=<span class="string">"portrait"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- UC强制全屏 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"full-screen"</span> <span class="attr">content</span>=<span class="string">"yes"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- UC应用模式 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"browsermode"</span> <span class="attr">content</span>=<span class="string">"application"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- QQ强制竖屏 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"x5-orientation"</span> <span class="attr">content</span>=<span class="string">"portrait"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- QQ强制全屏 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"x5-fullscreen"</span> <span class="attr">content</span>=<span class="string">"true"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- QQ应用模式 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"x5-page-mode"</span> <span class="attr">content</span>=<span class="string">"app"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- sns 社交标签 begin --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">!—</span> 参考微博<span class="attr">API</span> <span class="attr">--</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">property</span>=<span class="string">"og:type"</span> <span class="attr">content</span>=<span class="string">"类型"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">property</span>=<span class="string">"og:url"</span> <span class="attr">content</span>=<span class="string">"URL地址"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">property</span>=<span class="string">"og:title"</span> <span class="attr">content</span>=<span class="string">"标题"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">property</span>=<span class="string">"og:image"</span> <span class="attr">content</span>=<span class="string">"图片"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">property</span>=<span class="string">"og:description"</span> <span class="attr">content</span>=<span class="string">"描述"</span> /&gt;</span></div><div class="line"><span class="comment">&lt;!-- sns 社交标签 end --&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- Windows 8 磁贴颜色 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"msapplication-TileColor"</span> <span class="attr">content</span>=<span class="string">"#000"</span>/&gt;</span></div><div class="line"><span class="comment">&lt;!-- Windows 8 磁贴图标 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"msapplication-TileImage"</span> <span class="attr">content</span>=<span class="string">"icon.png"</span>/&gt;</span></div><div class="line"><span class="comment">&lt;!-- windows phone 点击无高光 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"msapplication-tap-highlight"</span> <span class="attr">content</span>=<span class="string">"no"</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>apple-mobile-web-app-capable</p>
+<p>  网站开启对web app程序的支持，其实意思就是删除默认的苹果工具栏和菜单栏，开启全屏显示</p>
+  <figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta <span class="built_in">name</span>=<span class="string">"apple-mobile-web-app-capable"</span> content=<span class="string">"yes"</span>&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>apple-mobile-web-app-status-bar-style</p>
+<p>  在 web app 应用下状态条（屏幕顶部条）的颜色；默认值为 default（白色），可以定为 black（黑色）和 black-translucent（灰色半透明）。</p>
+  <figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta <span class="built_in">name</span>=<span class="string">"apple-mobile-web-app-status-bar-style"</span> content=<span class="string">"black"</span> /&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>apple-mobile-web-app-title  设置桌面图标标题</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"apple-mobile-web-app-title"</span> <span class="attr">content</span>=<span class="string">“六个字内最佳”</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>apple-itunes-app  只能 App 广告条</p>
+  <figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">    &lt;meta name=<span class="string">"apple-itunes-app"</span> content=<span class="string">"app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL"</span>&gt; </div><div class="line">    ``` </div><div class="line"></div><div class="line">### http-equiv</div><div class="line">	</div><div class="line">    表示 http 的文件头作用，它可以向浏览器传回一些有用的信息，以帮助正确和精确的显示网页内容。与属性 content 搭配使用，表示各种参数的变量值。</div><div class="line"></div><div class="line">- expires 过期时间</div><div class="line">	</div><div class="line">    content 值为 GMT 格式</div></pre></td></tr></table></figure>
+<p>  <meta http-equiv="“expires”" content="“Fri,12Jan200118:18:18GMT”"></p>
+  <figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">-<span class="ruby"> pragma  </span></div><div class="line">	</div><div class="line">    cache 模式，禁止浏览器从本地缓存中访问页面内容</div></pre></td></tr></table></figure>
+<p>  <meta http-equiv="“pragma”" content="“no-cache”"></p>
+  <figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">-<span class="ruby"> refresh 自动刷新</span></div><div class="line">	</div><div class="line">    自动刷新并跳转到新页面，content 格式为秒数 + url，意为多少秒后跳转到 url。</div></pre></td></tr></table></figure>
+<p>  <meta http-equiv="“refresh”" content="“2;http://www.baidu.com”"></p>
+  <figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- <span class="built_in">set-cookie</span>  <span class="string">cookie的</span>设定</div><div class="line">	</div><div class="line">    如果网页过期，则<span class="string">cookie </span>将被删除。</div></pre></td></tr></table></figure>
+<p>  <meta http-equiv="Set-Cookie" content="cookie value=xxx; expires=Friday,12-Jan-200118:18:18GMT；path=/"> </p>
+  <figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">-<span class="ruby"> Window-target 显示窗口的设定</span></div><div class="line">	</div><div class="line">    强制页面在当前窗口以独立页面显示，如 _top 用来防止别人在框架里调用自己的页面。</div></pre></td></tr></table></figure>
+<p>  <meta http-equiv="Window-target" content="_top"></p>
+  <figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- content-<span class="keyword">type</span> 显示字符集的设定</div></pre></td></tr></table></figure>
+<p>  <meta http-equiv="content-Type" content="text/html;charset=gb2312"> </p>
+  <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="bullet">- </span>content-language 显示语言的设定</div></pre></td></tr></table></figure>
+<p>  <meta http-equiv="Content-Language" content="zh-cn"> </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- cache-control </div><div class="line"></div><div class="line">    指定响应和请求遵循的缓存机制</div><div class="line">	请求时的缓存指令包括no-cache、no-store、max-age、max-stale、min-fresh、only-if-cached，响应消息中的指令包括public、private、no-cache、no-store、no-transform、must-revalidate、proxy-revalidate、max-age</div><div class="line">	各个消息中的指令含义如下：</div><div class="line">	- Public - 指示响应可被任何缓存区缓存</div><div class="line">	- Private - 指示对于单个用户的整个或部分响应消息，不能被共享缓存处理。这允许服务器仅仅描述当用户的部分响应消息，此响应消息对于其他用户的请求无效</div><div class="line">	- no-cache - 指示请求或响应消息不能缓存</div><div class="line">	- no-store - 用于防止重要的信息被无意的发布。在请求消息中发送将使得请求和响应消息都不使用缓存。</div><div class="line">	- max-age - 指示客户机可以接收生存期不大于指定时间（以秒为单位）的响应</div><div class="line">	- min-fresh - 指示客户机可以接收响应时间小于当前时间加上指定时间的响应</div><div class="line">	- max-stale - 指示客户机可以接收超出超时期间的响应消息。如果指定max-stale消息的值，那么客户机可以接收超出超时期指定值之内的响应消息。</div><div class="line"></div><div class="line"></div><div class="line">- Imagetoolbar</div><div class="line">	</div><div class="line">    是否显示图片工具栏，content 值为 true 或 false。</div><div class="line"></div><div class="line">- Content-script-type 指明页面中脚本类型</div></pre></td></tr></table></figure>
+<p>  <meta http-equiv="Content-Language" content="zh-cn"> </p>
+  <figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"><span class="haml">-<span class="ruby"> X-UA-Compatible</span></span></div><div class="line">	优先使用 IE 最新版本和 chrome</div></pre></td></tr></table></figure>
+<p>  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></p>
+  <figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"><span class="shell"><span class="meta"></span></span></div><div class="line">#<span class="bash"><span class="comment"># Link</span></span></div><div class="line"></div><div class="line">- 设置“添加到主屏幕图标  apple-touch-icon-precomposed</div></pre></td></tr></table></figure>
+  <!-- iOS 图标 begin -->  
+  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57x57-precomposed.png">  
+
+   <!-- iPhone 和 iTouch，默认 57x57 像素，必须有 -->  
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png"> 
+
+  <!-- Retina iPhone 和 Retina iTouch，114x114 像素，可以没有，但推荐有 -->  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144-precomposed.png">  
+
+  <!-- Retina iPad，144x144 像素，可以没有，但推荐有 -->  
+  <!-- iOS 图标 end -->
+  <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="bullet">- </span>添加 RSS 订阅</div></pre></td></tr></table></figure>
+<p>  <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml"></p>
+  <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="bullet">- </span>添加 favicon icon</div></pre></td></tr></table></figure>
+<p>  <link rel="shortcut icon" type="image/ico" href="/favicon.ico"></p>
+  <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="bullet">- </span>设置启动画面</div></pre></td></tr></table></figure>
+<p>  <link rel="apple-touch-startup-image" href="Startup.png"><br>  ```</p>
+</li>
+</ul>
+<p>参考:</p>
+<p><a href="http://blog.csdn.net/kongjiea/article/details/17092413" target="_blank" rel="external">HTML5 meta 全解</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/meta/" rel="tag"># meta</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/20/promise/" rel="next" title="关于 promise">
+                <i class="fa fa-chevron-left"></i> 关于 promise
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars2.githubusercontent.com/u/5069297?v=3&s=460"
+               alt="Letica" />
+          <p class="site-author-name" itemprop="name">Letica</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#meta"><span class="nav-number">1.</span> <span class="nav-text">meta</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#char-set"><span class="nav-number">1.1.</span> <span class="nav-text">char-set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#name"><span class="nav-number">1.2.</span> <span class="nav-text">name</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Letica</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

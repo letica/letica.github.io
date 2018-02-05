@@ -1,0 +1,948 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="vue, vuex," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="letica'ss timezone" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="原文地址：Vuex basics: Tutorial and explanation 作者注：[2016.11 更新]这篇文章是基于一个非常旧的 vuex api 版本而写的，代码来自于2015年12月。但是，它仍能针对以下几个方面与你有一些非常深入的探讨：  vuex 为什么重要 vuex 如何工作 vuex 如何使你的 app 更容易维护">
+<meta name="keywords" content="vue, vuex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vuex 基础：引导和说明">
+<meta property="og:url" content="http://letica.github.io/2017/05/31/t/index.html">
+<meta property="og:site_name" content="letica&#39;ss timezone">
+<meta property="og:description" content="原文地址：Vuex basics: Tutorial and explanation 作者注：[2016.11 更新]这篇文章是基于一个非常旧的 vuex api 版本而写的，代码来自于2015年12月。但是，它仍能针对以下几个方面与你有一些非常深入的探讨：  vuex 为什么重要 vuex 如何工作 vuex 如何使你的 app 更容易维护">
+<meta property="og:image" content="http://letica.github.io/img/trans_vuex20170531/target.png">
+<meta property="og:image" content="http://letica.github.io/img/trans_vuex20170531/problem.dot.png">
+<meta property="og:image" content="http://letica.github.io/img/trans_vuex20170531/todo.dot.png">
+<meta property="og:image" content="http://letica.github.io/img/trans_vuex20170531/solution1.dot.png">
+<meta property="og:image" content="http://letica.github.io/img/trans_vuex20170531/solution3.dot.png">
+<meta property="og:updated_time" content="2017-06-01T14:24:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vuex 基础：引导和说明">
+<meta name="twitter:description" content="原文地址：Vuex basics: Tutorial and explanation 作者注：[2016.11 更新]这篇文章是基于一个非常旧的 vuex api 版本而写的，代码来自于2015年12月。但是，它仍能针对以下几个方面与你有一些非常深入的探讨：  vuex 为什么重要 vuex 如何工作 vuex 如何使你的 app 更容易维护">
+<meta name="twitter:image" content="http://letica.github.io/img/trans_vuex20170531/target.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://letica.github.io/2017/05/31/t/"/>
+
+
+
+
+
+  <title> vuex 基础：引导和说明 | letica'ss timezone </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3c28f55ed3a230f5dc516bd83e9901c1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">letica'ss timezone</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://letica.github.io/2017/05/31/t/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Letica">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/5069297?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="letica'ss timezone">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                vuex 基础：引导和说明
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-31T19:00:00+08:00">
+                2017-05-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/front-end/" itemprop="url" rel="index">
+                    <span itemprop="name">front-end</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>原文地址：<a href="https://skyronic.com/2016/01/03/vuex-basics-tutorial" target="_blank" rel="external">Vuex basics: Tutorial and explanation</a></p>
+<p>作者注：[2016.11 更新]这篇文章是基于一个非常旧的 vuex api 版本而写的，代码来自于2015年12月。<br>但是，它仍能针对以下几个方面与你有一些非常深入的探讨：</p>
+<ol>
+<li>vuex 为什么重要</li>
+<li>vuex 如何工作</li>
+<li>vuex 如何使你的 app 更容易维护</li>
+</ol>
+<a id="more"></a>
+<p>Vuex is an in-development and prototype library by the creator of Vue.js to help you build larger applications in a more maintainable way by following principles similar to those made popular by Facebook’s Flux library (and subsequent iterations by community like redux).</p>
+<p>vuex 是 vue.js 的作者开发的一个原型库，它帮助你创建更大、维护性更强的应用，类似于 Facebook 的 flux 库（以及由社区维护的 redux 库）。</p>
+<p>Instead of directly jumping into vuex and how to use it, in this post, I’ll explain the rationale behind why it is favorable to alternative approaches and how it is helpful to you.</p>
+<p>这篇文章不直接跳到 vuex 教你如何使用它，我将从背后的故事开始，来解释为什么它是优雅的替代方法，以及它如何帮助你。</p>
+<p>What are we building?</p>
+<h2 id="你在创建什么"><a href="#你在创建什么？" class="headerlink" title="你在创建什么？"></a>你在创建什么？</h2><p><img src="/img/trans_vuex20170531/target.png" alt="target"></p>
+<p>A simple app with a button and a counter. Pressing the button increments the counter. While this is quite easy to accomplish the goal is to understand the underlying concept.</p>
+<p>一个拥有<code>按钮</code>和<code>计数器</code>简单的应用，点击按钮计数器加1。这非常容易理解和完成。</p>
+<p><img src="/img/trans_vuex20170531/problem.dot.png" alt="problem"></p>
+<p>Let’s say there are two components in an app:</p>
+<p>A button (which is the source of an event)<br>A counter (which has to reflect updates based on the original event)</p>
+<p>我们假设这个应用有两个组件：</p>
+<ol>
+<li>按钮 （它是事件的来源）</li>
+<li>计数器 （它必须按照事件来反映更新）</li>
+</ol>
+<p>The two components aren’t aware of each other and can’t communicate with each other. This is a very common pattern in even the smallest web applications. In larger applications dozens of components communicate with each other and have to keep each other in check. Don’t believe me? Here’s some of the interactions for even a basic todo list:</p>
+<p>这两个组件不知道彼此的存在，而且也不能相互通信。这是一种非常常见的模式，即使是在最小的 web 应用中。在更大点儿的应用中，十几个组件相互通信，并时刻关注对方的变化。不相信我？这里是一个简单的 TODOlist 应用的交互清单：</p>
+<p><img src="/img/trans_vuex20170531/todo.dot.png" alt="todo"></p>
+<p>Goals of this article</p>
+<h2 id="这篇文章的目标"><a href="#这篇文章的目标" class="headerlink" title="这篇文章的目标"></a>这篇文章的目标</h2><p>We will explore four ways to solve the same problem:</p>
+<p>Using event broadcasts to communicate between components<br>Using a shared state object<br>Using vuex</p>
+<p>我们将探讨解决同一个问题的四种方法：</p>
+<ol>
+<li>组件之间使用事件广播来通信</li>
+<li>使用一个共享的对象通信</li>
+<li>使用 vuex 通信</li>
+</ol>
+<p>After reading this article, hopefully you should be able to understand:</p>
+<p>A very basic workflow around how to use vuex in your project.<br>What kind of problems it solves.<br>Why it may be a better approach than other methods, despite being a bit more verbose and strict.</p>
+<p>读完这篇文章，希望你能理解：</p>
+<ol>
+<li>如何在你的项目中使用 vuex 的基本工作流程</li>
+<li>它解决了哪些问题</li>
+<li>它为什么是一个更好的方法，尽管有一点儿冗长和严格</li>
+</ol>
+<p>Building the starting point</p>
+<h2 id="创建开始"><a href="#创建开始" class="headerlink" title="创建开始"></a>创建开始</h2><p>We’ll solve the same problem in 3 different approaches. But before that, we need to have a common starting point. If you’re planning to follow along, I suggest creating a git repo for the tutorial, making a commit after this point, and branching off different approaches.</p>
+<p>我们将使用3种不同的方法来解决同一个问题。在这之前，我们需要做一些准备工作。如果你计划跟着我做，我建议你创建一个 git repo，这一小节结束后提交一次代码，然后为不同的方法创建不同的分支。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> npm install -g vue-cli</span></div><div class="line"><span class="meta">$</span><span class="bash"> vue init webpack vuex-tutorial</span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> vuex-tutorial</span></div><div class="line"><span class="meta">$</span><span class="bash"> npm install</span></div><div class="line"><span class="meta">$</span><span class="bash"> npm install --save vuex</span></div><div class="line"><span class="meta">$</span><span class="bash"> npm run dev</span></div></pre></td></tr></table></figure>
+<p>Now you should see the basic vue scaffolding page. Let’s create and update a few files to get to where we want to be.</p>
+<p>现在你应该能看到 vue 的脚手架页面了，下面来为我们要做的事情来创建和更新一些文件。</p>
+<p>First, we create the IncrementButton component in src/components/IncrementButton.vue:</p>
+<p>首先，创建<code>按钮</code>组件，在文件<code>src/components/IncrementButton.vue</code>：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click.prevent</span>=<span class="string">"activate"</span>&gt;</span>+1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    <span class="attr">methods</span>: &#123;</div><div class="line">        activate () &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'+1 Pressed'</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Next we create the CounterDisplay component to actually display the counter. Let’s create a new basic vue component in src/components/CounterDisplay.vue</p>
+<p>下一步创建<code>计时器</code>组件来展示计数，在文件<code>src/components/CounterDisplay.vue</code>：<br><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></div><div class="line">    Count is <span class="template-variable">&#123;&#123; count &#125;&#125;</span><span class="xml"></span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    data () &#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            <span class="attr">count</span>: <span class="number">0</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>Replace App.vue with this file:</p>
+<p>使用下面的内容替换<code>App.vue</code>：</p>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h3</span>&gt;</span>Increment:<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">increment</span>&gt;</span><span class="tag">&lt;/<span class="name">increment</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h3</span>&gt;</span>Counter:<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">counter</span>&gt;</span><span class="tag">&lt;/<span class="name">counter</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">import</span> Counter <span class="keyword">from</span> <span class="string">'./components/CounterDisplay.vue'</span></div><div class="line"><span class="keyword">import</span> Increment <span class="keyword">from</span> <span class="string">'./components/IncrementButton.vue'</span></div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="template-variable">&#123;</span></div><div class="line">    components: &#123;</div><div class="line">        Counter,</div><div class="line">        Increment</div><div class="line">    &#125;<span class="xml"><span class="undefined"></span></span></div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Now, if you run npm run dev again, and open the page in your browser, you should see a button and a counter. Clicking the button shows a message in the console, nothing else. So now that we’ve got our starting point, let’s proceed.</p>
+<p>现在，你重新运行 <code>npm run dev</code>，在浏览器打开页面，你应该看到一个<code>按钮</code>和一个<code>计数器</code>。点击按钮，控制台将显示一条信息，其它什么都没有。现在我们来到了起点，让我们继续。</p>
+<p>Solution 1: Event Broadcasts</p>
+<h3 id="方法1事件广播"><a href="#方法1：事件广播" class="headerlink" title="方法1：事件广播"></a>方法1：事件广播</h3><p><img src="/img/trans_vuex20170531/solution1.dot.png" alt="solution1"></p>
+<p>Let’s make the modification to the scripts in the components. First, in IncrementButton.vue we use $dispatch to send a message to parent that the button is clicked</p>
+<p>先来修改组件的代码。在 <code>IncrementButton.vue</code> 中，我们在按钮被点击时使用 <code>$dispatch</code> 给父组件发送一个消息。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">export</span> <span class="selector-tag">default</span> &#123;</div><div class="line">    <span class="attribute">methods</span>: &#123;</div><div class="line">        activate () &#123;</div><div class="line">            // Send an event upwards to be picked up by App</div><div class="line">            this.$<span class="built_in">dispatch</span>(<span class="string">'button-pressed'</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>In App.vue we listen to the event from the child and re-broadcast a new event to all children to increment.</p>
+<p>在 <code>App.vue</code> 中监听来自子组件的这个消息事件，然后广播一个新的事件 <code>increment</code> 给所有的子组件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    <span class="attr">components</span>: &#123;</div><div class="line">        Counter,</div><div class="line">        Increment</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">events</span>: &#123;</div><div class="line">        <span class="string">'button-pressed'</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="comment">// Send a message to all children</span></div><div class="line">            <span class="keyword">this</span>.$broadcast(<span class="string">'increment'</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>In CounterDisplay.vue we listen to the increment event and increase the value in the state.</p>
+<p>在 <code>CounterDisplay.vue</code> 中，监听 <code>increment</code> 事件，并增加状态（数据）中的变量：</p>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="title">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    <span class="class"><span class="keyword">data</span> () &#123;</span></div><div class="line">        <span class="title">return</span> &#123;</div><div class="line">            <span class="title">count</span>: 0</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    events: &#123;</div><div class="line">        increment () &#123;</div><div class="line">            this.count ++</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Some disadvantages of this approach:</p>
+<p>这个方法的缺点：</p>
+<p>Basically there’s nothing technically wrong in this. Then again, there’s nothing technically wrong in writing your entire app in one file with all the application logic written exclusively in goto’s. It’s all about maintainability, and here’s how this approach is terrible for maintainablility.</p>
+<ol>
+<li>For every action, the parent components need to wire and “dispatch” events to the right components.</li>
+<li>It’s hard to understand where events might come from for a larger application.</li>
+<li>There’s no clear place for the “business logic”. this.count++ is in CounterDisplay but the business logic can be anywhere, which can make it unmaintainable.</li>
+</ol>
+<p>这个方法基本没有什么技术上的错误，此外，在一个文件里实现整个应用的逻辑也没有什么技术性错误。这与可维护性有关，这里会讲一下为什么这个方法在可维护性上是糟糕的。</p>
+<ol>
+<li>对于每一个 action，父组件都需要分发事件给正确的组件；</li>
+<li>在大型应用中，对于事件是从哪来可能很难理解；</li>
+<li>业务逻辑没有明确的位置。<code>this.count++</code> 是在 <code>CounterDisplay</code> 中，但是业务逻辑可能到处都是，这会导致难以维护。</li>
+</ol>
+<p>Let me give an example of how this approach can lead to a bug:</p>
+<ol>
+<li>You hire two interns: Alice and Bob. You tell Alice you want another counter in another component. You tell Bob to write a Reset button.</li>
+<li>Alice writes a new component FormattedCounterDisplay which is subscribed to  increment, and increments it’s own state. Alice is happy and commits and pushes.</li>
+<li>Bob writes a new “Reset” component which emits a reset event to App, which re-dispatches it. He implements reset on CounterDisplay to set count to 0 but he is not aware that Alice’s component is subscribed to it as well.</li>
+<li>Your user presses “+1” and sees the app is working ok. But when the user presses “reset”, only one counter resets.<br>This may seem like a very simple example, but it’s just to illustrate how scattering state and business logic and tying it together with events can lead to errors.</li>
+</ol>
+<p>举例说明一下这个方法会如何导致bug：</p>
+<ol>
+<li>你雇了两个实习生： Alice 和 Bob。你让 Alice 为另外一个组件实现一个计数器，告诉 Bob 写一个重置按钮；</li>
+<li>Alice 写了一个新的组件 <code>FormattedCounterDisplay</code>，它能够监听增量 ，然后增加自己的状态数据。 Alice 开心的提交了代码；</li>
+<li>Bob 写了一个新的 <code>Reset</code> 组件，它向应用发出一个 <code>reset</code> 事件，重新调度它。他在 <code>CounterDisplay</code> 中将 count 重置为0，但是他没有意识到 Alice 的组件也监听了这个变化；</li>
+<li>你的用户点击 <code>+1</code> 按钮然后看到应用工作正常。但是当你的用户点击 <code>重置</code> 按钮，只有一个计数器重置了。这看起来是一个非常简单的例子，仅仅为了说明状态和业务逻辑绑在一起会导致错误。</li>
+</ol>
+<blockquote>
+<p>注：<code>events</code> 选项在 vue2.0 中已被移除。</p>
+</blockquote>
+<p>Solution 2: Shared state<br>Let’s revert everything we did in Solution 1. We create a new file src/store.js</p>
+<h3 id="方法2-共享状态"><a href="#方法2：-共享状态" class="headerlink" title="方法2： 共享状态"></a>方法2： 共享状态</h3><p>撤销方法1中的改动，创建一个新文件 <code>src/store.js</code>：</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">export <span class="keyword">default</span> &#123;</div><div class="line">    <span class="keyword">state</span>: &#123;</div><div class="line">        counter: <span class="number">0</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Let’s first modify the CounterDisplay.vue:</p>
+<p>首先修改 <code>CounterDisplay.vue</code>：</p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></div><div class="line">    Count is <span class="template-variable">&#123;&#123; sharedState.counter &#125;&#125;</span><span class="xml"></span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">'../store'</span></div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    data () &#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            <span class="attr">sharedState</span>: store.state</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>We’re doing quite a few interesting things here:</p>
+<ol>
+<li>We’re getting the store object which is just one constant object. But this is defined in a different file.</li>
+<li>In our local data we’re creating a new parameter called sharedState mapping to  store.state</li>
+<li>Since it’s part of data vue makes store.state reactive, meaning vue will automatically update sharedState whenever anything in store.state changes<br>So far it still won’t work. But now, we can modify IncrementButton.vue</li>
+</ol>
+<p>这里我们做了一些有趣的事情：</p>
+<ol>
+<li>我们获取了一个 store 对象，它仅仅是一个对象常量，它定义在另外一个文件中；</li>
+<li>在本地数据中，我们创建了一个叫 <code>sharedState</code> 的数据，它映射到 <code>store.state</code>；</li>
+<li>vue 激活了 <code>store.state</code> 作为它的一部分数据，这意味着当 <code>store.state</code> 有任何变化，vue 都会自动更新 <code>sharedState</code></li>
+</ol>
+<p>到目前为止它还不能工作，现在我们来修改 <code>IncrementButton.vue</code>：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> store from <span class="string">'../store'</span></div><div class="line"></div><div class="line">export <span class="keyword">default</span> &#123;</div><div class="line">    <span class="keyword">data</span> () &#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            sharedState: store.state</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    methods: &#123;</div><div class="line">        activate () &#123;</div><div class="line">            <span class="keyword">this</span>.sharedState.counter += <span class="number">1</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>In this, we import store and subscribe to the reactive state just like in the previous example.</li>
+<li>When the activate function is called, it goes to the sharedState which still refers to  store.state and increments the counter</li>
+<li><p>All the components and computed properties subscribed to counter will now be updated.</p>
+</li>
+<li><p>在这里，我们引入 <code>store</code>，并像之前的例子里一样订阅了数据的变化状态；</p>
+</li>
+<li>当 <code>activate</code> 方法被调用时，指向 <code>store.state</code> 的 <code>sharedState</code> 对象的计数器 counter 增加；</li>
+<li>订阅了计数器的所有组件和计算属性都会被更新。</li>
+</ol>
+<h4 id="how-this-is-better-than-solution-1"><a href="#How-this-is-better-than-Solution-1" class="headerlink" title="How this is better than Solution 1"></a>How this is better than Solution 1</h4><p>Let’s re-visit the problem of the two interns - Alice and Bob.</p>
+<ol>
+<li>Alice writes FormattedComponentDisplay to subscribe to the Shared State Counter which will always show the latest counter value</li>
+<li>Bob’s ResetButton component sets the Shared State Counter to 0. This will afect both  CounterDisplay and FormattedCounterDisplay that alice wrote.</li>
+<li>User notices that the reset button works as expected</li>
+</ol>
+<h4 id="为什么比方法1更好"><a href="#为什么比方法1更好" class="headerlink" title="为什么比方法1更好"></a>为什么比方法1更好</h4><p>我们来回顾一下两个实习生 Alice 和 Bob 的问题：</p>
+<ol>
+<li>Alice 写的用来监听共享数据的 <code>FormattedComponentDisplay</code> 组件将会始终显示最新的 counter 数据；</li>
+<li>Bob 的重置按钮组件将共享数据的 counter 置为0，这将同时影响 <code>CounterDisplay</code> 和 Alice 写的 <code>FormattedCounterDisplay</code>；</li>
+<li>用户将会注意到重置按钮符合预期。</li>
+</ol>
+<h4 id="how-this-is-still-not-good-enough"><a href="#How-this-is-still-not-good-enough" class="headerlink" title="How this is still not good enough."></a>How this is still not good enough.</h4><ol>
+<li>Over the period of their internship, Alice and bob write multiple counter displays, reset buttons, and increment buttons in different formats which all update the same shared counter. Life is good.</li>
+<li>Once they go back to college, you have to maintain their code.</li>
+<li>Carol - the new manager comes in and says “I never want the counter to go above 100”</li>
+</ol>
+<h3 id="为什么这样仍然不够好"><a href="#为什么这样仍然不够好" class="headerlink" title="为什么这样仍然不够好"></a>为什么这样仍然不够好</h3><ol>
+<li>在 Alice 和 Bob 的实习期内，他们使用不同的格式写了许多计数器、重置按钮，以及增长按钮，它们更新的是同一份共享的数据，生活很美好；</li>
+<li>一旦他们回到学校，你需要维护他们的代码；</li>
+<li>新的经理 Carol 来之后说：“我不希望看到计数器的数字超过100”</li>
+</ol>
+<h4 id="what-do-you-do-now"><a href="#What-do-you-do-now" class="headerlink" title="What do you do now?"></a>What do you do now?</h4><ol>
+<li>Do you go to all the dozens of components and find out all the places they are updating the counter? That’s frustrating.</li>
+<li>Do you go to the displays and add a filter/formatter there? That’s frustrating too.</li>
+<li>And here-in lies the problem. The Business logic is scattered all across the application. This may be a simple issue in principle but it can be a big pain to maintain, and debug.</li>
+</ol>
+<h4 id="你现在该做什么"><a href="#你现在该做什么？" class="headerlink" title="你现在该做什么？"></a>你现在该做什么？</h4><ol>
+<li>你去十几个组件的代码里找到所有更新数据的地方吗，这让人抓狂；</li>
+<li>你找到显示数据的地方然后添加一个 <code>filter/formatter</code>吗，这同样让人抓狂；</li>
+<li>这里就是这个问题，业务逻辑分散在应用的各个角落，这原则是一个很简单的问题，但是维护和调试起来却特别痛苦。</li>
+</ol>
+<h4 id="a-slightly-better-approach"><a href="#A-slightly-better-approach" class="headerlink" title="A slightly better approach"></a>A slightly better approach</h4><p>Now that you refactor all the original code you re-write your store.js like this:</p>
+<h4 id="稍好一点儿的方法"><a href="#稍好一点儿的方法" class="headerlink" title="稍好一点儿的方法"></a>稍好一点儿的方法</h4><p>现在来重构你的代码，重写 <code>store.js</code> 如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> store = &#123;</div><div class="line">    <span class="attr">state</span>: &#123;</div><div class="line">        <span class="attr">counter</span>: <span class="number">0</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">increment</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (store.state.counter &lt; <span class="number">100</span>) &#123;</div><div class="line">            store.state.counter += <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">reset</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        store.state.counter = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</div></pre></td></tr></table></figure>
+<p>This makes the code a lot cleaner since you’re explicitly calling increment and all your business logic is in the store. However, a new intern who doesn’t know the theory behind all this finds it’s easier to simply write to store.state.counter from some other part of the app and it becomes hard to debug.</p>
+<p>You then make lots of strict rules, guidelines, code reviews to ensure nobody writes to the state without using a function in store.js and when that doesn’t work, you go talk to human resources to shut down the intern program.</p>
+<p>显式调用 <code>increment</code> 并将所有业务逻辑都放进 <code>store</code> 后代码看起来清晰了许多。然而，一个新的实习生不知道这背后的原理，他发现在应用的其他部分直接写入 <code>store.state.counter</code> 更容易，一切都变得难于调试。</p>
+<p>Solution 3: Vuex<br>Let’s revert all the changes we did to Solution 2. In principle vuex works along somewhat similar lines of Solution 2. Here’s a slightly scary looking diagram:</p>
+<p>Let’s first create the src/store.js again but this time we have this code:</p>
+<h3 id="方法3vuex"><a href="#方法3：vuex" class="headerlink" title="方法3：vuex"></a>方法3：vuex</h3><p>回滚方法2里的修改， 原则上 vuex</p>
+<p><img src="/img/trans_vuex20170531/solution3.dot.png" alt="solution3"></p>
+<p>首先来创建 <code>src/store.js</code>，这次用下面的代码：</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">import Vuex <span class="keyword">from</span> 'vuex'</div><div class="line">import Vue <span class="keyword">from</span> 'vue'</div><div class="line"></div><div class="line">Vue.use(Vuex)</div><div class="line"></div><div class="line">var store = new Vuex.Store(&#123;</div><div class="line">    <span class="keyword">state</span>: &#123;</div><div class="line">        counter: <span class="number">0</span></div><div class="line">    &#125;,</div><div class="line">    mutations: &#123;</div><div class="line">        INCREMENT (<span class="keyword">state</span>) &#123;</div><div class="line">            <span class="keyword">state</span>.counter ++</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line">export <span class="keyword">default</span> store</div></pre></td></tr></table></figure>
+<p>So let’s see what’s happening in this code:</p>
+<ol>
+<li>We’re getting the Vuex module and instructing Vue to use it to activate the plugin.</li>
+<li>Our store is no longer a plain json object but an instance of Vuex.Store</li>
+<li>We create a counter in the state again, set to 0</li>
+<li>We have a new mutations object which has INCREMENT, takes an input state, and modifies that state.</li>
+</ol>
+<p>现在来看看这段代码做了什么：</p>
+<ol>
+<li>获取 Vuex 模块，然后使用 <code>Vue.use</code> 安装；</li>
+<li><code>store</code> 不再是一个普通的 JSON 对象，而是 <code>Vues.Store</code> 的一个实例；</li>
+<li>在 <code>state</code> 中创建一个 <code>counter</code>，设置为0；</li>
+<li>一个变异对象，包含 <code>INCREMENT</code> 方法：获取一个输入状态，然后改变它。</li>
+</ol>
+<p>Here are some interesting things in this code:</p>
+<ol>
+<li>Everything that does require(‘../store.js’) or import store from ‘../store.js’ will use the same store instance</li>
+<li>We never edit store.state.counter but we get a copy of the state which we should update and modify. This will be important later.</li>
+</ol>
+<p>这段代码里有一些有趣的东东：</p>
+<ol>
+<li>所有 <code>require(&#39;../store.js&#39;)</code> 或 <code>import store from &#39;../store.js&#39;</code> 引入的 <code>store</code> 将使用同一个 store 实例；</li>
+<li>我们不会修改 <code>store.state.counter</code>，但是我们有一份 <code>state</code> 的拷贝用来更新和修改，这在接下来会很重要。</li>
+</ol>
+<p>Now that we’ve covered the store, let’s go to the IncrementButton.vue</p>
+<p>现在我们已经修改好了 store，来继续修改 <code>IncrementButton.vue</code>：</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> store from <span class="string">'../store'</span></div><div class="line"></div><div class="line">export <span class="keyword">default</span> &#123;</div><div class="line">    methods: &#123;</div><div class="line">        activate () &#123;</div><div class="line">            store.dispatch(<span class="string">'INCREMENT'</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>This component doesn’t even have any data. But on the click we call  store.dispatch(‘INCREMENT’) . We’ll come back to this soon.</p>
+<p>Now, update CounterDisplay.vue</p>
+<p>这个组件没有任何数据，但是点击的时候调用 <code>store.dispatch(&#39;INCREMENT&#39;)</code>，一会儿再返回来看。</p>
+<p>下面更新一下 <code>CounterDisplay.vue</code>：</p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></div><div class="line">    Count is <span class="template-variable">&#123;&#123; counter &#125;&#125;</span><span class="xml"></span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">'../store'</span></div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    <span class="attr">computed</span>: &#123;</div><div class="line">        counter () &#123;</div><div class="line">            <span class="keyword">return</span> store.state.counter</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>This is when things get truly interesting. We no longer subscribe to shared state. Instead, we use vue’s computed properties to pull in the counter from the store.</p>
+<p>事情从这儿才真正有趣！我们不在订阅共享的状态数据，使用 vue 的计算属性来</p>
+<p>Vue is smart enough to figure out that the counter computed property depends on the  store.state.counter so whenever the store is updated, it will update all related items. And that’s it!</p>
+<p>Vue 足够聪明来计算出基于 <code>store.state.counter</code> 的计算属性 <code>counter</code>，无论 store 何时被更新，它将更新所有的关联项。That’s it!</p>
+<p>If you reload the page, you’ll see that the counter is working fine. Here’s what’s happening step by step:</p>
+<ol>
+<li>Vue’s event handler calls activate. This function written by us calls  store.dispatch(‘INCREMENT’).</li>
+<li>Here, INCREMENT is the name of an action. It represents an identifier of “This is the type of change that should be made to the state”. We can pass extra params to the dispatch function as well which contains additional parameters for the action.</li>
+<li>Vue figure out what mutator to call for the dispatch. Right now we just have one, but we can make this more complex, and customize this for larger apps.</li>
+<li>The mutator recieves a copy of the state and updates it. Vue keeps an older copy of the state which can be used for advanced features later.</li>
+<li>When the state is updated, vue automatically updates all components dependent on that aspect of state.</li>
+<li>This makes your code more testable, if you’re into that sort of thing.</li>
+</ol>
+<p>如果重新加载这个页面，你将看到计数器依然正确工作。下面将逐步解释发生了什么：</p>
+<ol>
+<li>vue 的事件处理函数是 <code>activate</code>，这个方法调用了 <code>store.dispatch(&#39;INCREMENT&#39;)</code>；</li>
+<li>这里 <code>INCREMENT</code> 是动作的名称。它标志着 “这是 state 应该做出的改变”。我们可以传递额外的参数给分发函数；</li>
+<li>vue 指明了分发事件时应该调用哪个函数。现在我们只有一个，但是我们可以做的更复杂，为更大型的应用定制；</li>
+<li>这个函数接收状态数据的拷贝，以便来更新它。vue 保存一份状态数据的拷贝，以便更高级的功能使用；</li>
+<li>当 state 数据更新之后，vue 自动更新所有依赖于此 state 的组件；</li>
+<li>如果你坚持这么做，这会使得你的代码可测试性更强。</li>
+</ol>
+<h4 id="heres-why-this-is-so-much-better-than-solution-2"><a href="#Here’s-why-this-is-SO-MUCH-BETTER-than-solution-2" class="headerlink" title="Here’s why this is SO MUCH BETTER than solution 2:"></a>Here’s why this is SO MUCH BETTER than solution 2:</h4><p>If a copy of all states are kept during development, the vue developers can potentially build what’s known as a “Time Travelling Debugger”. Aside from sounding from one of the coolest super-hero names, it will allow you to ‘undo’ actions in your app and change the logic and develop a lot faster.<br>You can build middleware to work whenever states change. For example, you can build a logger which logs all actions performed by a user. If they find a bug, you can get that log, re-play all those actions and reproduce their bug exactly.<br>By forcing you to have all actions in one place, it becomes a nice reference that anyone in your team can use about all the ways your app’s state can be modified.<br>Still a long way to go.<br>This is just barely scratching the surface of vuex can do. Which in itself is still a very early build, which I’m sure will mature into one of the most established development paradigms for many years to come.</p>
+<p>You can find a lot more information on how to organize your stores, and more info on the vuex documentation. It might take some time to internalize all the concepts and it might even take some trial-and-error to figure out the right balance and approach.</p>
+<h4 id="这里是比办法2更好的原因"><a href="#这里是比办法2更好的原因" class="headerlink" title="这里是比办法2更好的原因"></a>这里是比办法2更好的原因</h4><p>假如在开发过程中所有状态的拷贝都被保存下来，vue 开发者很可能建立起所谓的“时间旅行调试器”。除了一个听起来超酷的超级英雄名字，它将允许你在应用中撤销行为、改变逻辑，以及开发的更快。<br>只要状态改变，你就可以构建中间件。例如，你可以建立一个 logger 来记录用户执行的所有操作。如果他们发现了一个bug，你可以获取到该日志，重新播放所有的行为并正确的重现他们的错误。<br>通过强迫你在一个地方有所有的动作，它给你团队中的所有人一个很好的参考，他们都可以使用你的应用程序的状态可以修改所有方法。<br>还有很长的路要走。<br>这里仅仅捕捉到了vuex表面可以做的事情。它本身仍然是一个早期版本，<br>你可以找到更多的信息关于如何组织你的 store，vuex 的文档中有更多信息。你可能需要花一些时间来理解所有的概念，甚至可能需要采取一些尝试和错误，来找出正确的平衡和方法。</p>
+<h3 id="epilogue-dealing-with-the-interns-code"><a href="#Epilogue-Dealing-with-the-intern’s-code" class="headerlink" title="Epilogue: Dealing with the intern’s code"></a>Epilogue: Dealing with the intern’s code</h3><p>So you ported your app to vue.js and your intern still figures out he can write to  store.state.counter as a short-cut in his components. And you’ve had it, that’s the last straw. You go ahead and add one line to your store.js</p>
+<h3 id="结语处理实习生的代码"><a href="#结语：处理实习生的代码" class="headerlink" title="结语：处理实习生的代码"></a>结语：处理实习生的代码</h3><figure class="highlight pf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var store = new Vuex.Store(&#123;</div><div class="line">    <span class="keyword">state</span>: &#123;</div><div class="line">        counter: <span class="number">0</span></div><div class="line">    &#125;,</div><div class="line">    mutations: &#123;</div><div class="line">        INCREMENT (<span class="keyword">state</span>) &#123;</div><div class="line">            <span class="keyword">state</span>.counter ++</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    strict: true    // Vuex's patent pending anti-intern device</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>Now any time anyone directly writes to the store, an error will be thrown. Do note that this slows your app down a bit, and you can safely remove it for production. See the docs for an example how to do it.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue-vuex/" rel="tag"># vue, vuex</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/31/layout/" rel="next" title="前端常见布局">
+                <i class="fa fa-chevron-left"></i> 前端常见布局
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/04/trans_vuex_basics_tutorial/" rel="prev" title="【译】vuex 基础：教程和说明">
+                【译】vuex 基础：教程和说明 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars2.githubusercontent.com/u/5069297?v=3&s=460"
+               alt="Letica" />
+          <p class="site-author-name" itemprop="name">Letica</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#你在创建什么"><span class="nav-number">1.</span> <span class="nav-text">你在创建什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这篇文章的目标"><span class="nav-number">2.</span> <span class="nav-text">这篇文章的目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建开始"><span class="nav-number">3.</span> <span class="nav-text">创建开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法1事件广播"><span class="nav-number">3.1.</span> <span class="nav-text">方法1：事件广播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法2-共享状态"><span class="nav-number">3.2.</span> <span class="nav-text">方法2： 共享状态</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#how-this-is-better-than-solution-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">How this is better than Solution 1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么比方法1更好"><span class="nav-number">3.2.2.</span> <span class="nav-text">为什么比方法1更好</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#how-this-is-still-not-good-enough"><span class="nav-number">3.2.3.</span> <span class="nav-text">How this is still not good enough.</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么这样仍然不够好"><span class="nav-number">3.3.</span> <span class="nav-text">为什么这样仍然不够好</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#what-do-you-do-now"><span class="nav-number">3.3.1.</span> <span class="nav-text">What do you do now?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#你现在该做什么"><span class="nav-number">3.3.2.</span> <span class="nav-text">你现在该做什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#a-slightly-better-approach"><span class="nav-number">3.3.3.</span> <span class="nav-text">A slightly better approach</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#稍好一点儿的方法"><span class="nav-number">3.3.4.</span> <span class="nav-text">稍好一点儿的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法3vuex"><span class="nav-number">3.4.</span> <span class="nav-text">方法3：vuex</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#heres-why-this-is-so-much-better-than-solution-2"><span class="nav-number">3.4.1.</span> <span class="nav-text">Here’s why this is SO MUCH BETTER than solution 2:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#这里是比办法2更好的原因"><span class="nav-number">3.4.2.</span> <span class="nav-text">这里是比办法2更好的原因</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#epilogue-dealing-with-the-interns-code"><span class="nav-number">3.5.</span> <span class="nav-text">Epilogue: Dealing with the intern’s code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结语处理实习生的代码"><span class="nav-number">3.6.</span> <span class="nav-text">结语：处理实习生的代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Letica</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,875 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="promise," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="letica'ss timezone" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="转自：[翻译] We have a problem with promises  Q: 下面的四种 promises 的区别是什么  1234567891011doSomething().then(function () &amp;#123;  return doSomethingElse();&amp;#125;);doSomething().then(function () &amp;#123;  doSomethi">
+<meta name="keywords" content="promise">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于 promise">
+<meta property="og:url" content="http://letica.github.io/2017/11/20/promise/index.html">
+<meta property="og:site_name" content="letica&#39;ss timezone">
+<meta property="og:description" content="转自：[翻译] We have a problem with promises  Q: 下面的四种 promises 的区别是什么  1234567891011doSomething().then(function () &amp;#123;  return doSomethingElse();&amp;#125;);doSomething().then(function () &amp;#123;  doSomethi">
+<meta property="og:updated_time" content="2018-02-05T13:02:58.261Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于 promise">
+<meta name="twitter:description" content="转自：[翻译] We have a problem with promises  Q: 下面的四种 promises 的区别是什么  1234567891011doSomething().then(function () &amp;#123;  return doSomethingElse();&amp;#125;);doSomething().then(function () &amp;#123;  doSomethi">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://letica.github.io/2017/11/20/promise/"/>
+
+
+
+
+
+  <title> 关于 promise | letica'ss timezone </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3c28f55ed3a230f5dc516bd83e9901c1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">letica'ss timezone</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://letica.github.io/2017/11/20/promise/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Letica">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/5069297?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="letica'ss timezone">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                关于 promise
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-20T19:00:00+08:00">
+                2017-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/front-end/" itemprop="url" rel="index">
+                    <span itemprop="name">front-end</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="http://fex.baidu.com/blog/2015/07/we-have-a-problem-with-promises/?qq-pf-to=pcqq.c2c" target="_blank" rel="external">转自：[翻译] We have a problem with promises</a></p>
+<blockquote>
+<p>Q: 下面的四种 promises 的区别是什么</p>
+</blockquote>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">doSomething().<span class="keyword">then</span>(<span class="keyword">function</span> <span class="title"></span>() &#123;</div><div class="line">  <span class="keyword">return</span> <span class="type">doSomethingElse()</span>;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">doSomething().<span class="keyword">then</span>(<span class="keyword">function</span> <span class="title"></span>() &#123;</div><div class="line">  doSomethingElse();</div><div class="line">&#125;);</div><div class="line"></div><div class="line">doSomething().<span class="keyword">then</span>(doSomethingElse());</div><div class="line"></div><div class="line">doSomething().<span class="keyword">then</span>(doSomethingElse);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>当我尝试分析这道题的答案时，看了一半就楞(meng)住(bi)了，深深的怀疑我是否看过《你不知道的 JavaScript》中关于<code>异步和性能</code>的那章，看完这篇文章，有豁然开朗的感觉。</p>
+</blockquote>
+<a id="more"></a>
+<p>用Javascript的小伙伴们，是时候承认了，关于 promises 我们一直存在着问题。并非说 promises 本身有问题，Promises/A+ 是极好的。</p>
+<p>就我过去数年观察大量 PouchDB API 以及其他 promise-heavy API 的使用者们与这些 API 的搏斗中我发现，最大的问题是：</p>
+<p>大部分使用 promises 的小伙伴们并没有真正的理解它</p>
+<p>如果你不认同这个观点，可以看看我最近在 <a href="https://twitter.com/nolanlawson/status/578948854411878400" target="_blank" rel="external">twitter</a> 上出的这道题：</p>
+<blockquote>
+<p>Q: 下面的四种 promises 的区别是什么</p>
+</blockquote>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">doSomething().<span class="keyword">then</span>(<span class="keyword">function</span> <span class="title"></span>() &#123;</div><div class="line">  <span class="keyword">return</span> <span class="type">doSomethingElse()</span>;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">doSomething().<span class="keyword">then</span>(<span class="keyword">function</span> <span class="title"></span>() &#123;</div><div class="line">  doSomethingElse();</div><div class="line">&#125;);</div><div class="line"></div><div class="line">doSomething().<span class="keyword">then</span>(doSomethingElse());</div><div class="line"></div><div class="line">doSomething().<span class="keyword">then</span>(doSomethingElse);</div></pre></td></tr></table></figure>
+<p>如果你知道正常答案，那么我要恭喜你，你是一位 promises 大拿，你完全可以不再继续阅读这篇文件。</p>
+<p>另外 99.99% 的小伙伴们，你们才是正义。没有一个人在 twitter 上给出正确答案，甚至我自己也被 #3 的答案惊到了。恩，即使这道题是我自己出的。</p>
+<p>正确答案在这篇文章的结尾，在此之前，我希望首先探究一下为何为何 promises 如此复杂，并且为何有这么多人，无论是新手还是专家，都被它坑到了。同时我还会给出一个我自认为非常独特的视角，可以让 promises 变的更加容易理解。同时，我非常确信在了解这些之后，promises 并不会再难以理解。</p>
+<p>不过在开始这些之前，让我们先了解一些 promises 的基础知识。</p>
+<h3 id="promises-的起源"><a href="#Promises-的起源" class="headerlink" title="Promises 的起源"></a>Promises 的起源</h3><p>如果你阅读了 promises 的一些相关文献，你会发现有一个词 <a href="https://medium.com/@wavded/managing-node-js-callback-hell-1fe03ba8baf" target="_blank" rel="external">金字塔问题</a> 经常出现。它描述的是大量的回调函数慢慢向右侧屏幕延伸的一种状态。</p>
+<p>Promises 的确解决了这个问题，并且不仅仅是缩进问题。就像在 <a href="https://www.youtube.com/watch?v=hf1T_AONQJU&amp;feature=youtu.be" target="_blank" rel="external">Callback Hell的救赎</a> 中描述的一样，回调函数真正的问题在于他剥夺了我们使用 return 和 throw 这些关键字的能力。相反，我们的整个代码流程都是基于副作用的: 一个函数会附带调用其他函数。</p>
+<blockquote>
+<p>原文关于副作用的描述并不能很直观的进行理解，建议参考 <a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science" target="_blank" rel="external">WIKI</a>) 。简单来说就是一个函数除了会返回一个值之外，还会修改函数以外的状态如全局变量等等。实际上所有异步调用都可以视为带有副作用的行为。译者注。</p>
+</blockquote>
+<p>并且实际上，回调更加恼人的是，他会将我们通常在大部分编程语言中能获得的 堆栈 破坏。编写代码时如果无法获取堆栈就像开车时没有刹车一样: 不到用的时候，你不会知道它有多重要。</p>
+<p>Promises 给予我们的就是在我们使用异步时丢失的最重要的语言基石: return, throw 以及堆栈。但是想要 promises 能够提供这些便利给你的前提是你知道如何正确的使用它们。</p>
+<h3 id="新手错误"><a href="#新手错误" class="headerlink" title="新手错误"></a>新手错误</h3><p>一些同学试图通过用 <a href="http://andyshora.com/promises-angularjs-explained-as-cartoon.html" target="_blank" rel="external">卡通</a> 来描述 promises，或者试图用语言去描述它: “哦，你可以把它作为一个异步的值进行传递。”</p>
+<p>我认为这些解释并不会有很大的帮助。对我来说，promises 完全是一种代码结构和流程。因此我认为直接展示一些常见的错误并且演示如何修复它们更能够说明问题。我说这些问题是 “新手问题” ，这意味着 “虽然你现在是一个新手，孩子，但是马上你会变成一位专家”。</p>
+<p>小插曲: “promises” 对于不同的人有不同的理解和观点，但是在这篇文章中我特指 <a href="https://promisesaplus.com/" target="_blank" rel="external">正式标准</a> ，在现代浏览器中暴露为 window.Promise。虽然并非所有浏览器都有 windows.Promise，但是可以寻找一些 pollyfill ，比如 <a href="https://github.com/calvinmetcalf/lie" target="_blank" rel="external">Lie</a> 是目前体积最小的兼容标准的库。</p>
+<h4 id="新手错误-1-promise版的金字塔问题"><a href="#新手错误-1：-promise版的金字塔问题" class="headerlink" title="新手错误 #1： promise版的金字塔问题"></a>新手错误 #1： promise版的金字塔问题</h4><p>观察大家如何使用 PouchDB 这类大型的 promise 风格的API，我发现大量错误的 promise 使用形式。最常见的错误就是下面这个：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">remotedb.allDocs(&#123;</div><div class="line">  include_docs: <span class="literal">true</span>,</div><div class="line">  attachments: <span class="literal">true</span></div><div class="line">&#125;).<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">(result)</span></span> &#123;</div><div class="line">  var docs = result.rows;</div><div class="line">  docs.forEach(<span class="function"><span class="keyword">function</span><span class="params">(element)</span></span> &#123;</div><div class="line">    localdb.put(element.doc).<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span><span class="params">(response)</span></span> &#123;</div><div class="line">      alert(<span class="string">"Pulled doc with id "</span> + element.doc._id + <span class="string">" and added to local db."</span>);</div><div class="line">    &#125;).catch(<span class="function"><span class="keyword">function</span> <span class="params">(err)</span></span> &#123;</div><div class="line">      <span class="keyword">if</span> (err.<span class="built_in">status</span> == <span class="number">409</span>) &#123;</div><div class="line">        localdb.get(element.doc._id).<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">(resp)</span></span> &#123;</div><div class="line">          localdb.<span class="built_in">remove</span>(resp._id, resp._rev).<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">(resp)</span></span> &#123;</div><div class="line">// et cetera...</div></pre></td></tr></table></figure>
+<p>是的，实际上你可以像使用回调一样使用 promises，恩，就像用打磨机去削脚趾甲一样，你确实可以这么做。</p>
+<p>并且如果你以为这样的错误只限于初学者，那么你会惊讶于我实际上是在黑莓官方开发者博客上看到上面的代码。老的回调风格的习惯难以消灭。(至开发者: 抱歉选了你的例子，但是你的例子将会有积极的教育意义)</p>
+<p>正确的风格应该是这样:</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">remotedb.allDocs(...).<span class="keyword">then</span>(<span class="keyword">function</span> <span class="title"></span>(resultOfAllDocs) &#123;</div><div class="line">  <span class="keyword">return</span> <span class="type">localdb.put(...)</span>;</div><div class="line">&#125;).<span class="keyword">then</span>(<span class="keyword">function</span> <span class="title"></span>(resultOfPut) &#123;</div><div class="line">  <span class="keyword">return</span> <span class="type">localdb.get(...)</span>;</div><div class="line">&#125;).<span class="keyword">then</span>(<span class="keyword">function</span> <span class="title"></span>(resultOfGet) &#123;</div><div class="line">  <span class="keyword">return</span> <span class="type">localdb.put(...)</span>;</div><div class="line">&#125;).catch(<span class="keyword">function</span> <span class="title"></span>(err) &#123;</div><div class="line">  console.log(err);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>这种写法被称为 composing promises ，是 promises 的强大能力之一。每一个函数只会在前一个 promise 被调用并且完成回调后调用，并且这个函数会被前一个 promise 的输出调用，稍后我们在这块做更多的讨论。</p>
+<h4 id="新手错误-2-wtf-用了-promises-后怎么用-foreach"><a href="#新手错误-2：-WTF-用了-promises-后怎么用-forEach" class="headerlink" title="新手错误 #2： WTF, 用了 promises 后怎么用 forEach?"></a>新手错误 #2： WTF, 用了 promises 后怎么用 forEach?</h4><p>这里是大多数人对于 promises 的理解开始出现偏差。一旦当他们要使用他们熟悉的 forEach() 循环 (无论是 for 循环还是 while 循环)，他们完全不知道如何将 promises 与其一起使。因此他们就会写下类似这样的代码。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// I want to <span class="built_in">remove</span>() all docs</div><div class="line">db.allDocs(&#123;include_docs: <span class="literal">true</span>&#125;).<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">(result)</span></span> &#123;</div><div class="line">  result.rows.forEach(<span class="function"><span class="keyword">function</span> <span class="params">(row)</span></span> &#123;</div><div class="line">    db.<span class="built_in">remove</span>(row.doc);  </div><div class="line">  &#125;);</div><div class="line">&#125;).<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">()</span></span> &#123;</div><div class="line">  // I naively believe all docs have been removed() now!</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>这份代码有什么问题？问题在于第一个函数实际上返回的是 undefined，这意味着第二个方法不会等待所有 documents 都执行 db.remove()。实际上他不会等待任何事情，并且可能会在任意数量的文档被删除后执行！</p>
+<p>这是一个非常隐蔽的 bug，因为如果 PouchDB 删除这些文档足够快，你的 UI 界面上显示的会完成正常，你可能会完全注意不到有什么东西有错误。这个 bug 可能会在一些古怪的竞态问题或一些特定的浏览器中暴露出来，并且到时可能几乎没有可能去定位问题。</p>
+<p>简而言之，forEach()/for/while 并非你寻找的解决方案。你需要的是 Promise.all():</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">db.allDocs(&#123;include_docs: <span class="literal">true</span>&#125;).<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">(result)</span></span> &#123;</div><div class="line">  <span class="keyword">return</span> Promise.all(result.rows.map(<span class="function"><span class="keyword">function</span> <span class="params">(row)</span></span> &#123;</div><div class="line">    <span class="keyword">return</span> db.<span class="built_in">remove</span>(row.doc);</div><div class="line">  &#125;));</div><div class="line">&#125;).<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">(arrayOfResults)</span></span> &#123;</div><div class="line">  // All docs have really been removed() now!</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>上面的代码是什么意思呢？大体来说，Promise.all()会以一个 promises 数组为输入，并且返回一个新的 promise。这个新的 promise 会在数组中所有的 promises 都成功返回后才返回。他是异步版的 for 循环。</p>
+<p>并且 Promise.all() 会将执行结果组成的数组返回到下一个函数，比如当你希望从 PouchDB 中获取多个对象时，会非常有用。此外一个更加有用的特效是，一旦数组中的 promise 任意一个返回错误，Promise.all() 也会返回错误。</p>
+<h4 id="新手错误-3-忘记使用-catch"><a href="#新手错误-3：-忘记使用-catch" class="headerlink" title="新手错误 #3： 忘记使用 .catch()"></a>新手错误 #3： 忘记使用 .catch()</h4><p>这是另一个常见的错误。单纯的坚信自己的 promises 会永远不出现异常，很多开发者会忘记在他们的代码中添加一个 .catch()。然而不幸的是这也意味着，任何被抛出的异常都会被吃掉，并且你无法在 console 中观察到他们。这类问题 debug 起来会非常痛苦。</p>
+<p>类似 Bluebird 之类的 Promise 库会在这种场景抛出 UnhandledRejectionError 警示有未处理的异常，这类情况一旦发现，就会造成脚本异常，在 Node 中更会造成进程 Crash 的问题，因此正确的添加 .catch() 非常重要。 译者注<br>为了避免这类讨厌的场景，我习惯于像下面的代码一样使用 promise:</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">somePromise().<span class="keyword">then</span>(<span class="keyword">function</span> <span class="title"></span>() &#123;</div><div class="line">  <span class="keyword">return</span> <span class="type">anotherPromise()</span>;</div><div class="line">&#125;).<span class="keyword">then</span>(<span class="keyword">function</span> <span class="title"></span>() &#123;</div><div class="line">  <span class="keyword">return</span> <span class="type">yetAnotherPromise()</span>;</div><div class="line">&#125;).catch(console.log.bind(console)); // &lt;<span class="comment">-- this is badass</span></div></pre></td></tr></table></figure>
+<p>即使你坚信不会出现异常，添加一个 catch() 总归是更加谨慎的。如果你的假设最终被发现是错误的，它会让你的生活更加美好。</p>
+<h4 id="新手错误-4使用-deferred"><a href="#新手错误-4：使用-“deferred”" class="headerlink" title="新手错误 #4：使用 “deferred”"></a>新手错误 #4：使用 “deferred”</h4><p>这是一个我<a href="https://gonehybrid.com/how-to-use-pouchdb-sqlite-for-local-storage-in-your-ionic-app/" target="_blank" rel="external">经常可以看到的错误</a>，以至于我甚至不愿意在这里重复它，就像惧怕 Beetlejuice 一样，仅仅是提到它的名字，就会召唤出来更多。</p>
+<p>简单的说，promises 拥有一个漫长并且戏剧化的历史，Javascript 社区花费了大量的时间让其走上正轨。在早期，deferred 在 Q，When，RSVP，Bluebird，Lie等等的 “优秀” 类库中被引入， jQuery 与 Angular 在使用 ES6 Promise 规范之前，都是使用这种模式编写代码。</p>
+<p>因此如果你在你的代码中使用了这个词 (我不会把这个词重复第三遍！)，你就做错了。下面是说明一下如何避免它。</p>
+<p>首先，大部分 promises 类库都会提供一个方式去包装一个第三方的 promises 对象。举例来说，Angular的 $q 模块允许你使用 $q.when 包裹非 $q 的 promises。因此 Angular 用户可以这样使用 PouchDB promises.</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$q.when(db.<span class="built_in">put</span>(doc)).<span class="keyword">then</span>(<span class="comment">/* ... */</span>);<span class="comment"> // &lt;-- this is all the code you need</span></div></pre></td></tr></table></figure>
+<p>另一种策略是使用<a href="https://blog.domenic.me/the-revealing-constructor-pattern/" target="_blank" rel="external">构造函数声明模式</a>，它在用来包裹非 promise API 时非常有用。举例来说，为了包裹一个回调风格的 API 如 Node 的 fs.readFile ，你可以简单的这么做:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">  fs.readFile(<span class="string">'myfile.txt'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, file</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (err) &#123;</div><div class="line">      <span class="keyword">return</span> reject(err);</div><div class="line">    &#125;</div><div class="line">    resolve(file);</div><div class="line">  &#125;);</div><div class="line">&#125;).then(<span class="comment">/* ... */</span>)</div></pre></td></tr></table></figure>
+<p>完工！我们打败了可怕的 def….啊哈，抓到自己了。:)</p>
+<blockquote>
+<p>关于为何这是一种反模式更多的内容，请查看 Bluebird 的 <a href="https://github.com/petkaantonov/bluebird/wiki/Promise-anti-patterns#the-deferred-anti-pattern" target="_blank" rel="external">promise anti-patterns wiki</a> 页</p>
+</blockquote>
+<h4 id="新手错误-5使用副作用调用而非返回"><a href="#新手错误-5：使用副作用调用而非返回" class="headerlink" title="新手错误 #5：使用副作用调用而非返回"></a>新手错误 #5：使用副作用调用而非返回</h4><p>下面的代码有什么问题？</p>
+<figure class="highlight scilab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">somePromise().<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">()</span> &#123;</span></div><div class="line">  someOtherPromise();</div><div class="line">&#125;).<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">()</span> &#123;</span></div><div class="line">  <span class="comment">// Gee, I hope someOtherPromise() has resolved!</span></div><div class="line">  <span class="comment">// Spoiler alert: it hasn't.</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>好了，现在是时候讨论一下关于 promises 你所需要知道的一切。</p>
+<p>认真的说，这是一个一旦你理解了它，就会避免所有我提及的错误的古怪的技巧。你准备好了么？</p>
+<p>就如我前面所说，promises 的奇妙在于给予我们以前的 return 与 throw。但是在实践中这到底是怎么一回事呢？</p>
+<p>每一个 promise 都会提供给你一个 then() 函数 (或是 catch()，实际上只是 then(null, …) 的语法糖)。当我们在 then() 函数内部时：</p>
+<figure class="highlight scilab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">somePromise().<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">()</span> &#123;</span></div><div class="line">  <span class="comment">// I'm inside a then() function!</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>我们可以做什么呢？有三种事情：</p>
+<p>return 另一个 promise<br>return 一个同步的值 (或者 undefined)<br>throw 一个同步异常<br>就是这样。一旦你理解了这个技巧，你就理解了 promises。因此让我们逐个了解下。</p>
+<ul>
+<li><p>返回另一个 promise</p>
+<p>  这是一个在 promise 文档中常见的使用模式，也就是我们在上文中提到的 “composing promises”：</p>
+  <figure class="highlight scilab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">getUserByName(<span class="string">'nolan'</span>).<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">(user)</span> &#123;</span></div><div class="line">  <span class="keyword">return</span> getUserAccountById(user.id);</div><div class="line">&#125;).<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">(userAccount)</span> &#123;</span></div><div class="line">  <span class="comment">// I got a user account!</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>  注意到我是 <code>return</code> 第二个 promise，这个 <code>return</code> 非常重要。如果我没有写 <code>return</code>，<code>getUserAccountById()</code> 就会成为一个副作用，并且下一个函数将会接收到 <code>undefined</code> 而非 <code>userAccount</code>。</p>
+</li>
+<li><p>返回一个同步值 (或者 undefined)</p>
+<p>  返回 undefined 通常是错误的，但是返回一个同步值实际上是将同步代码包裹为 promise 风格代码的一种非常赞的手段。举例来说，我们对 users 信息有一个内存缓存。我们可以这样做：</p>
+  <figure class="highlight scilab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">getUserByName(<span class="string">'nolan'</span>).<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">(user)</span> &#123;</span></div><div class="line">  <span class="keyword">if</span> (inMemoryCache[user.id]) &#123;</div><div class="line">    <span class="keyword">return</span> inMemoryCache[user.id];    <span class="comment">// returning a synchronous value!</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> getUserAccountById(user.id); <span class="comment">// returning a promise!</span></div><div class="line">&#125;).<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">(userAccount)</span> &#123;</span></div><div class="line">  <span class="comment">// I got a user account!</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>  是不是很赞？第二个函数不需要关心 userAccount 是从同步方法还是异步方法中获取的，并且第一个函数可以非常自由的返回一个同步或者异步值。</p>
+<p>  不幸的是，有一个不便的现实是在 JavaScript 中无返回值函数在技术上是返回 undefined，这就意味着当你本意是返回某些值时，你很容易会不经意间引入副作用。</p>
+<p>  出于这个原因，我个人养成了在 then() 函数内部 永远返回或抛出 的习惯。我建议你也这样做。</p>
+</li>
+<li><p>抛出同步异常</p>
+<p>  谈到 throw，这是让 promises 更加赞的一点。比如我们希望在用户已经登出时，抛出一个同步异常。这会非常简单：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">getUserByName(<span class="string">'nolan'</span>).then(<span class="function"><span class="keyword">function</span> (<span class="params">user</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (user.isLoggedOut()) &#123;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'user logged out!'</span>); <span class="comment">// throwing a synchronous error!</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (inMemoryCache[user.id]) &#123;</div><div class="line">    <span class="keyword">return</span> inMemoryCache[user.id];       <span class="comment">// returning a synchronous value!</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> getUserAccountById(user.id);    <span class="comment">// returning a promise!</span></div><div class="line">&#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">userAccount</span>) </span>&#123;</div><div class="line">  <span class="comment">// I got a user account!</span></div><div class="line">&#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">  <span class="comment">// Boo, I got an error!</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>  如果用户已经登出，我们的 catch() 会接收到一个同步异常，并且如果 后续的 promise 中出现异步异常，他也会接收到。再强调一次，这个函数并不需要关心这个异常是同步还是异步返回的。</p>
+<p>  这种特性非常有用，因此它能够在开发过程中帮助定位代码问题。举例来说，如果在 then() 函数内部中的任何地方，我们执行 JSON.parse()，如果 JSON 格式是错误的，那么它就会抛出一个异常。如果是使用回调风格，这个错误很可能就会被吃掉，但是使用 promises，我们可以轻易的在 catch() 函数中处理它了。</p>
+</li>
+</ul>
+<h3 id="进阶错误"><a href="#进阶错误" class="headerlink" title="进阶错误"></a>进阶错误</h3><p>好了，现在你已经了解了让 promises 变的超级简单的技巧，现在让我们聊一聊一些特殊场景。</p>
+<p>这些错误之所以被我归类为 “进阶” ，是因为我只见过这些错误发生在对 promises 已经有相当深入了解的开发者身上。但是为了解决文章最开始的谜题，我们必须讨论一下这些错误。</p>
+<h4 id="进阶错误-1不知道-promiseresolve"><a href="#进阶错误-1：不知道-Promise-resolve" class="headerlink" title="进阶错误 #1：不知道 Promise.resolve()"></a>进阶错误 #1：不知道 Promise.resolve()</h4><p>如我上面所列举的，promises 在封装同步与异步代码时非常的有用。然而，如果你发现你经常写出下面的代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">  resolve(someSynchronousValue);</div><div class="line">&#125;).then(<span class="comment">/* ... */</span>);</div></pre></td></tr></table></figure>
+<p>你会发现使用 Promise.resolve 会更加简洁：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">Promise</span><span class="selector-class">.resolve</span>(<span class="selector-tag">someSynchronousValue</span>)<span class="selector-class">.then</span>(<span class="comment">/* ... */</span>);</div></pre></td></tr></table></figure></p>
+<p>它在用来捕获同步异常时也极其的好用。由于它实在是好用，因此我已经养成了在我所有 promise 形式的 API 接口中这样使用它：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">somePromiseAPI</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    doSomethingThatMayThrow();</div><div class="line">    <span class="keyword">return</span> <span class="string">'foo'</span>;</div><div class="line">  &#125;).then(<span class="comment">/* ... */</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>切记：任何有可能 throw 同步异常的代码都是一个后续会导致几乎无法调试异常的潜在因素。但是如果你将所有代码都使用 Promise.resolve() 封装，那么你总是可以在之后使用 catch() 来捕获它。</p>
+<p>类似的，还有 Promise.reject() 你可以用来返回一个立刻返回失败的 promise。<br><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Promise.<span class="keyword">reject</span>(<span class="keyword">new</span> <span class="literal">Error</span>(<span class="symbol">'some</span> awful <span class="literal">error</span>'));</div></pre></td></tr></table></figure></p>
+<h4 id="进阶错误-2catch-与-thennull-并非完全等价"><a href="#进阶错误-2：catch-与-then-null-…-并非完全等价" class="headerlink" title="进阶错误 #2：catch() 与 then(null, …) 并非完全等价"></a>进阶错误 #2：catch() 与 then(null, …) 并非完全等价</h4><p>之前我说过 catch() 仅仅是一个语法糖。因此下面两段代码是等价的：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">somePromise().<span class="keyword">catch</span>(<span class="function"><span class="keyword">function</span> <span class="params">(err)</span> </span>&#123;</div><div class="line">  <span class="comment">// handle error</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line">somePromise().then(<span class="keyword">null</span>, <span class="function"><span class="keyword">function</span> <span class="params">(err)</span> </span>&#123;</div><div class="line">  <span class="comment">// handle error</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>然而，这并不意味着下面两段代码是等价的：</p>
+<figure class="highlight scilab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">somePromise().<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">()</span> &#123;</span></div><div class="line">  <span class="keyword">return</span> someOtherPromise();</div><div class="line">&#125;).<span class="keyword">catch</span>(<span class="function"><span class="keyword">function</span> <span class="params">(err)</span> &#123;</span></div><div class="line">  <span class="comment">// handle error</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line">somePromise().<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">()</span> &#123;</span></div><div class="line">  <span class="keyword">return</span> someOtherPromise();</div><div class="line">&#125;, <span class="function"><span class="keyword">function</span> <span class="params">(err)</span> &#123;</span></div><div class="line">  <span class="comment">// handle error</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>如果你好奇为何这两段代码并不等价，可以考虑一下如果第一个函数抛出异常会发生什么：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">somePromise().then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'oh noes'</span>);</div><div class="line">&#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">  <span class="comment">// I caught your error! :)</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line">somePromise().then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'oh noes'</span>);</div><div class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">  <span class="comment">// I didn't catch your error! :(</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>因此，当你使用 then(resolveHandler, rejectHandler) 这种形式时，rejectHandler 并不会捕获由 resolveHandler 引发的异常。</p>
+<p>鉴于此，我个人的习惯是不适用 then() 的第二个参数，而是总是使用 catch()。唯一的例外是当我写一些异步的 Mocha 测试用例时，我可能会希望用例的异常可以正确的被抛出：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">it(<span class="string">'should throw an error'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> doSomethingThatThrows().then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'I expected an error!'</span>);</div><div class="line">  &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">    should.exist(err);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>说到这里，Mocha 和 Chai 用来测试 promise 接口时，是一对非常好的组合。 pouchdb-plugin-seed 项目中有一些 示例 可以帮助你入门。</p>
+<h4 id="进阶错误-3promises-vs-promises-factories"><a href="#进阶错误-3：promises-vs-promises-factories" class="headerlink" title="进阶错误 #3：promises vs promises factories"></a>进阶错误 #3：promises vs promises factories</h4><p>当我们希望执行一个个的执行一个 promises 序列，即类似 Promise.all() 但是并非并行的执行所有 promises。</p>
+<p>你可能天真的写下这样的代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">executeSequentially</span>(<span class="params">promises</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> result = <span class="built_in">Promise</span>.resolve();</div><div class="line">  promises.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">promise</span>) </span>&#123;</div><div class="line">    result = result.then(promise);</div><div class="line">  &#125;);</div><div class="line">  <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>不幸的是，这份代码不会按照你的期望去执行，你传入 executeSequentially() 的 promises 依然会并行执行。</p>
+<p>其根源在于你所希望的，实际上根本不是去执行一个 promises 序列。依照 promises 规范，一旦一个 promise 被创建，它就被执行了。因此你实际上需要的是一个 promise factories 数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">executeSequentially</span>(<span class="params">promiseFactories</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> result = <span class="built_in">Promise</span>.resolve();</div><div class="line">  promiseFactories.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">promiseFactory</span>) </span>&#123;</div><div class="line">    result = result.then(promiseFactory);</div><div class="line">  &#125;);</div><div class="line">  <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我知道你在想什么：“这是哪个见鬼的 Java 程序猿，他为啥在说 factories？” 。实际上，一个 promises factory 是十分简单的，它仅仅是一个可以返回 promise 的函数：</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="title">myPromiseFactory</span>() &#123;</div><div class="line">  <span class="keyword">return</span> <span class="type">somethingThatCreatesAPromise()</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>为何这样就可以了？这是因为一个 promise factory 在被执行之前并不会创建 promise。它就像一个 then 函数一样，而实际上，它们就是完全一样的东西。</p>
+<p>如果你查看上面的 executeSequentially() 函数，然后想象 myPromiseFactory 被包裹在 result.then(…) 之中，也许你脑中的小灯泡就会亮起。在此时此刻，对于 promise 你就算是悟道了。</p>
+<h4 id="进阶错误-4好了如果我希望获得两个-promises-的结果怎么办"><a href="#进阶错误-4：好了，如果我希望获得两个-promises-的结果怎么办" class="headerlink" title="进阶错误 #4：好了，如果我希望获得两个 promises 的结果怎么办"></a>进阶错误 #4：好了，如果我希望获得两个 promises 的结果怎么办</h4><p>有时候，一个 promise 会依赖于另一个，但是如果我们希望同时获得这两个 promises 的输出。举例来说：</p>
+<figure class="highlight scilab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">getUserByName(<span class="string">'nolan'</span>).<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">(user)</span> &#123;</span></div><div class="line">  <span class="keyword">return</span> getUserAccountById(user.id);</div><div class="line">&#125;).<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">(userAccount)</span> &#123;</span></div><div class="line">  <span class="comment">// dangit, I need the "user" object too!</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>为了成为一个优秀的 Javascript 开发者，并且避免金字塔问题，我们可能会将 user 对象存在一个更高的作用域中的变量里：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var user;</div><div class="line">getUserByName(<span class="string">'nolan'</span>).<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">(result)</span></span> &#123;</div><div class="line">  user = result;</div><div class="line">  <span class="keyword">return</span> getUserAccountById(user.id);</div><div class="line">&#125;).<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">(userAccount)</span></span> &#123;</div><div class="line">  // okay, I have both the <span class="string">"user"</span> <span class="keyword">and</span> the <span class="string">"userAccount"</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>这样是没问题的，但是我个人认为这样做有些杂牌。我推荐的策略是抛弃成见，拥抱金字塔：<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">getUserByName(<span class="string">'nolan'</span>).<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">(user)</span></span> &#123;</div><div class="line">  <span class="keyword">return</span> getUserAccountById(user.id).<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">(userAccount)</span></span> &#123;</div><div class="line">    // okay, I have both the <span class="string">"user"</span> <span class="keyword">and</span> the <span class="string">"userAccount"</span></div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>…至少暂时这样是没问题的。一旦缩进开始成为问题，你可以通过 Javascript 开发者从远古时期就开始使用的技巧，将函数抽离到一个命名函数中：</p>
+<figure class="highlight scilab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">onGetUserAndUserAccount</span><span class="params">(user, userAccount)</span> &#123;</span></div><div class="line">  <span class="keyword">return</span> doSomething(user, userAccount);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">onGetUser</span><span class="params">(user)</span> &#123;</span></div><div class="line">  <span class="keyword">return</span> getUserAccountById(user.id).<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">(userAccount)</span> &#123;</span></div><div class="line">    <span class="keyword">return</span> onGetUserAndUserAccount(user, userAccount);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">getUserByName(<span class="string">'nolan'</span>)</div><div class="line">  .<span class="keyword">then</span>(onGetUser)</div><div class="line">  .<span class="keyword">then</span>(<span class="function"><span class="keyword">function</span> <span class="params">()</span> &#123;</span></div><div class="line">  <span class="comment">// at this point, doSomething() is done, and we are back to indentation 0</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>由于你的 promise 代码开始变得更加复杂，你可能发现自己开始将越来越多的函数抽离到命名函数中，我发现这样做，你的代码会越来越漂亮，就像这样：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">putYourRightFootIn</span>()</div><div class="line">  <span class="selector-class">.then</span>(putYourRightFootOut)</div><div class="line">  <span class="selector-class">.then</span>(putYourRightFootIn)  </div><div class="line">  <span class="selector-class">.then</span>(shakeItAllAbout);</div></pre></td></tr></table></figure>
+<p>这就是 promises 的重点。</p>
+<h4 id="进阶错误-5promises-穿透"><a href="#进阶错误-5：promises-穿透" class="headerlink" title="进阶错误 #5：promises 穿透"></a>进阶错误 #5：promises 穿透</h4><p>最后，这个错误就是我开头说的 promises 谜题所影射的错误。这是一个非常稀有的用例，并且可能完全不会出现在你的代码中，但是的的确确震惊了我。</p>
+<p>你认为下面的代码会打印出什么？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Promise</span>.resolve(<span class="string">'foo'</span>).then(<span class="built_in">Promise</span>.resolve(<span class="string">'bar'</span>)).then(<span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(result);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>如果你认为它会打印出 bar，那么你就错了。它实际上打印出来的是 foo！</p>
+<p>发生这个的原因是如果你像 then() 传递的并非是一个函数（比如 promise），它实际上会将其解释为 then(null)，这就会导致前一个 promise 的结果会穿透下面。你可以自己测试一下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Promise</span>.resolve(<span class="string">'foo'</span>).then(<span class="literal">null</span>).then(<span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(result);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>添加任意数量的 then(null)，它依然会打印 foo。</p>
+<p>这实际上又回到了我之前说的 promises vs promise factories。简单的说，你可以直接传递一个 promise 到 then() 函数中，但是它并不会按照你期望的去执行。then() 是期望获取一个函数，因此你希望做的最可能是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Promise</span>.resolve(<span class="string">'foo'</span>).then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(<span class="string">'bar'</span>);</div><div class="line">&#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(result);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>这样他就会如我们所想的打印出 bar。</p>
+<p>因此记住：永远都是往 then() 中传递函数！</p>
+<h3 id="谜题揭晓"><a href="#谜题揭晓" class="headerlink" title="谜题揭晓"></a>谜题揭晓</h3><p>现在我们了解了关于 promsies 所有的知识（或者接近！），我们应该可以解决文章最开始我提出的谜题了。</p>
+<p>这里是谜题的所有答案，我以图形的格式展示出来方便你查看：</p>
+<h4 id="puzzle-1"><a href="#Puzzle-1" class="headerlink" title="Puzzle #1"></a>Puzzle #1</h4><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">doSomething().<span class="keyword">then</span>(<span class="keyword">function</span> <span class="title"></span>() &#123;</div><div class="line">  <span class="keyword">return</span> <span class="type">doSomethingElse()</span>;</div><div class="line">&#125;).<span class="keyword">then</span>(finalHandler);</div></pre></td></tr></table></figure>
+<p>Answer:<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">doSomething</div><div class="line">|<span class="string">-----------------</span>|</div><div class="line">                  doSomethingElse(undefined)</div><div class="line">                  |<span class="string">------------------</span>|</div><div class="line">                                     finalHandler(resultOfDoSomethingElse)</div><div class="line">                                     |<span class="string">------------------</span>|</div></pre></td></tr></table></figure></p>
+<h4 id="puzzle-2"><a href="#Puzzle-2" class="headerlink" title="Puzzle #2"></a>Puzzle #2</h4><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">doSomething().<span class="keyword">then</span>(<span class="keyword">function</span> <span class="title"></span>() &#123;</div><div class="line">  doSomethingElse();</div><div class="line">&#125;).<span class="keyword">then</span>(finalHandler);</div></pre></td></tr></table></figure>
+<p>Answer:<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">doSomething</div><div class="line">|<span class="string">-----------------</span>|</div><div class="line">                  doSomethingElse(undefined)</div><div class="line">                  |<span class="string">------------------</span>|</div><div class="line">                  finalHandler(undefined)</div><div class="line">                  |<span class="string">------------------</span>|</div></pre></td></tr></table></figure></p>
+<h4 id="puzzle-3"><a href="#Puzzle-3" class="headerlink" title="Puzzle #3"></a>Puzzle #3</h4><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">doSomething</span>()<span class="selector-class">.then</span>(doSomethingElse())</div><div class="line">  <span class="selector-class">.then</span>(finalHandler);</div></pre></td></tr></table></figure>
+<p>Answer:<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">doSomething</div><div class="line">|<span class="string">-----------------</span>|</div><div class="line">doSomethingElse(undefined)</div><div class="line">|<span class="string">---------------------------------</span>|</div><div class="line">                  finalHandler(resultOfDoSomething)</div><div class="line">                  |<span class="string">------------------</span>|</div></pre></td></tr></table></figure></p>
+<h4 id="puzzle-4"><a href="#Puzzle-4" class="headerlink" title="Puzzle #4"></a>Puzzle #4</h4><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">doSomething</span>()<span class="selector-class">.then</span>(doSomethingElse)</div><div class="line">  <span class="selector-class">.then</span>(finalHandler);</div></pre></td></tr></table></figure>
+<p>Answer:<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">doSomething</div><div class="line">|<span class="string">-----------------</span>|</div><div class="line">                  doSomethingElse(resultOfDoSomething)</div><div class="line">                  |<span class="string">------------------</span>|</div><div class="line">                                     finalHandler(resultOfDoSomethingElse)</div><div class="line">                                     |<span class="string">------------------</span>|</div></pre></td></tr></table></figure></p>
+<p>如果这些答案你依然无法理解，那么我强烈建议你重新读一下这篇文章，或者实现一下 doSomething() 和 doSomethingElse() 函数并且在浏览器中自己试试看。</p>
+<p>声明：在这些例子中，我假定 doSomething() 和 doSomethingElse() 均返回 promises，并且这些 promises 代表某些在 JavaScript event loop (如 IndexedDB, network, setTimeout) 之外的某些工作结束，这也是为何它们在某些时候表现起来像是并行执行的意义。这里是一个模拟用的 <a href="http://jsbin.com/tuqukakawo/1/edit?js,console,output" target="_blank" rel="external">JSBin</a>。<br>关于更多 promises 的进阶用法，可以参考我的 <a href="https://gist.github.com/nolanlawson/6ce81186421d2fa109a4" target="_blank" rel="external">promise protips cheat sheet</a></p>
+<h3 id="关于-promises-最后的话"><a href="#关于-promises-最后的话" class="headerlink" title="关于 promises 最后的话"></a>关于 promises 最后的话</h3><p>Promises 是非常赞的。如果你还在使用回调模式，我强烈建议你切换到 promises。你的代码会变的更少，更优雅，并且更加容易理解。</p>
+<p>如果你不相信我，这里是证明：<a href="https://t.co/hRyc6ENYGC" target="_blank" rel="external">a refactor of PouchDB’s map/reduce module</a>，使用 promises 替换回调。结果是：新增 290 行，删除 555 行。</p>
+<p>顺带一提，写出那令人讨厌的回调代码的人。。是我！因此这是我第一次领会到 promises 的力量，同时我感谢其他 PouchDB 的贡献者们教导我这样做。</p>
+<p>当然了，promises 并非完美。虽然它的确比回调模式要好，但是这样说就好比说给你肚子来一拳会比在你牙齿上踹一脚好。的确，它是会略有优势，但是如果你有选择，你会两者都尽力避免。</p>
+<p>作为回调模式的升级版，promises 依然难以理解并且容易误用，证明之一就是我不得不写下这篇博文。初学者与专家都很容易经常将它用错，并且真要说的话，并非是他们的问题。问题在于 promises 的使用模式与我们写同步代码非常类似，但是又不尽然。</p>
+<blockquote>
+<p>我也认为 promises 的确难以理解并且容易误用，证明之一就是我不得不翻译这篇博文。 译者注</p>
+</blockquote>
+<p>老实说，你不应该需要去学一堆晦涩难懂的规则和新的 API 去做在同步代码中我们已经熟稔的 return，catch，throw 和 for 循环。在你的脑中不应该总是要提醒自己要区分有两套并行的系统。</p>
+<h3 id="期待-asyncawait"><a href="#期待-async-await" class="headerlink" title="期待 async/await"></a>期待 async/await</h3><p>这是我在 <a href="http://pouchdb.com/2015/03/05/taming-the-async-beast-with-es7.html" target="_blank" rel="external">“Taming the asynchronous beast with ES7”</a> 中提到的重点，在这篇文章中我探究了 ES7 的 async/await 关键字，以及它们是如何将 promises 更深度的结合入语言。不再会要求我们去编写伪同步的代码（以及一个假的 catch() 函数，虽然像，但是并非是 catch），ES7 将会允许我们使用真正的 try/catch/return 关键字，就像我们在 CS 101 上学的一样。</p>
+<p>这对于 Javascript 语言来说是一个大福音。因为即使到最后，只要我们的工具不告诉我们做错了，这些 promise 反模式依然会一直出现。</p>
+<p>从 JavaScript 的历史来看，我认为公正的评价来说 JSLint 与 JSHint 对社区的贡献是高于 JavaScript: The Good Parts 的，虽然他们包含的信息实际上是相同的。但是它们的区别在于 被告知你在你代码中犯的错误 与你去阅读一本书籍，去理解其他人犯的错误。</p>
+<p>ES7 的 async/await 的美妙在于，你的错误会被作为语法或者编译器错误提示出来，而不是运行时的 bug。不过就目前而言，了解 promise 可以做什么以及如何在 ES5 与 ES6 中正确的使用它们依然是有必要的。</p>
+<p>因此当我意识到，就像 JavaScript: The Good Parts 一样，这篇博文可能只会有非常有限的影响的时候，我希望当你发现其他人在犯同样的错误的时候，你可以将这篇博文提供给他们。因为现在依然有很多同学需要承认: “I have a problem with promises!”</p>
+<blockquote>
+<p>更新：有人告知我 Bluebird 3.0 将会 打印警告 来避免我文中所列举的这些错误。因此当我们还在等待 ES7 时，使用 Bluebird 会是另一个极好的方案。</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/promise/" rel="tag"># promise</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/13/js-basic-2/" rel="next" title="JS 基础 (下)">
+                <i class="fa fa-chevron-left"></i> JS 基础 (下)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/02/html5-meta/" rel="prev" title="html5 - meta/link 标签详解">
+                html5 - meta/link 标签详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars2.githubusercontent.com/u/5069297?v=3&s=460"
+               alt="Letica" />
+          <p class="site-author-name" itemprop="name">Letica</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#promises-的起源"><span class="nav-number">1.</span> <span class="nav-text">Promises 的起源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新手错误"><span class="nav-number">2.</span> <span class="nav-text">新手错误</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新手错误-1-promise版的金字塔问题"><span class="nav-number">2.1.</span> <span class="nav-text">新手错误 #1： promise版的金字塔问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新手错误-2-wtf-用了-promises-后怎么用-foreach"><span class="nav-number">2.2.</span> <span class="nav-text">新手错误 #2： WTF, 用了 promises 后怎么用 forEach?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新手错误-3-忘记使用-catch"><span class="nav-number">2.3.</span> <span class="nav-text">新手错误 #3： 忘记使用 .catch()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新手错误-4使用-deferred"><span class="nav-number">2.4.</span> <span class="nav-text">新手错误 #4：使用 “deferred”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新手错误-5使用副作用调用而非返回"><span class="nav-number">2.5.</span> <span class="nav-text">新手错误 #5：使用副作用调用而非返回</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进阶错误"><span class="nav-number">3.</span> <span class="nav-text">进阶错误</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#进阶错误-1不知道-promiseresolve"><span class="nav-number">3.1.</span> <span class="nav-text">进阶错误 #1：不知道 Promise.resolve()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进阶错误-2catch-与-thennull-并非完全等价"><span class="nav-number">3.2.</span> <span class="nav-text">进阶错误 #2：catch() 与 then(null, …) 并非完全等价</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进阶错误-3promises-vs-promises-factories"><span class="nav-number">3.3.</span> <span class="nav-text">进阶错误 #3：promises vs promises factories</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进阶错误-4好了如果我希望获得两个-promises-的结果怎么办"><span class="nav-number">3.4.</span> <span class="nav-text">进阶错误 #4：好了，如果我希望获得两个 promises 的结果怎么办</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进阶错误-5promises-穿透"><span class="nav-number">3.5.</span> <span class="nav-text">进阶错误 #5：promises 穿透</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#谜题揭晓"><span class="nav-number">4.</span> <span class="nav-text">谜题揭晓</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#puzzle-1"><span class="nav-number">4.1.</span> <span class="nav-text">Puzzle #1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#puzzle-2"><span class="nav-number">4.2.</span> <span class="nav-text">Puzzle #2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#puzzle-3"><span class="nav-number">4.3.</span> <span class="nav-text">Puzzle #3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#puzzle-4"><span class="nav-number">4.4.</span> <span class="nav-text">Puzzle #4</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于-promises-最后的话"><span class="nav-number">5.</span> <span class="nav-text">关于 promises 最后的话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#期待-asyncawait"><span class="nav-number">6.</span> <span class="nav-text">期待 async/await</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Letica</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

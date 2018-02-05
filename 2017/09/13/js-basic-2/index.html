@@ -1,0 +1,1034 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="letica'ss timezone" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="-·-·-·-·-·-·-·-·-· agenda ·-·-·-·-·-·-·-·-·-    事件 事件流 事件处理程序 事件对象 事件对象的属性、方法   事件类型   DOM DOM 扩展 BOM">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS 基础 (下)">
+<meta property="og:url" content="http://letica.github.io/2017/09/13/js-basic-2/index.html">
+<meta property="og:site_name" content="letica&#39;ss timezone">
+<meta property="og:description" content="-·-·-·-·-·-·-·-·-· agenda ·-·-·-·-·-·-·-·-·-    事件 事件流 事件处理程序 事件对象 事件对象的属性、方法   事件类型   DOM DOM 扩展 BOM">
+<meta property="og:updated_time" content="2018-02-05T13:02:58.255Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS 基础 (下)">
+<meta name="twitter:description" content="-·-·-·-·-·-·-·-·-· agenda ·-·-·-·-·-·-·-·-·-    事件 事件流 事件处理程序 事件对象 事件对象的属性、方法   事件类型   DOM DOM 扩展 BOM">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://letica.github.io/2017/09/13/js-basic-2/"/>
+
+
+
+
+
+  <title> JS 基础 (下) | letica'ss timezone </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3c28f55ed3a230f5dc516bd83e9901c1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">letica'ss timezone</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://letica.github.io/2017/09/13/js-basic-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Letica">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/5069297?v=3&s=460">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="letica'ss timezone">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JS 基础 (下)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-13T23:52:07+08:00">
+                2017-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/front-end/" itemprop="url" rel="index">
+                    <span itemprop="name">front-end</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <div style="text-align: center">-·-·-·-·-·-·-·-·-· agenda ·-·-·-·-·-·-·-·-·-</div>
+
+<!-- toc -->
+<ul>
+<li><a href="#事件">事件</a><ul>
+<li><a href="#事件流">事件流</a></li>
+<li><a href="#事件处理程序">事件处理程序</a></li>
+<li><a href="#事件对象">事件对象</a><ul>
+<li><a href="#事件对象的属性-方法">事件对象的属性、方法</a></li>
+</ul>
+</li>
+<li><a href="#事件类型">事件类型</a></li>
+</ul>
+</li>
+<li><a href="#dom">DOM</a></li>
+<li><a href="#dom-扩展">DOM 扩展</a></li>
+<li><a href="#bom">BOM</a></li>
+</ul>
+<!-- tocstop -->
+<a id="more"></a>
+<div style="text-align: center">-·-·-·-·-·-·-·-·-· Let’s start ·-·-·-·-·-·-·-·-·-</div>
+
+
+
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><h3 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h3><p>事件流描述的是从页面中接收事件的顺序。</p>
+<ul>
+<li>事件冒泡：IE8及以下</li>
+<li>事件捕获：IE9及以上、其它主流浏览器</li>
+</ul>
+<p>DOM事件流：事件捕获阶段、处于目标阶段、事件冒泡阶段  （IE8及以下不支持</p>
+<h3 id="事件处理程序"><a href="#事件处理程序" class="headerlink" title="事件处理程序"></a>事件处理程序</h3><p>处理事件的函数叫做事件处理程序。</p>
+<ul>
+<li><p>HTML 事件处理程序</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"button"</span> id=<span class="string">"myBtn"</span> <span class="built_in">value</span>=<span class="string">"Click Me"</span> onclick=<span class="string">"alert('hello world')"</span>&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>DOM0级 事件处理程序</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'myBtn'</span>)</div><div class="line">btn.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert(<span class="string">'Clicked'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>DOM2级 事件处理程序</p>
+<p>  可以添加多个，按添加的顺序执行。</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'myBtn'</span>) btn.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert(<span class="keyword">this</span>.id)</div><div class="line">&#125;, <span class="literal">false</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p>IE 事件处理程序</p>
+<p>  可以添加多个，按相反的顺序执行。</p>
+  <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">btn.attachEvent(<span class="string">'onclick'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</div><div class="line">    alert(<span class="string">'Clicked'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>跨浏览器的事件处理程序</p>
+<p>  使用能力检测来判断。</p>
+</li>
+</ul>
+<h3 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h3><p>事件处理程序默认的参数叫做事件对象 event。</p>
+<h4 id="事件对象的属性-方法"><a href="#事件对象的属性、方法" class="headerlink" title="事件对象的属性、方法"></a>事件对象的属性、方法</h4><ul>
+<li><p>DOM 中（通过事件处理程序的参数获得）：</p>
+<ul>
+<li><code>bubbles</code>  事件是否冒泡</li>
+<li><code>cancleable</code>    是否可以取消事件的默认行为</li>
+<li><code>defaultPrevented</code>  为 true 表示已经调用了<code>preventDefault()</code> DOM3级事件中新增</li>
+<li><code>trusted</code>  为 true 表示浏览器生成的，为 false 表示 js 触发的</li>
+<li><p><code>type</code>    事件类型</p>
+</li>
+<li><p><code>currentTarget</code>     当前正在处理事件的那个元素，this 始终等于它</p>
+</li>
+<li><code>target</code>   事件的目标</li>
+<li><code>preventDefault()</code>    取消事件的默认行为，cancleable 为 true 时可使用</li>
+<li><code>stopPropagation()</code>   取消事件的进一步捕获或冒泡。bubbles 为 true时可使用</li>
+</ul>
+</li>
+<li>IE 中 （通过<code>window.event 获得</code>）：<ul>
+<li><code>cancleBubble</code>    默认 false。与<code>stopPropagation()</code>作用相同</li>
+<li><code>returnValue</code>     默认 false。与<code>preventDefault()</code>作用相同</li>
+<li><code>type</code>    与<code>target</code>作用相同</li>
+<li><code>srcElement</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h3><ol>
+<li>UI 事件<ul>
+<li><code>load</code> document window img上可触发</li>
+<li><code>unload</code></li>
+<li><code>resize</code> window 上触发</li>
+<li><code>scroll</code> window 上触发</li>
+<li><code>select</code> <code>&lt;select&gt;</code>上触发</li>
+</ul>
+</li>
+<li>焦点事件<ul>
+<li><code>blur</code></li>
+<li><code>focus</code></li>
+<li><code>focusin</code>  &lt;==&gt; focus</li>
+<li><code>focusout</code>  &lt;==&gt; blur</li>
+</ul>
+</li>
+<li>鼠标与滚轮事件<ul>
+<li><code>click</code></li>
+<li><code>dblclick</code>  触发两次 click 事件</li>
+<li><code>mouseenter</code>  不冒泡</li>
+<li><code>mousemove</code></li>
+<li><code>mouseover</code></li>
+<li><code>mousedown</code></li>
+<li><code>mouseup</code>   与 mousedown 相继触发后才会触发 click</li>
+<li><code>mouseleave</code>  不冒泡</li>
+</ul>
+</li>
+<li>键盘与文本事件<ul>
+<li><code>keydown</code>  按下任意键触发</li>
+<li><code>keypress</code>  按下字符键时触发</li>
+<li><code>keyup</code></li>
+</ul>
+</li>
+<li><p>复合事件</p>
+<p> （基本用不到……</p>
+<ul>
+<li><code>compositionstart</code></li>
+<li><code>compositionupdate</code></li>
+<li><code>compositionend</code></li>
+</ul>
+</li>
+<li>变动事件</li>
+<li>HTML5事件<ul>
+<li><code>contextmenu</code> 右击显示上下文菜单</li>
+<li><code>beforeunload</code></li>
+<li><code>DOMContentLoaded</code>  页面的 DOM 树形成后触发，一般早于 <code>load</code> 事件</li>
+<li><code>readystatechange</code></li>
+<li><code>pageshow</code>/<code>pagehide</code>  ff和 opera 支持前进/后退时使用往返缓存<code>bfcache</code>。pageshow 在load 事件后触发，pagehide 在 unload 事件前触发。</li>
+<li><code>hashchange</code></li>
+</ul>
+</li>
+<li>设备事件<ul>
+<li><code>orientationchange</code>  通过<code>window.orientation</code>获取相关信息</li>
+<li><code>deviceorientation</code>  设备方向改变时触发</li>
+<li><code>devicemotion</code></li>
+</ul>
+</li>
+<li>触摸与手势事件<ul>
+<li>触摸事件<ul>
+<li><code>touchstart</code></li>
+<li><code>touchmove</code></li>
+<li><code>touchend</code></li>
+<li><code>touchcancle</code></li>
+</ul>
+</li>
+<li>手势事件：只有两个手指都触摸到事件的接收容器时才会触发这些事件<ul>
+<li><code>gesturestart</code></li>
+<li><code>gesturechange</code></li>
+<li><code>gestureend</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="dom"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><ul>
+<li><p>Node</p>
+<p>  节点类型，js 中所有的节点类型都继承自 Node 类型。</p>
+<ul>
+<li>nodeType  节点类型，为常量<ul>
+<li>Node.ELEMENT_NODE(1)</li>
+<li>Node.ATTRIBUTE_NODE(2)</li>
+<li>Node.TEXT_NODE(3)</li>
+<li>Node.CDATA_SECTION_NODE(4)</li>
+<li>Node.ENTITY_REFERENCE_NODE(5)</li>
+<li>Node.ENTITY_NODE(6)</li>
+<li>Node.PROCESSING_INSTRUCTION_NODE(7)</li>
+<li>Node.COMMENT_NODE(8)</li>
+<li>Node.DOCUMENT_NODE(9)</li>
+<li>Node.DOCUMENT_TYPE_NODE(10)</li>
+<li>Node.DOCUMENT_FRAGMENT_NODE(11)</li>
+<li>Node.NOTATION_NODE(12)</li>
+</ul>
+</li>
+<li>nodeName  </li>
+<li>nodeValue</li>
+<li>childNodes  子节点，为 NodeList 对象（类 Array 对象）</li>
+<li>parentNode</li>
+<li>previousSibling / nextSibling</li>
+<li>firstChild / lastChild</li>
+<li>hasChildNodes()</li>
+<li><p>ownerDocument 指向表示整个文档的文档节点</p>
+</li>
+<li><p>appendChild(node) 返回新增的节点，如果参数 node 已是文档的一部分，则从旧位置移动到新位置。</p>
+</li>
+<li>insertBefore(toAppendNode, referNode)  referNode为参照节点，如为 null，结果同 appendChild。</li>
+<li>replaceChild(newNode, toReplacedNode)</li>
+<li>cloneNode(isDeep)</li>
+<li>normalize()  处理文本节点，空则删除，多个合并为一个</li>
+</ul>
+</li>
+<li><p>Document</p>
+<p>  文档类型。document 对象是 HTMLDocument (继承自Document) 的实例，它是 window 对象的一个属性。</p>
+<ul>
+<li><p>访问子节点:</p>
+<ul>
+<li>document.documentElement  </li>
+<li>document.childNodes  (一般有两个值，一个 doctype，一个 html)</li>
+</ul>
+</li>
+<li><p>文档信息</p>
+<ul>
+<li>title</li>
+<li>URL</li>
+<li>domain</li>
+<li>referrer</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Element</p>
+<ul>
+<li>getAttribute(‘attrName’)</li>
+<li>setAttribute(‘attrName’, ‘value’)</li>
+<li><p>removeAttribute(‘attrName’)</p>
+</li>
+<li><p>createElement()</p>
+</li>
+</ul>
+</li>
+<li><p>Text</p>
+<ul>
+<li><p>操作节点中的文本</p>
+<ul>
+<li>appendData(‘text’)</li>
+<li>deleteData(offset, count)  从 offset 位置开始删除 count 个字符</li>
+<li>insertData(offset, text)</li>
+<li>replaceData(offset, count, text)</li>
+<li>splitText(offset) 从 offset 位置将当前文本节点分隔为两个文本节点</li>
+</ul>
+</li>
+<li><p>createTextNode(‘text’)</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="dom-扩展"><a href="#DOM-扩展" class="headerlink" title="DOM 扩展"></a>DOM 扩展</h2><ul>
+<li>selectors API<ul>
+<li>querySelector()</li>
+<li>querySelectorAll()</li>
+<li>matchesSelector()</li>
+</ul>
+</li>
+<li><p>html5</p>
+<ul>
+<li>getElementsByClassName()</li>
+<li>classList 返回元素的 class list（类 Array 对象）<ul>
+<li>add(‘className’)</li>
+<li>contains(‘className’)</li>
+<li>remove(‘className’)</li>
+<li>toggle(‘className’)</li>
+</ul>
+</li>
+<li>document.activeElement  返回当前获得焦点的元素</li>
+<li>HTMLDocument<ul>
+<li>document.readyState  返回 <code>loading</code> or  <code>complete</code></li>
+<li>document.compatMode  返回 <code>CSS1Compat</code>（标准模式） or <code>BackCompat</code>（混杂模式）</li>
+<li>document.head  类似 document.body</li>
+</ul>
+</li>
+<li>document.charset / document.defaultCharset</li>
+<li>data-x 自定义数据<ul>
+<li>dataset 访问自定义属性</li>
+</ul>
+</li>
+<li><p>插入标记</p>
+<ul>
+<li>innerHTML</li>
+<li>outerHTML</li>
+<li>insertAdjacentHTML(‘beforebegin’, ‘elementHTML’)<ul>
+<li>第一个参数必须是： beforebegin  beforeend  afterbegin  afterend</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p> 在使用 innerHTML、 outerHTML 属性和 insertAdjacentHTML()方法时，最好先手工删除要被替换的元素的所有事件处理 程序和 JavaScript 对象属性</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="bom"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h2><ul>
+<li><p>window</p>
+<p>  js中的全局对象。</p>
+<ul>
+<li><p>窗口位置</p>
+<p>  浏览器窗口相对于屏幕左/上边的距离：</p>
+<p>  window.screenLeft / screenX</p>
+<p>  window.screenTop / screenY</p>
+</li>
+<li><p>窗口大小</p>
+<p>  页面视图区的大小：<br>  window.innerHeight / innerWidth</p>
+<p>  浏览器窗口本身的大小：<br>  window.outerHeight / outerWidth</p>
+<p>  页面视口的大小：<br>  document.body.clientHeight / clientWidth</p>
+<p>  布局视口的大小：<br>  document.documentElement.clientHeight / clientWidth</p>
+<p>  屏幕的像素宽 / 高度：<br>  screen.width / height</p>
+</li>
+</ul>
+</li>
+<li><p>location</p>
+<p>  与当前 url 相关的一些信息。window.location 与 document.location指向同一个对象。</p>
+<ul>
+<li>hash</li>
+<li>host  服务器名称+端口号</li>
+<li>hostname  服务器名称</li>
+<li>port  端口号</li>
+<li>href</li>
+<li>pathname</li>
+<li>protocol</li>
+<li><p>search</p>
+</li>
+<li><p>location.replace()</p>
+</li>
+<li>location.assign()</li>
+</ul>
+</li>
+<li><p>navigator</p>
+<ul>
+<li>userAgent</li>
+</ul>
+</li>
+<li><p>screen</p>
+<p>  保存于客户端显示器相关的一些信息。</p>
+</li>
+<li><p>history</p>
+<ul>
+<li><p>history.go()</p>
+<p>  参数：<code>正负数</code>表示前进 or 后退，<code>字符串</code>表示跳转的 url</p>
+</li>
+<li>history.back()    后退一页</li>
+<li>history.forward()     前进一页</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/06/js-basic/" rel="next" title="JS 基础 (上)">
+                <i class="fa fa-chevron-left"></i> JS 基础 (上)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/20/promise/" rel="prev" title="关于 promise">
+                关于 promise <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars2.githubusercontent.com/u/5069297?v=3&s=460"
+               alt="Letica" />
+          <p class="site-author-name" itemprop="name">Letica</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#事件"><span class="nav-number">1.</span> <span class="nav-text">事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件流"><span class="nav-number">1.1.</span> <span class="nav-text">事件流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件处理程序"><span class="nav-number">1.2.</span> <span class="nav-text">事件处理程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件对象"><span class="nav-number">1.3.</span> <span class="nav-text">事件对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#事件对象的属性-方法"><span class="nav-number">1.3.1.</span> <span class="nav-text">事件对象的属性、方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件类型"><span class="nav-number">1.4.</span> <span class="nav-text">事件类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dom"><span class="nav-number">2.</span> <span class="nav-text">DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dom-扩展"><span class="nav-number">3.</span> <span class="nav-text">DOM 扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bom"><span class="nav-number">4.</span> <span class="nav-text">BOM</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Letica</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
